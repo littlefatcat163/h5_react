@@ -140,8 +140,8 @@ export default class ScrollBar extends React.Component {
         this.range.childrenWidth = this.$children.width();
         this.$horizontal.show();
         this.resizeHorizontalBar();
-        this.unbindVerticalBarListener();
-        this.bindVerticalBarListener();
+        this.unbindHorizontalBarListener();
+        this.bindHorizontalBarListener();
         bindmousewheel = true;
       }
     } else {
@@ -196,7 +196,7 @@ export default class ScrollBar extends React.Component {
   }
 
   //绑定水平滚动条事件
-  bindVerticalBarListener() {
+  bindHorizontalBarListener() {
     this.$horizontal.find(".scrollbar").bind("mousedown", function(e) {
       let disX = e.clientX - this.range.barOffsetLeft;
       const maxWidth = this.$horizontal.width() - $(e.target).width();
@@ -284,7 +284,7 @@ export default class ScrollBar extends React.Component {
   }
 
   //解除水平滚动条绑定事件
-  unbindVerticalBarListener() {
+  unbindHorizontalBarListener() {
     let $horizontalbar = this.$horizontal.find(".scrollbar");
     $horizontalbar.unbind("mousedown");
     $horizontalbar.unbind("mousemove");
