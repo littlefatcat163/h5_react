@@ -6,3 +6,13 @@ body
 {
   font-size: .16rem;
 }
+
+/* 布局 */
+// 自适应父容器
+.auto-parent
+{
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: inherit;
+}

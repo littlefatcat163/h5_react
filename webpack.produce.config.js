@@ -7,7 +7,6 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
   entry : {
     bundle : path.resolve(__dirname, "app/main.js"),
-    xxx : path.resolve(__dirname, "app/xxx.js"),
     vendors : ["react", "react-dom", "jquery", "react-router"]
   },
   output : {
@@ -15,7 +14,10 @@ module.exports = {
     filename : "[name].min.js",
   },
   resolve : {
-    extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"]
+    extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"],
+    // alias: {
+    //     react : __dirname + '/node_modules/react'
+    // },
   },
   module : {
     loaders : [
@@ -57,6 +59,10 @@ module.exports = {
     }),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
     new webpack.optimize.UglifyJsPlugin({
+    //   mangle: {
+    //   except: ['$super', '$', 'exports', 'require', 'ref']
+    //   //以上变量‘$super’, ‘$’, ‘exports’ or ‘require’，不会被混淆
+    // },
         compress: {
             warnings: false
         }

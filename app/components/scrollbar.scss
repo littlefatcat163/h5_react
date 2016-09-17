@@ -2,34 +2,85 @@
 {
   height: 100%;
   width: 100%;
-  overflow: hidden;
   direction: ltr;
   position: relative;
 
   .scrollbar-content
   {
-    margin-right: .2rem;
     position: relative;
-    height: auto;
+    overflow: hidden;
+
+    .scrollbar-children
+    {
+      position: relative;
+      display: inline-block;
+    }
   }
 
-  .scrollbar-vertical
+  .scrollbar-vertical,.scrollbar-horizontal
   {
     position: absolute;
-    height: 100%;
-    width: .2rem;
-    background-color: rgba(19, 19, 19, .27);
-    right: 0;
-    top: 0;
+
+    .scrollbar-back
+    {
+      position: absolute;
+      background-color: rgba(19, 19, 19, .27);
+      margin: auto;
+      border-radius: .05rem;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
 
     .scrollbar
     {
       cursor: pointer;
       position: relative;
-      width: 80%;
       background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: .05rem;
+    }
+  }
+
+  .scrollbar-horizontal
+  {
+    bottom: 0;
+    left: 0;
+
+    .scrollbar-back
+    {
+      width: 100%;
+      height: 50%;
+    }
+
+    .scrollbar
+    {
+      position: absolute;
+      height: 70%;
       margin: auto;
-      top: 1;
+      left: .01rem;
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+  .scrollbar-vertical
+  {
+    right: 0;
+    top: 0;
+
+    .scrollbar-back
+    {
+      width: 50%;
+      height: 100%;
+    }
+
+    .scrollbar
+    {
+      width: 70%;
+      margin: auto;
+      top: .01rem;
     }
   }
 }

@@ -5,10 +5,19 @@ import ScrollBar from "../components/ScrollBar.jsx";
 
 export default class TestScrollBar extends React.Component {
 
+  xxx = <ScrollBar>
+          <div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
+          <div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
+          <div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
+          <div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
+          <div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
+          <div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</div>
+        </ScrollBar>;
+
   constructor(props) {
     super(props);
     this.state = {
-      scrollbar : <ScrollBar ref="scrollbar">
+      scrollbar : <ScrollBar>
                     <div>asdasd</div>
                     <div>asdasd</div>
                     <div>asdasd</div>
@@ -17,14 +26,15 @@ export default class TestScrollBar extends React.Component {
                     <div>asdasd</div>
                     <div>asdasd</div>
                     <div>asdasd</div>
-                  </ScrollBar>  };
+                  </ScrollBar> };
   }
 
   render() {
     return(
       <div>
         <div style={{height:200, width: 200}}>
-          {this.state.scrollbar}
+          {/*this.state.scrollbar*/}
+          {this.r()}
         </div>
         <button onClick={e => this.addOne()}> add one </button>
         <br/>
@@ -33,8 +43,24 @@ export default class TestScrollBar extends React.Component {
     )
   }
 
+  r() {
+    let dom = null;
+    if(this.state.scrollbar) dom = React.cloneElement(this.xxx, {ref : "asdasd"}, this.xxx.props.children);
+              // (<ScrollBar ref="asdasd">
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //     <div>asdasd</div>
+              //   </ScrollBar>);
+    return dom;
+  }
+
   addOne() {
-    $(".scrollbar-content").append("<div>asdasd</div>");
+    $(".scrollbar-children").append($("<div>asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas</div>"));
   }
 
   del() {
