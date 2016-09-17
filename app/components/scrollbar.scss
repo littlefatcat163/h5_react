@@ -1,0 +1,35 @@
+.scrollbar-container
+{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  direction: ltr;
+  position: relative;
+
+  .scrollbar-content
+  {
+    margin-right: .2rem;
+    position: relative;
+    height: auto;
+  }
+
+  .scrollbar-vertical
+  {
+    position: absolute;
+    height: 100%;
+    width: .2rem;
+    background-color: rgba(19, 19, 19, .27);
+    right: 0;
+    top: 0;
+
+    .scrollbar
+    {
+      cursor: pointer;
+      position: relative;
+      width: 80%;
+      background-color: #f1f1f1;
+      margin: auto;
+      top: 1;
+    }
+  }
+}
