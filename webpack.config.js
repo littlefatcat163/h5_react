@@ -20,6 +20,7 @@ module.exports = {
   output : {
     path : path.resolve(__dirname, "build"),
     filename : "[name].[hash].js",
+    chunkFilename : "[name].[chunkhash:5].chunk.js"//异步加载
     //publicPath : '',
   },
   resolve : {
@@ -30,6 +31,7 @@ module.exports = {
       {
         test : /\.js[x]?$/,
         exclude : /node_modules/,
+        //include : path.resolve(__dirname, 'app'),
         loader : "babel",
         query : {
             presets : ['es2015', 'stage-0', 'react']
@@ -53,12 +55,18 @@ module.exports = {
         test : /\.(eot|woff|woff2|ttf|svg)((\?|\#)[\?\#\w\d_-]+)?$/,
         loader : "url",
         query : {limit: 10000, name: 'fonts/[name].[ext]'}
-      }
+      },
+      // {
+      //   test : /app\.js[x]$/,
+      //   loader : path.join(__dirname, "./routes-loader"),
+      //   exclude : /node_modules/
+      // },
     ]
   },
   postcss : [autoprefixer({browsers:["last 3 version", "Firefox >= 15", "IE >= 10", "Opera >= 12"]})],//{browsers:['last 2 versions']}
   plugins : [
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
+    //new webpack.optimize.CommonsChunkPlugin('common.js'),
     new ExtractTextPlugin("[name].css"),
     new HtmlWebpackPlugin({
       title : "I am index.html",

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router";
 import $ from "jquery";
 import ScrollBar from "../components/ScrollBar.jsx";
 
@@ -39,6 +40,11 @@ export default class TestScrollBar extends React.Component {
         <button onClick={e => this.addOne()}> add one </button>
         <br/>
         <button onClick={e => this.del()}> del </button>
+        <br/>
+        <Link to="/Test1" activeStyle={{color : "red"}}> to child route ~ Test1 </Link>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     )
   }
@@ -66,4 +72,5 @@ export default class TestScrollBar extends React.Component {
   del() {
     this.setState({ scrollbar : null });
   }
+
 }
