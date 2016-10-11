@@ -12,6 +12,7 @@ module.exports = {
   output : {
     path : path.resolve(__dirname, "build"),
     filename : "[name].min.js",
+    chunkFilename : "[name].min.js"
   },
   resolve : {
     extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"],
