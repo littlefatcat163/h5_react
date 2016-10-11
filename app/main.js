@@ -9,9 +9,6 @@ import TestScrollBar from "./test/TestScrollBar.jsx";
   ReactDom.render((
      <Router history={hashHistory}>
         <Route path="/" component={TestScrollBar}>
-          {/*<IndexRoute component={Index} />*/}
-          {/*<Route path="first" component={First} />
-          <Route path="second" component={Second} />*/}
         </Route>
      </Router>
   ), document.getElementById("app"));

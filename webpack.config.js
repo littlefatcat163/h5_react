@@ -1,4 +1,5 @@
 var path = require("path");
+var fs = require("fs");
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -20,10 +21,18 @@ module.exports = {
   output : {
     path : path.resolve(__dirname, "build"),
     filename : "[name].[hash].js",
-    //publicPath : '',
+    chunkFilename : "[name].[chunkhash:5].chunk.js",
+    publicPath : '/',
   },
   resolve : {
-    extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"]
+    extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"],
+    alias: {
+      'react-router': path.join(__dirname, '..', 'modules')
+    }
+  },
+  content : __dirname,
+  node : {
+    __dirname : true
   },
   module : {
     loaders : [
