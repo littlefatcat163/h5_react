@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 
-import "./scrollbar.scss";
+//import "./scrollbar.scss";
 
 const __scrollInterval = Symbol("__scrollInterval");
 

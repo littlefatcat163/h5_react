@@ -41,7 +41,7 @@ export default class TestScrollBar extends React.Component {
         <br/>
         <button onClick={e => this.del()}> del </button>
         <br/>
-        <Link to="/Test1" activeStyle={{color : "red"}}> to child route ~ Test1 </Link>
+        
         <div>
           {this.props.children}
         </div>

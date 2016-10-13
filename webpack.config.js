@@ -21,15 +21,14 @@ module.exports = {
   output : {
     path : path.resolve(__dirname, "build"),
     filename : "[name].[hash].js",
-    publicPath : '/',
     chunkFilename : "[name].[chunkhash:5].chunk.js"//异步加载
     //publicPath : '',
   },
   resolve : {
     extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"],
-    alias: {
-      'react-router': path.join(__dirname, '..', 'modules')
-    }
+    // alias: {
+    //   'react-router': path.join(__dirname, '..', 'modules')
+    // }
   },
   content : __dirname,
   node : {
@@ -74,6 +73,8 @@ module.exports = {
   },
   postcss : [autoprefixer({browsers:["last 3 version", "Firefox >= 15", "IE >= 10", "Opera >= 12"]})],//{browsers:['last 2 versions']}
   plugins : [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
     //new webpack.optimize.CommonsChunkPlugin('common.js'),
     new ExtractTextPlugin("[name].css"),
