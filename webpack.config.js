@@ -12,7 +12,7 @@ module.exports = {
     inline: true,
     progress: true,
     //contentBase: '/',
-    port: 8080
+    port: 8082
   },
   entry : {
     bundle : path.resolve(__dirname, "app/main.js"),
@@ -30,10 +30,10 @@ module.exports = {
     //   'react-router': path.join(__dirname, '..', 'modules')
     // }
   },
-  content : __dirname,
-  node : {
-    __dirname : true
-  },
+  // content : __dirname,
+  // node : {
+  //   __dirname : true
+  // },
   module : {
     loaders : [
       {

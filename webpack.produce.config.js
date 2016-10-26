@@ -20,6 +20,10 @@ module.exports = {
     //     react : __dirname + '/node_modules/react'
     // },
   },
+  // content : __dirname,
+  // node : {
+  //   __dirname : true
+  // },
   module : {
     loaders : [
       {
@@ -53,13 +57,13 @@ module.exports = {
   },
   postcss : [autoprefixer({browsers:["last 3 version", "Firefox >= 15", "IE >= 10", "Opera >= 12"]})],//{browsers:['last 2 versions']}
   plugins : [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       "process.env": {
          NODE_ENV: JSON.stringify("production")
        }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
     new webpack.optimize.UglifyJsPlugin({
     //   mangle: {
