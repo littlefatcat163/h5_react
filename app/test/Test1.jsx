@@ -16,6 +16,7 @@ export default class Test1 extends React.Component {
   render() {
     return(
       <div>
+        <span className="fa fa-cog fa-spin"></span>
         <h2 className="test1-h2">Hello , I'm Test1...</h2>
         {this.test2}
         <Link to="/tc" activeStyle={{color : "red"}}> to child route ~ tc </Link>
