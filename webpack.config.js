@@ -1,7 +1,7 @@
 var path = require("path");
 var fs = require("fs");
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+//var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
@@ -48,14 +48,16 @@ module.exports = {
       },
       {
         test : /\.css$/,
-        loader : ExtractTextPlugin.extract(["css", "postcss"])
+        loader : "style!css!postcss"
+        //loader : ExtractTextPlugin.extract(["css", "postcss"])
       },
       {
         test : /\.scss$/,
-        loader : ExtractTextPlugin.extract(["css", "sass", "postcss"])
+        loader : "style!css!sass!postcss"
+        //loader : ExtractTextPlugin.extract(["css", "sass", "postcss"])
       },
       {
-        test : /\.(png|jpg)$/,
+        test : /\.(png|jpg|jpeg|gif)$/,
         loader : 'url',
         query : {limit : 10000, name:'images/[name].[ext]'}
       },
@@ -77,7 +79,7 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
     //new webpack.optimize.CommonsChunkPlugin('common.js'),
-    new ExtractTextPlugin("[name].css"),
+    //new ExtractTextPlugin("[name].css"),
     new HtmlWebpackPlugin({
       title : "I am index.html",
       template : path.resolve(__dirname, "app/__index.html"),

@@ -16,4 +16,8 @@ export default class Test1 extends React.Component {
     )
   }
 
+  test() {
+    console.log("I am test2...");
+  }
+
 }

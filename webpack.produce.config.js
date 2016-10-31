@@ -1,6 +1,6 @@
 var path = require("path");
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+//var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
@@ -37,11 +37,13 @@ module.exports = {
       },
       {
         test : /\.css$/,
-        loader : ExtractTextPlugin.extract(["css?-autoprefixer", "postcss"])
+        loader : "style!css!postcss"
+        //loader : ExtractTextPlugin.extract(["css?-autoprefixer", "postcss"])
       },
       {
         test : /\.scss$/,
-        loader : ExtractTextPlugin.extract(["css?-autoprefixer", "sass?-autoprefixer", "postcss"])
+        loader : "style!css!sass!postcss"
+        //loader : ExtractTextPlugin.extract(["css?-autoprefixer", "sass?-autoprefixer", "postcss"])
       },
       {
         test: /\.(png|jpg)$/,
@@ -64,7 +66,7 @@ module.exports = {
          NODE_ENV: JSON.stringify("production")
        }
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.min.js', Infinity),
     new webpack.optimize.UglifyJsPlugin({
     //   mangle: {
     //   except: ['$super', '$', 'exports', 'require', 'ref']
@@ -74,7 +76,7 @@ module.exports = {
             warnings: false
         }
     }),
-    new ExtractTextPlugin("[name].min.css"),
+    //new ExtractTextPlugin("[name].min.css"),
     new HtmlWebpackPlugin({
       title: "I am index.html",
       template : path.resolve(__dirname, "app/__index.html"),
