@@ -2,6 +2,8 @@ h5_react                                                --根目录
   app                                                   --代码内容
     aid                                                 --辅助目录,如第三方图标库或其他库的引用
     components                                          --组件目录
+    style                                               --样式
+    tool                                                --工具目录(存粹的js方法)
     test                                                --测试目录
   build                                                 --编译目录
   document                                              --文档目录

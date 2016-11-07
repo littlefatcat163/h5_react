@@ -7,7 +7,7 @@ import "./test1.scss";
 
 export default class Test1 extends React.Component {
 
-  test2 = <Test2 ref={(test2) => this.test2 = test2} />
+  test2 = null
 
   constructor(props) {
     super(props);
@@ -18,7 +18,7 @@ export default class Test1 extends React.Component {
       <div>
         <span className="fa fa-cog fa-spin"></span>
         <h2 className="test1-h2">Hello , I'm Test1...</h2>
-        {this.test2}
+        <Test2 ref={(test) => this.test2 = test} />
         <Link to="/tc" activeStyle={{color : "red"}}> to child route ~ tc </Link>
         <div>
           {this.props.children}

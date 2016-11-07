@@ -1,0 +1,15 @@
+/*  布局  */
+@import "constant";
+// 容器
+.container {
+  @media (min-width: $min-width) { width: 7.50rem; }
+  @media (min-width: $med-width) { width: 9.70rem; }
+  @media (min-width: $max-width) { width: 11.7rem; }
+  padding: 0 .15rem;
+  margin: auto;
+}
+
+.container {
+  &::before { content: " "; display: table; }
+  &::after { content: " "; clear: both; display: table; }
+}

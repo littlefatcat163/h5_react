@@ -1,0 +1,43 @@
+@import "color";
+@import "layout";
+@import "nav";
+
+html {
+  font-size: 100px;
+  //font-family: "Microsoft YaHei" ! important;
+  font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+}
+
+body {
+  font-size: .14rem;
+  line-height: 1.42857143;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*  字体大小  */
+.font-xs { font-size: .12rem; }
+.font-sm { font-size: .14rem; }
+.font-lm { font-size: .16rem; }
+.font-lg { font-size: .18rem; }
+.font-ls { font-size: .20rem; }
+.font-lx { font-size: .22rem; }
+
+/* 布局 */
+// 自适应父容器
+.auto-parent　{
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: inherit;
+}

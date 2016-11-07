@@ -16,7 +16,7 @@ module.exports = {
   },
   entry : {
     bundle : path.resolve(__dirname, "app/main.js"),
-    vendors : ["react", "react-dom", "jquery", "react-router"]
+    vendors : ["react", "react-dom", "jquery", "react-redux", "redux"]
   },
   output : {
     path : path.resolve(__dirname, "build"),

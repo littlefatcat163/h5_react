@@ -1,0 +1,12 @@
+/*  颜色  */
+//亮黑色
+$light-black : #222;
+.bg-light-black { background-color: $light-black; }
+.font-light-black { color: $light-black; }
+.border-light-black { border-color: $light-black; }
+
+//白色
+$white : #fff;
+.bg-white { background-color: $white; }
+.font-white { color: $white; }
+.border-white { border-color: $white; }

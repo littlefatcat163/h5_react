@@ -7,7 +7,7 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
   entry : {
     bundle : path.resolve(__dirname, "app/main.js"),
-    vendors : ["react", "react-dom", "jquery", "react-router"]
+    vendors : ["react", "react-dom", "jquery", "react-redux", "redux"]
   },
   output : {
     path : path.resolve(__dirname, "build"),
@@ -46,7 +46,7 @@ module.exports = {
         //loader : ExtractTextPlugin.extract(["css?-autoprefixer", "sass?-autoprefixer", "postcss"])
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|jpeg|gif)$/,
         loader: 'url',
         query : {limit : 10000, name:'images/[name].[ext]'}
       },

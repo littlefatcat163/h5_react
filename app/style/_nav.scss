@@ -1,0 +1,54 @@
+/*  导航栏  */
+@import "constant";
+
+.navbar {
+  @media (min-width: $min-width) { min-height: .4rem; }
+  min-height: .5rem;
+
+  .navbar-header {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-nav {
+    float: left;
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    &.navbar-right {
+      float: right;
+    }
+  }
+
+  .navbar-brand {
+    display: block;
+    float: left;
+    padding: .15rem;
+    line-height: .2rem;
+    font-size: .18rem;
+    height: .5rem;
+    @media (min-width: $min-width) { padding-top: 0; padding-bottom: 0; line-height: .42rem; height: .42rem; }
+  }
+}
+
+.nav {
+  list-style: none;
+  &>li {
+    position: relative;
+    display: block;
+    float: left;
+    &>a {
+      display: block;
+      position: relative;
+      padding: .1rem .15rem;
+    }
+  }
+}
+
+.navbar, .navbar-header, .navbar-collapse, .nav {
+  &::before { content: " "; display: table; }
+  &::after { content: " ";  clear: both; display: table; }
+}

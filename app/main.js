@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDom from "react-dom";
 import 'babel-polyfill';//浏览器兼容 ie >= 9
-import "./style.scss";
+import "./style/style.scss";
 import "./aid/font-awesome-4.7.0/scss/font-awesome.scss";
 import { Router, Route, hashHistory, browserHistory, IndexRoute, Redirect } from 'react-router';
 import Test1 from "./test/Test1.jsx";
+import Home from "./Home.jsx";
 
 (function(){
   ReactDom.render((//browserHistory 打包后压缩无效
      <Router history={hashHistory}>
-        <Route path="/" component={Test1}>
+        <Route path="/">
+          <IndexRoute component={Home}/>
+        </Route>
+        <Route path="/t" component={Test1}>
           <Route
             path="/tc"
             getComponent={(location, callback) => {
@@ -28,5 +32,5 @@ import Test1 from "./test/Test1.jsx";
             ></Route>
         </Route>
      </Router>
-  ), document.getElementById("app"));
+  ), document.getElementById("root"));
 }())
