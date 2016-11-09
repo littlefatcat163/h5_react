@@ -5,6 +5,12 @@ $light-black : #222;
 .font-light-black { color: $light-black; }
 .border-light-black { border-color: $light-black; }
 
+//黑色
+$black : #000;
+.bg-black { background-color: $black; }
+.font-black { color: $black; }
+.border-black { border-color: $black; }
+
 //白色
 $white : #fff;
 .bg-white { background-color: $white; }

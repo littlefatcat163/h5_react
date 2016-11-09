@@ -23,6 +23,31 @@ body {
 a {
   text-decoration: none;
   cursor: pointer;
+  color: inherit;
+  &:link {
+    color: inherit;
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
 }
 
 /*  字体大小  */
@@ -32,6 +57,9 @@ a {
 .font-lg { font-size: .18rem; }
 .font-ls { font-size: .20rem; }
 .font-lx { font-size: .22rem; }
+
+/*  外边距   */
+.margin-right-xs { margin-right: .05rem; }
 
 /* 布局 */
 // 自适应父容器
