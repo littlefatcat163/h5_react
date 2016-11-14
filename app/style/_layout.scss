@@ -7,9 +7,34 @@
   @media (min-width: $max-width) { width: 11.7rem; }
   padding: 0 .15rem;
   margin: auto;
+  position: relative;
 }
 
 .container {
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
+}
+
+//水平剧中
+.horizontal {
+  margin: 0 auto;
+  &.horizontal-v {
+    height: 100%;
+    display: table;
+  }
+  .vertical {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+//position 定位
+.pos-fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.pos-relative {
+  position: relative;
 }

@@ -2,8 +2,23 @@
 @import "constant";
 
 .navbar {
-  @media (min-width: $min-width) { min-height: .4rem; }
   min-height: .5rem;
+  @media (min-width: $min-width) { min-height: .4rem; }
+
+  &.navbar-fixed-top, &.navbar-fixed-bottom {
+    z-index: $nav-index;
+    position: fixed;
+    left: 0;
+    right: 0;
+
+    &.navbar-fixed-top {
+      top: 0;
+    }
+
+    &.navbar-fixed-bottom {
+        bottom: 0;
+    }
+  }
 
   .navbar-header {
     @media (min-width: $min-width) { float: left; margin: 0; }

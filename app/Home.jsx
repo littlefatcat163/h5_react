@@ -18,7 +18,7 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <nav className="navbar bg-light-black font-white">
+        <nav className="navbar bg-light-black font-white navbar-fixed-top">
           <div className="container">
             <div className="navbar-header">
               <a className="navbar-brand" href="/">React实践</a>
@@ -31,7 +31,7 @@ export default class Home extends React.Component {
                 <li><a>环境搭建</a></li>
                 <li><a>相关软件</a></li>
                 <li>
-                  <a href="https://github.com/theMxb/h5_react">
+                  <a target="_blank" href="https://github.com/theMxb/h5_react">
                     <i className="fa fa-github margin-right-xs"></i>
                     github
                   </a>
@@ -39,7 +39,7 @@ export default class Home extends React.Component {
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <a href="http://write.blog.csdn.net/postlist?ticket=ST-351554-7GS3jGKRbiI3DdEKyfzY-passport.csdn.net">
+                  <a target="_blank" href="http://write.blog.csdn.net/postlist?ticket=ST-351554-7GS3jGKRbiI3DdEKyfzY-passport.csdn.net">
                     <i className="fa fa-weibo margin-right-xs"></i>
                     博客
                   </a>
@@ -49,9 +49,27 @@ export default class Home extends React.Component {
             </div>
           </div>
         </nav>
-        <div className="bg-white">
+        {/* <div className="bg-black font-white pos-fixed">
+          <div className="container" style={{height : 280}}>
+            <div className="horizontal horizontal-v">
+              <div className="vertical">
+                <h1>Look For Less, Do More</h1>
+                <p>lern react, react with jquery build up compoonent, for reference only!</p>
+                <span>
+                  <input type="text"/>
+                  <i className="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> */}
+        <div className="pos-relative bg-white" style={{height : 700, top : 50}}>
           <div className="container">
-            
+            <ul>
+              <li><div><a>UI</a></div></li>
+              <li><div><a>输入</a></div></li>
+              <li><div><a>API</a></div></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -86,4 +104,5 @@ export default class Home extends React.Component {
       this.$collapse.addClass("in");
     }
   }
+
 }
