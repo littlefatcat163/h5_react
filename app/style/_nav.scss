@@ -1,5 +1,6 @@
 /*  导航栏  */
 @import "constant";
+@import "color";
 
 .navbar {
   min-height: .5rem;
@@ -22,6 +23,7 @@
 
   .navbar-header {
     @media (min-width: $min-width) { float: left; margin: 0; }
+    @media (max-width: $min-width) { border-bottom-width: .01rem; border-bottom-style: solid; }
     display: block;
     padding: 0;
     margin-left: -.15rem;
@@ -94,6 +96,7 @@
 
 .nav {
   list-style: none;
+  margin: 0;
   &>li {
     @media (min-width: $min-width) { float: left; }
     position: relative;
@@ -106,7 +109,7 @@
   }
 }
 
-.navbar, .navbar-header, .navbar-collapse, .nav {
+.navbar, .navbar-header, .navbar-collapse, .nav, .nav-ul, .nav-ul-fluid {
   &::before { content: " "; display: table; }
   &::after { content: " ";  clear: both; display: table; }
 }
@@ -115,5 +118,91 @@
   opacity: .6;
   &:hover {
     opacity: 1;
+  }
+}
+
+.nav-index {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color : $white;
+  box-shadow: 0 1px 3px $light-gray;
+  font-size: .16rem;
+  z-index: $nav-index - 1;
+}
+
+.nav-ul, .nav-ul-fluid {
+  list-style: none;
+  margin: 0;
+  &.nav-ul {
+    overflow: hidden;
+    max-height: .43rem;
+  }
+  &>li {
+    position: relative;
+    display: block;
+    float: left;
+    color: $deep-gray;
+    &:hover {
+      color: $primary;
+    }
+    &>a {
+      display: block;
+      position: relative;
+      padding: .1rem .15rem;
+    }
+  }
+}
+
+.nav-container {
+  position: relative;
+  color: $deep-gray;
+  padding: 0 .1rem;
+  &:hover {
+    color: $primary;
+    .nav-ream {
+      display: block;
+    }
+    .nav-bar {
+      width: 100%;
+    }
+  }
+  .nav-ream {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: inherit;
+    padding: .15rem 0;
+  }
+  .nav-bar {
+    display: block;
+    width: 0;
+    height: 3px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    background-color: $primary;
+    transition: width .35s ease;
+  }
+  .nav-split {
+    display: block;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    right: 0;
+    .nav-split-hor {
+      display: table;
+      height: 100%;
+      .nav-split-ver {
+        display: table-cell;
+        vertical-align: middle;
+        &::before {
+          content: "|";
+        }
+      }
+    }
   }
 }

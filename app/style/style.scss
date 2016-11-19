@@ -1,6 +1,7 @@
 @import "color";
 @import "layout";
 @import "nav";
+@import "xanimation";
 
 html {
   font-size: 100px;
@@ -60,6 +61,7 @@ button, input, optgroup, select, textarea {
 
 /*  外边距   */
 .margin-right-xs { margin-right: .05rem; }
+.margin-left-xs { margin-left: .05rem; }
 
 /* 布局 */
 // 自适应父容器
