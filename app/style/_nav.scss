@@ -132,6 +132,7 @@
 }
 
 .nav-ul, .nav-ul-fluid {
+  background-color: inherit;
   list-style: none;
   margin: 0;
   &.nav-ul {
@@ -152,12 +153,14 @@
       padding: .1rem .15rem;
     }
   }
+  &.nav-ul-fluid>li>a { margin: .08rem 0;}
 }
 
 .nav-container {
   position: relative;
   color: $deep-gray;
   padding: 0 .1rem;
+  background-color: inherit;
   &:hover {
     color: $primary;
     .nav-ream {

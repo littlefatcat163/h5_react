@@ -10,9 +10,9 @@ export default class Home extends React.Component {
   __height = null;
 
   $collapse = null;
-
   $nav = null;
   $navIndex = null;
+  $content = null;
 
   constructor(props) {
     super(props);
@@ -69,7 +69,7 @@ export default class Home extends React.Component {
         <div className="nav-index" ref={(navIndex) => this.$navIndex = $(navIndex)} style={{top: 45}}>
           <div className="container">
             <ul className="nav-ul">
-              <li className="nav-container">
+              <li className="nav-container" onMouseEnter={(e) => this.__blurContent(true)} onMouseLeave={(e) => this.__blurContent(false)}>
                 <a>
                   <i className="fa fa-globe margin-right-xs"></i>
                   UI
@@ -83,11 +83,11 @@ export default class Home extends React.Component {
                 <div className="nav-ream">
                   <div className="container">
                     <ul className="nav-ul-fluid">
-                      <li className="col-xs-4 transition_border"><a>字体图标</a></li>
-                      <li className="col-xs-4 transition_border"><a>布局</a></li>
-                      <li className="col-xs-4 transition_border"><a>调试布局</a></li>
-                      <li className="col-xs-4 transition_border"><a>调试布局</a></li>
-                      <li className="col-xs-4 transition_border"><a>调试布局</a></li>
+                      <li className="col-xs-4"><a className="transition_border">字体图标</a></li>
+                      <li className="col-xs-4"><a className="transition_border">布局</a></li>
+                      <li className="col-xs-4"><a className="transition_border">调试布局</a></li>
+                      <li className="col-xs-4"><a className="transition_border">调试布局</a></li>
+                      <li className="col-xs-4"><a className="transition_border">调试布局</a></li>
                     </ul>
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export default class Home extends React.Component {
             </ul>
           </div>
         </div>
-        <div className="pos-relative" style={{textAlign : "center", height : 400}}>
+        <div ref={(content) => this.$content = $(content)} className="pos-relative" style={{textAlign : "center", height : 400}}>
           <span className="fa fa-ravelry" style={{fontSize : 100, marginTop : 200}}></span>
         </div>
       </div>
@@ -229,6 +229,11 @@ export default class Home extends React.Component {
   componentWillUnmount() {
     this.$collapse[0].removeEventListener(this.__transitionEndevName, this.__transitionEnd);
     $(window).unbind("resize", this.__windowResize);
+  }
+
+  __blurContent(bool) {
+    if(bool) this.$content.addClass("blur-xs");
+    else this.$content.removeClass("blur-xs");
   }
 
   __transitionEnd(e) {
