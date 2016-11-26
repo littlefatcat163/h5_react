@@ -35,7 +35,7 @@ export default class Home extends React.Component {
             <div className="navbar-collapse">
               <ul className="nav navbar-nav">
                 <li><a>环境搭建</a></li>
-                <li><a>相关软件</a></li>
+                <li><a>相关说明</a></li>
                 <li>
                   <a target="_blank" href="https://github.com/theMxb/h5_react">
                     <i className="fa fa-github margin-right-xs"></i>
@@ -297,16 +297,18 @@ export default class Home extends React.Component {
         reamList : [
           {
             key : "nav_nav_bar",
-            name : "导航栏"
+            name : "导航栏",
+            iconClass : "fa fa-send"
           },
           {
             key : "nav_nav_pager",
-            name : "分页"
+            name : "分页",
+            iconClass : "fa fa-chevron-right"
           },
           {
             key : "nav_nav_tree",
             name : "树",
-            iconClass : "fa fa-chevron-right"
+            iconClass : "fa fa-sitemap"
           }
         ]
       },
@@ -317,15 +319,18 @@ export default class Home extends React.Component {
         reamList : [
           {
             key : "nav_other_transition",
-            name : "过渡"
+            name : "过渡",
+            iconClass : "fa fa-exchange"
           },
           {
             key : "nav_other_animation",
-            name : "动画"
+            name : "动画",
+            iconClass : "fa fa-cog fa-spin"
           },
           {
             key : "nav_other_effect",
-            name : "特效"
+            name : "特效",
+            iconClass : "fa fa-assistive-listening-systems"
           },
           {
             key : "nav_other_move",
@@ -334,7 +339,8 @@ export default class Home extends React.Component {
           },
           {
             key : "nav_other_resize",
-            name : "浏览器窗口调整"
+            name : "浏览器窗口调整",
+            iconClass : "fa fa-arrows-alt"
           }
         ]
       },
@@ -345,35 +351,48 @@ export default class Home extends React.Component {
         reamList : [
           {
             key : "nav_api_tool",
-            name : "工具类"
+            name : "工具类",
+            iconClass : "fa fa-briefcase"
           },
           {
             key : "nav_api_format",
-            name : "规范"
+            name : "规范",
+            iconClass : "fa fa-file-code-o"
+          },
+          {
+            key : "nav_api_html5",
+            name : "html5",
+            link : "http://www.jb51.net/w3school/html5/html5_reference.htm",
+            target : "_blank",
+            iconClass : "fa fa-html5"
+          },
+          {
+            key : "nav_api_sass",
+            name : "sass",
+            link : "http://sass.bootcss.com/docs/sass-reference/",
+            target : "_blank",
+            iconClass : "fa fa-css3"
           },
           {
             key : "nav_api_react",
             name : "React",
             link : "http://reactjs.cn/react/index.html",
-            target : "_blank"
+            target : "_blank",
+            iconClass : "fa fa-facebook-square"
           },
           {
             key : "nav_api_react_wiki",
             name : "ReactWiki",
             link : "http://wiki.jikexueyuan.com/project/react/",
-            target : "_blank"
-          },
-          {
-            key : "nav_api_sass",
-            name : "Sass",
-            link : "http://sass.bootcss.com/docs/sass-reference/",
-            target : "_blank"
+            target : "_blank",
+            iconClass : "fa fa-wikipedia-w"
           },
           {
             key : "nav_api_es6",
             name : "ES6",
             link : "http://es6.ruanyifeng.com/",
-            target : "_blank"
+            target : "_blank",
+            iconClass : "fa fa-etsy"
           }
         ]
       }
