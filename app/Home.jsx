@@ -14,8 +14,11 @@ export default class Home extends React.Component {
   $navIndex = null;
   $content = null;
 
+  __navUlList = null;
+
   constructor(props) {
     super(props);
+    this.__initData();
   }
 
   render() {
@@ -69,145 +72,59 @@ export default class Home extends React.Component {
         <div className="nav-index" ref={(navIndex) => this.$navIndex = $(navIndex)} style={{top: 45}}>
           <div className="container">
             <ul className="nav-ul">
-              <li className="nav-container" onMouseEnter={(e) => this.__blurContent(true)} onMouseLeave={(e) => this.__blurContent(false)}>
-                <a>
-                  <i className="fa fa-globe margin-right-xs"></i>
-                  UI
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <span className="nav-split">
-                  <span className="nav-split-hor">
-                    <span className="nav-split-ver"></span>
-                  </span>
-                </span>
-                <div className="nav-ream">
-                  <div className="container">
-                    <ul className="nav-ul-fluid">
-                      <li className="col-xs-4"><a className="transition_border">字体图标</a></li>
-                      <li className="col-xs-4"><a className="transition_border">布局</a></li>
-                      <li className="col-xs-4"><a className="transition_border">调试布局</a></li>
-                      <li className="col-xs-4"><a className="transition_border">调试布局</a></li>
-                      <li className="col-xs-4"><a className="transition_border">调试布局</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
-              <li className="nav-container">
-                <a>
-                  <i className="fa fa-keyboard-o margin-right-xs"></i>
-                  输入
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <span className="nav-split">
-                  <span className="nav-split-hor">
-                    <span className="nav-split-ver"></span>
-                  </span>
-                </span>
-                <div className="container nav-ream">
-                  <ul>
-                    <li><a>字体图标</a></li>
-                    <li><a>布局</a></li>
-                    <li><a></a></li>
-                  </ul>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
-              <li className="nav-container">
-                <a>
-                  <i className="fa fa-film margin-right-xs"></i>
-                  媒体
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <span className="nav-split">
-                  <span className="nav-split-hor">
-                    <span className="nav-split-ver"></span>
-                  </span>
-                </span>
-                <div className="container nav-ream">
-                  <ul>
-                    <li><a>字体图标</a></li>
-                    <li><a>布局</a></li>
-                    <li><a></a></li>
-                  </ul>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
-              <li className="nav-container">
-                <a>
-                  <i className="fa fa-bar-chart margin-right-xs"></i>
-                  图表
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <span className="nav-split">
-                  <span className="nav-split-hor">
-                    <span className="nav-split-ver"></span>
-                  </span>
-                </span>
-                <div className="container nav-ream">
-                  <ul>
-                    <li><a>字体图标</a></li>
-                    <li><a>布局</a></li>
-                    <li><a></a></li>
-                  </ul>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
-              <li className="nav-container">
-                <a>
-                  <i className="fa fa-paper-plane-o margin-right-xs"></i>
-                  导航
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <span className="nav-split">
-                  <span className="nav-split-hor">
-                    <span className="nav-split-ver"></span>
-                  </span>
-                </span>
-                <div className="container nav-ream">
-                  <ul>
-                    <li><a>字体图标</a></li>
-                    <li><a>布局</a></li>
-                    <li><a></a></li>
-                  </ul>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
-              <li className="nav-container">
-                <a>
-                  <i className="fa fa-ellipsis-h margin-right-xs"></i>
-                  其他
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <span className="nav-split">
-                  <span className="nav-split-hor">
-                    <span className="nav-split-ver"></span>
-                  </span>
-                </span>
-                <div className="container nav-ream">
-                  <ul>
-                    <li><a>字体图标</a></li>
-                    <li><a>布局</a></li>
-                    <li><a></a></li>
-                  </ul>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
-              <li className="nav-container">
-                <a>
-                  <i className="fa fa-chain-broken margin-right-xs"></i>
-                  API
-                  <i className="fa fa-angle-down margin-left-xs"></i>
-                </a>
-                <div className="container nav-ream">
-                  <ul>
-                    <li><a>字体图标</a></li>
-                    <li><a>布局</a></li>
-                    <li><a></a></li>
-                  </ul>
-                </div>
-                <span className="nav-bar"></span>
-              </li>
+              {
+                (function(_this){
+                  let _list = [];
+                  _this.__navUlList.forEach(function(_navLi, index) {
+                    _list.push(
+                      <li key={_navLi.key} className="nav-container" onMouseEnter={(e) => _this.__blurContent(true)} onMouseLeave={(e) => _this.__blurContent(false)}>
+                        <a>
+                          <i className={_navLi.iconClass + " margin-right-xs"}></i>
+                          {_navLi.name}
+                          <i className="fa fa-angle-down margin-left-xs"></i>
+                        </a>
+                        {
+                          (function(index, length) {
+                            if(index < length)
+                              return (
+                                <span className="nav-split">
+                                  <span className="nav-split-hor">
+                                    <span className="nav-split-ver"></span>
+                                  </span>
+                                </span>
+                              );
+                          })(index, _this.__navUlList.length - 1)
+                        }
+                        <div className="nav-ream-parent">
+                          <div className="nav-ream">
+                            <div className="container">
+                              <ul className="nav-ul-fluid">
+                                {
+                                  (function(_reamList) {
+                                    let __list = [];
+                                    _reamList.forEach(function(_reamLi, index) {
+                                      __list.push(
+                                        <li key={_reamLi.key} className="col-xs-4">
+                                          <a target={_reamLi.target} href={_reamLi.link} className="transition_border">
+                                            <i className={_reamLi.iconClass + " margin-right-sm"}></i>
+                                            {_reamLi.name}
+                                          </a>
+                                        </li>
+                                      );
+                                    });
+                                    return __list;
+                                  })(_navLi.reamList)
+                                }
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  });
+                  return _list;
+                })(this)
+              }
             </ul>
           </div>
         </div>
@@ -229,6 +146,238 @@ export default class Home extends React.Component {
   componentWillUnmount() {
     this.$collapse[0].removeEventListener(this.__transitionEndevName, this.__transitionEnd);
     $(window).unbind("resize", this.__windowResize);
+  }
+
+  __initData() {
+    this.__navUlList = [
+      {
+        key : "nav_ui",
+        name : "UI",
+        iconClass : "fa fa-globe",
+        reamList : [
+          {
+            key : "nav_ui_font_icon",
+            name : "字体图标",
+            iconClass : "fa fa-flag",
+            target : "_blank",
+            link : "http://fontawesome.dashgame.com/"
+          },
+          {
+            key : "nav_ui_layout",
+            name : "布局",
+            iconClass : "fa fa-th-large"
+          },
+          {
+            key : "nav_ui_modial",
+            name : "模态框",
+            iconClass : "fa fa-window-restore"
+          },
+          {
+            key : "nav_ui_tip",
+            name : "提示框",
+            iconClass : "fa fa-exclamation-triangle"
+          },
+          {
+            key : "nav_ui_loading",
+            name : "加载框",
+            iconClass : "fa fa-spinner fa-pulse"
+          },
+          {
+            key : "nav_ui_label",
+            name : "标签",
+            iconClass : "fa fa-bookmark"
+          },
+          {
+            key : "nav_ui_timer_link",
+            name : "时间轴",
+            iconClass : "fa fa-clock-o"
+          }
+        ]
+      },
+      {
+        key : "nav_input",
+        name : "输入",
+        iconClass : "fa fa-keyboard-o",
+        reamList : [
+          {
+            key : "nav_input_btn",
+            name : "按钮",
+            iconClass : "fa fa-hand-o-down"
+          },
+          {
+            key : "nav_input_input",
+            name : "输入框",
+            iconClass : "fa fa-keyboard-o"
+          },
+          {
+            key : "nav_input_drop",
+            name : "下拉框",
+            iconClass : "fa fa-angle-down"
+          },
+          {
+            key : "nav_input_checkbox",
+            name : "勾选框",
+            iconClass : "fa fa-check-square"
+          },
+          {
+            key : "nav_input_radio",
+            name : "单选框",
+            iconClass : "fa fa-dot-circle-o"
+          },
+          {
+            key : "nav_input_data",
+            name : "日期时间",
+            iconClass : "fa fa-clock-o"
+          },
+          {
+            key : "nav_input_upload",
+            name : "上传",
+            iconClass : "fa fa-upload"
+          }
+        ]
+      },
+      {
+        key : "nav_media",
+        name : "媒体",
+        iconClass : "fa fa-film",
+        reamList : [
+          {
+            key : "nav_media_carousel",
+            name : "轮播",
+            iconClass : "fa fa-file-movie-o"
+          },
+          {
+            key : "nav_media_image",
+            name : "缩略图",
+            iconClass : "fa fa-image"
+          },
+          {
+            key : "nav_media_tab",
+            name : "Tab",
+            iconClass : "fa fa-tags"
+          },
+          {
+            key : "nav_media_audio",
+            name : "音频",
+            iconClass : "fa fa-film"
+          }
+        ]
+      },
+      {
+        key : "nav_chart",
+        name : "图表",
+        iconClass : "fa fa-bar-chart",
+        reamList : [
+          {
+            key : "nav_chart_map",
+            name : "地图",
+            iconClass : "fa fa-map-marker"
+          },
+          {
+            key : "nav_chart_chart",
+            name : "统计图表",
+            iconClass : "fa fa-pie-chart"
+          },
+          {
+            key : "nav_chart_table",
+            name : "表格",
+            iconClass : "fa fa-table"
+          },
+          {
+            key : "nav_chart_table_tree",
+            name : "表格树",
+            iconClass : "fa fa-th-list"
+          }
+        ]
+      },
+      {
+        key : "nav_nav",
+        name : "导航",
+        iconClass : "fa fa-paper-plane-o",
+        reamList : [
+          {
+            key : "nav_nav_bar",
+            name : "导航栏"
+          },
+          {
+            key : "nav_nav_pager",
+            name : "分页"
+          },
+          {
+            key : "nav_nav_tree",
+            name : "树",
+            iconClass : "fa fa-chevron-right"
+          }
+        ]
+      },
+      {
+        key : "nav_other",
+        name : "其他",
+        iconClass : "fa fa-ellipsis-h",
+        reamList : [
+          {
+            key : "nav_other_transition",
+            name : "过渡"
+          },
+          {
+            key : "nav_other_animation",
+            name : "动画"
+          },
+          {
+            key : "nav_other_effect",
+            name : "特效"
+          },
+          {
+            key : "nav_other_move",
+            name : "移动",
+            iconClass : "fa fa-arrows"
+          },
+          {
+            key : "nav_other_resize",
+            name : "浏览器窗口调整"
+          }
+        ]
+      },
+      {
+        key : "nav_api",
+        name : "API",
+        iconClass : "fa fa-chain-broken",
+        reamList : [
+          {
+            key : "nav_api_tool",
+            name : "工具类"
+          },
+          {
+            key : "nav_api_format",
+            name : "规范"
+          },
+          {
+            key : "nav_api_react",
+            name : "React",
+            link : "http://reactjs.cn/react/index.html",
+            target : "_blank"
+          },
+          {
+            key : "nav_api_react_wiki",
+            name : "ReactWiki",
+            link : "http://wiki.jikexueyuan.com/project/react/",
+            target : "_blank"
+          },
+          {
+            key : "nav_api_sass",
+            name : "Sass",
+            link : "http://sass.bootcss.com/docs/sass-reference/",
+            target : "_blank"
+          },
+          {
+            key : "nav_api_es6",
+            name : "ES6",
+            link : "http://es6.ruanyifeng.com/",
+            target : "_blank"
+          }
+        ]
+      }
+    ];
   }
 
   __blurContent(bool) {

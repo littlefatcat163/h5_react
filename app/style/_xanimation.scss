@@ -3,7 +3,7 @@
 $border : 2px solid transparent;
 //过度边框
 .transition_border {
-
+  border: 1px solid $light-gray;
   &::before, &::after {
     content: "";
     display: block;

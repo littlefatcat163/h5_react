@@ -170,13 +170,18 @@
       width: 100%;
     }
   }
+  .nav-ream-parent {
+    position: absolute;
+    bottom: -1px;
+  }
   .nav-ream {
     display: none;
     position: fixed;
     left: 0;
     right: 0;
-    background-color: inherit;
+    background-color: $white;
     padding: .15rem 0;
+    box-shadow: 0 1px 3px $deep-gray;
   }
   .nav-bar {
     display: block;
