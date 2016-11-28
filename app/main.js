@@ -5,13 +5,19 @@ import "./style/style.scss";
 import "./aid/font-awesome-4.7.0/scss/font-awesome.scss";
 import { Router, Route, hashHistory, browserHistory, IndexRoute, Redirect } from 'react-router';
 import Test1 from "./test/Test1.jsx";
-import Home from "./Home.jsx";
+//import Home from "./Home.jsx";
 
 (function(){
   ReactDom.render((//browserHistory 打包后压缩无效
      <Router history={hashHistory}>
         <Route path="/">
-          <IndexRoute component={Home}/>
+          <IndexRoute
+            getComponent={(location, callback) => {
+              require.ensure([], function(require) {
+                callback(null, require("./Home.jsx").default);
+              }, "Home")
+            }}
+          />
         </Route>
         <Route path="/t" component={Test1}>
           <Route

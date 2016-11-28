@@ -52,22 +52,45 @@ button, input, optgroup, select, textarea {
     outline: none;
 }
 
+/*  链接  */
+.x-link {
+  display: inline-block;
+  color: $primary;
+  cursor: pointer;
+}
+
+/*  文本  */
+.x-text-default {
+  display: inline-block;
+  color: $deep-gray;
+  cursor: default;
+}
+
+.x-split-left-tilt {
+  display: inline-block;
+  margin: 0 15px;
+  &::after {
+    content: "/";
+  }
+}
+
+//sm md lm lg  ls xl xs(默认)
 /*  字体大小  */
-.font-xs { font-size: .12rem; }
-.font-sm { font-size: .14rem; }
-.font-lm { font-size: .16rem; }
-.font-lg { font-size: .18rem; }
-.font-ls { font-size: .20rem; }
-.font-lx { font-size: .22rem; }
+.x-font-sm { font-size: .12rem; }
+.x-font-xs { font-size: .14rem; }
+.x-font-lm { font-size: .16rem; }
+.x-font-lg { font-size: .18rem; }
+.x-font-ls { font-size: .20rem; }
+.x-font-xl { font-size: .22rem; }
 
 /*  外边距   */
-.margin-right-xs { margin-right: .05rem; }
-.margin-right-sm { margin-right: .1rem; }
-.margin-left-xs { margin-left: .05rem; }
+.x-margin-right-xs { margin-right: .05rem; }
+.x-margin-right-sm { margin-right: .1rem; }
+.x-margin-left-xs { margin-left: .05rem; }
 
 /* 布局 */
 // 自适应父容器
-.auto-parent　{
+.x-auto-parent　{
   display: block;
   height: 100%;
   width: 100%;

@@ -1,9 +1,9 @@
 /*  颜色  */
 //亮黑色
 $light-black : #222;
-.bg-light-black { background-color: $light-black; }
-.font-light-black { color: $light-black; }
-.border-light-black { border-color: $light-black; }
+.x-bg-light-black { background-color: $light-black; }
+.x-font-light-black { color: $light-black; }
+.x-border-light-black { border-color: $light-black; }
 
 //亮灰色
 $light-gray : #e2e2e2;
@@ -12,21 +12,21 @@ $deep-gray : #5f5f5f;
 
 //灰色
 $gray : #929292;
-.bg-gray { background-color: $gray; }
-.font-gray { color: $gray; }
-.border-gray { border-color: $gray; }
+.x-bg-gray { background-color: $gray; }
+.x-font-gray { color: $gray; }
+.x-border-gray { border-color: $gray; }
 
 //黑色
 $black : #000;
-.bg-black { background-color: $black; }
-.font-black { color: $black; }
-.border-black { border-color: $black; }
+.x-bg-black { background-color: $black; }
+.x-font-black { color: $black; }
+.x-border-black { border-color: $black; }
 
 //白色
 $white : #fff;
-.bg-white { background-color: $white; }
-.font-white { color: $white; }
-.border-white { border-color: $white; }
+.x-bg-white { background-color: $white; }
+.x-font-white { color: $white; }
+.x-border-white { border-color: $white; }
 
 //主要颜色
 $primary : #428bca;

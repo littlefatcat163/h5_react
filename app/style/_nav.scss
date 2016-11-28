@@ -2,26 +2,26 @@
 @import "constant";
 @import "color";
 
-.navbar {
+.x-navbar {
   min-height: .5rem;
   @media (min-width: $min-width) { min-height: .4rem; }
 
-  &.navbar-fixed-top, &.navbar-fixed-bottom {
+  &.x-navbar-fixed-top, &.x-navbar-fixed-bottom {
     z-index: $nav-index;
     position: fixed;
     left: 0;
     right: 0;
 
-    &.navbar-fixed-top {
+    &.x-navbar-fixed-top {
       top: 0;
     }
 
-    &.navbar-fixed-bottom {
+    &.x-navbar-fixed-bottom {
         bottom: 0;
     }
   }
 
-  .navbar-header {
+  .x-navbar-header {
     @media (min-width: $min-width) { float: left; margin: 0; }
     @media (max-width: $min-width) { border-bottom-width: .01rem; border-bottom-style: solid; }
     display: block;
@@ -30,7 +30,7 @@
     margin-right: -.15rem;
   }
 
-  .navbar-toggle {
+  .x-navbar-toggle {
     @media (min-width: $min-width) { display: none; }
     float: right;
     font-size: .18rem;
@@ -43,10 +43,10 @@
     background-color: transparent;
   }
 
-  .navbar-nav {
+  .x-navbar-nav {
     @media (min-width: $min-width) {
       float: left;
-      &.navbar-right {
+      &.x-navbar-right {
         float: right;
       }
     }
@@ -55,12 +55,12 @@
     margin: 0;
     padding: 0;
 
-    &.navbar-right {
+    &.x-navbar-right {
       display: block;
     }
   }
 
-  .navbar-brand {
+  .x-navbar-brand {
     display: block;
     float: left;
     padding: .15rem;
@@ -76,10 +76,10 @@
     }
   }
 
-  .navbar-collapse {
+  .x-navbar-collapse {
     @media (min-width: $min-width) { display: block; }
     display: none;
-    &.collapsing {
+    &.x-collapsing {
       height: 0;
       position: relative;
       overflow: hidden;
@@ -88,13 +88,13 @@
       transition-property: height;
       display: block;
     }
-    &.in {
+    &.x-in {
       display: block;
     }
   }
 }
 
-.nav {
+.x-nav {
   list-style: none;
   margin: 0;
   &>li {
@@ -109,19 +109,19 @@
   }
 }
 
-.navbar, .navbar-header, .navbar-collapse, .nav, .nav-ul, .nav-ul-fluid {
+.x-navbar, .x-navbar-header, .x-navbar-collapse, .x-nav, .x-nav-ul, .x-nav-ul-fluid {
   &::before { content: " "; display: table; }
   &::after { content: " ";  clear: both; display: table; }
 }
 
-.navbar-toggle, .navbar-brand, .nav>li {
+.x-navbar-toggle, .x-navbar-brand, .x-nav>li {
   opacity: .6;
   &:hover {
     opacity: 1;
   }
 }
 
-.nav-index {
+.x-nav-index {
   position: fixed;
   left: 0;
   right: 0;
@@ -131,11 +131,11 @@
   z-index: $nav-index - 1;
 }
 
-.nav-ul, .nav-ul-fluid {
+.x-nav-ul, .x-nav-ul-fluid {
   background-color: inherit;
   list-style: none;
   margin: 0;
-  &.nav-ul {
+  &.x-nav-ul {
     overflow: hidden;
     max-height: .43rem;
   }
@@ -153,28 +153,28 @@
       padding: .1rem .15rem;
     }
   }
-  &.nav-ul-fluid>li>a { margin: .08rem 0;}
+  &.x-nav-ul-fluid>li>a { margin: .08rem 0;}
 }
 
-.nav-container {
+.x-nav-container {
   position: relative;
   color: $deep-gray;
   padding: 0 .1rem;
   background-color: inherit;
   &:hover {
     color: $primary;
-    .nav-ream {
+    .x-nav-ream {
       display: block;
     }
-    .nav-bar {
+    .x-nav-bar {
       width: 100%;
     }
   }
-  .nav-ream-parent {
+  .x-nav-ream-parent {
     position: absolute;
     bottom: -1px;
   }
-  .nav-ream {
+  .x-nav-ream {
     display: none;
     position: fixed;
     left: 0;
@@ -183,7 +183,7 @@
     padding: .15rem 0;
     box-shadow: 0 1px 3px $deep-gray;
   }
-  .nav-bar {
+  .x-nav-bar {
     display: block;
     width: 0;
     height: 3px;
@@ -195,16 +195,16 @@
     background-color: $primary;
     transition: width .35s ease;
   }
-  .nav-split {
+  .x-nav-split {
     display: block;
     position: absolute;
     top:0;
     bottom: 0;
     right: 0;
-    .nav-split-hor {
+    .x-nav-split-hor {
       display: table;
       height: 100%;
-      .nav-split-ver {
+      .x-nav-split-ver {
         display: table-cell;
         vertical-align: middle;
         &::before {

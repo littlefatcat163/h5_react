@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
+import { createStore } from 'redux'
+import { Provider, connect } from "react-redux";
 import { getTransitionEndevName } from "./tool/_xAnimation";
 
-export default class Home extends React.Component {
+export class XHome extends React.Component {
 
   __transitionEndevName = null;
 
@@ -12,7 +14,7 @@ export default class Home extends React.Component {
   $collapse = null;
   $nav = null;
   $navIndex = null;
-  $content = null;
+  $navContent = null;
 
   __navUlList = null;
 
@@ -24,33 +26,33 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <nav ref={(nav) => this.$nav = $(nav)} className="navbar bg-light-black font-white navbar-fixed-top">
-          <div className="container">
-            <div className="navbar-header border-gray">
-              <a className="navbar-brand" href="/">React实践</a>
-              <button className="navbar-toggle" onClick={(e) => this.__collapse(e)}>
+        <nav ref={(nav) => this.$nav = $(nav)} className="x-navbar x-bg-light-black x-font-white x-navbar-fixed-top">
+          <div className="x-container">
+            <div className="x-navbar-header border-gray">
+              <a className="x-navbar-brand" href="/">React实践</a>
+              <button className="x-navbar-toggle" onClick={(e) => this.__collapse(e)}>
                 <span className="fa fa-navicon"></span>
               </button>
             </div>
-            <div className="navbar-collapse">
-              <ul className="nav navbar-nav">
+            <div className="x-navbar-collapse">
+              <ul className="x-nav x-navbar-nav">
                 <li><a>环境搭建</a></li>
                 <li><a>相关说明</a></li>
                 <li>
                   <a target="_blank" href="https://github.com/theMxb/h5_react">
-                    <i className="fa fa-github margin-right-xs"></i>
+                    <i className="fa fa-github x-margin-right-xs"></i>
                     github
                   </a>
                 </li>
               </ul>
-              <ul className="nav navbar-nav navbar-right">
+              <ul className="x-nav x-navbar-nav x-navbar-right">
                 <li>
                   <a target="_blank" href="http://write.blog.csdn.net/postlist?ticket=ST-351554-7GS3jGKRbiI3DdEKyfzY-passport.csdn.net">
-                    <i className="fa fa-weibo margin-right-xs"></i>
+                    <i className="fa fa-weibo x-margin-right-xs"></i>
                     博客
                   </a>
                 </li>
-                <li className="font-ls"><a className="fa fa-user-o"></a></li>
+                <li className="x-font-ls"><a className="fa fa-user-o"></a></li>
               </ul>
             </div>
           </div>
@@ -69,51 +71,54 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div> */}
-        <div className="nav-index" ref={(navIndex) => this.$navIndex = $(navIndex)} style={{top: 45}}>
-          <div className="container">
-            <ul className="nav-ul">
+        <div className="x-nav-index" ref={(navIndex) => this.$navIndex = $(navIndex)}>
+          <div className="x-container">
+            <ul className="x-nav-ul">
               {
                 (function(_this){
                   let _list = [];
                   _this.__navUlList.forEach(function(_navLi, index) {
                     _list.push(
-                      <li key={_navLi.key} className="nav-container" onMouseEnter={(e) => _this.__blurContent(true)} onMouseLeave={(e) => _this.__blurContent(false)}>
+                      <li key={_navLi.key} className="x-nav-container" onMouseEnter={(e) => _this.__blurContent(true)} onMouseLeave={(e) => _this.__blurContent(false)}>
                         <a>
-                          <i className={_navLi.iconClass + " margin-right-xs"}></i>
+                          <i className={_navLi.iconClass + " x-margin-right-xs"}></i>
                           {_navLi.name}
-                          <i className="fa fa-angle-down margin-left-xs"></i>
+                          <i className="fa fa-angle-down x-margin-left-xs"></i>
                         </a>
                         {
                           (function(index, length) {
                             if(index < length)
                               return (
-                                <span className="nav-split">
-                                  <span className="nav-split-hor">
-                                    <span className="nav-split-ver"></span>
+                                <span className="x-nav-split">
+                                  <span className="x-nav-split-hor">
+                                    <span className="x-nav-split-ver"></span>
                                   </span>
                                 </span>
                               );
                           })(index, _this.__navUlList.length - 1)
                         }
-                        <div className="nav-ream-parent">
-                          <div className="nav-ream">
-                            <div className="container">
-                              <ul className="nav-ul-fluid">
+                        <div className="x-nav-ream-parent">
+                          <div className="x-nav-ream">
+                            <div className="x-container">
+                              <ul className="x-nav-ul-fluid">
                                 {
-                                  (function(_reamList) {
+                                  (function(_reamList, __this) {
                                     let __list = [];
                                     _reamList.forEach(function(_reamLi, index) {
                                       __list.push(
-                                        <li key={_reamLi.key} className="col-xs-4">
-                                          <a target={_reamLi.target} href={_reamLi.link} className="transition_border">
-                                            <i className={_reamLi.iconClass + " margin-right-sm"}></i>
+                                        <li key={_reamLi.key} className="x-col-xs-4">
+                                          <a target={_reamLi.target}
+                                             href={_reamLi.link}
+                                             onClick={() => __this.__navLoad(_reamLi.target, _reamLi.name)}
+                                             className="x-transition_border">
+                                            <i className={_reamLi.iconClass + " x-margin-right-sm"}></i>
                                             {_reamLi.name}
                                           </a>
                                         </li>
                                       );
                                     });
                                     return __list;
-                                  })(_navLi.reamList)
+                                  })(_navLi.reamList, _this)
                                 }
                               </ul>
                             </div>
@@ -128,18 +133,35 @@ export default class Home extends React.Component {
             </ul>
           </div>
         </div>
-        <div ref={(content) => this.$content = $(content)} className="pos-relative" style={{textAlign : "center", height : 400}}>
-          <span className="fa fa-ravelry" style={{fontSize : 100, marginTop : 200}}></span>
+        <div ref={(navContent) => this.$navContent = $(navContent)} className="x-pos-relative">
+          <div className="x-container x-font-xs">
+            {
+              (function(navTitle, _this){
+                if(navTitle) {
+                  return (
+                    <div className="x-col-lg-12">
+                      <a className="x-link" onClick={() => _this.props.createNavTitle("index")}>首页</a>
+                      <a className="x-text-default x-split-left-tilt"></a>
+                      <a className="x-text-default">{navTitle}</a>
+                    </div>
+                  )
+                }
+              })(this.props.navTitle, this)
+            }
+            <div className="x-col-lg-3"></div>
+            <div className="x-col-lg-9"></div>
+          </div>
         </div>
       </div>
     )
   }
 
   componentDidMount() {
-    this.$collapse = $(ReactDOM.findDOMNode(this)).find(".navbar-collapse");
+    this.$collapse = $(ReactDOM.findDOMNode(this)).find(".x-navbar-collapse");
     this.__transitionEndevName = getTransitionEndevName(this.$collapse[0]);
     this.$collapse[0].addEventListener(this.__transitionEndevName, (e) => this.__transitionEnd(e));
     this.$navIndex.css({"top": this.$nav.height()});
+    this.$navContent.css({"top" : this.$nav.height() + this.$navIndex.height() + 10});
     $(window).bind("resize", this.__windowResize);
   }
 
@@ -400,8 +422,13 @@ export default class Home extends React.Component {
   }
 
   __blurContent(bool) {
-    if(bool) this.$content.addClass("blur-xs");
-    else this.$content.removeClass("blur-xs");
+    if(bool) this.$navContent.addClass("x-blur-xs");
+    else this.$navContent.removeClass("x-blur-xs");
+  }
+
+  __navLoad(target, name) {
+    if(target === "_blank") return;
+    this.props.createNavTitle(name);
   }
 
   __transitionEnd(e) {
@@ -430,3 +457,47 @@ export default class Home extends React.Component {
   }
 
 }
+
+const counter = (state, action) => {
+  switch (action.type) {
+    case "createNavTitle":
+      if(action.args === "index") return {navTitle : null};
+      return {navTitle : action.args};
+      break;
+    default:
+      return {};
+  }
+}
+
+const store = createStore(counter);
+
+const actions = {
+  createNavTitle : (args) => ({type : "createNavTitle", args})
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    navTitle : state.navTitle
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    createNavTitle : (args) => dispatch(actions.createNavTitle(args))
+  }
+}
+
+const ReduxHome = connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(XHome)
+
+const Home = () => {
+  return (
+    <Provider store={store}>
+      <ReduxHome/>
+    </Provider>
+  )
+}
+
+export default Home;
