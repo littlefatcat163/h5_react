@@ -5,7 +5,7 @@ import { createStore } from 'redux'
 import { Provider, connect } from "react-redux";
 import { getTransitionEndevName } from "./tool/_xAnimation";
 
-export class XHome extends React.Component {
+export default class Home extends React.Component {
 
   __transitionEndevName = null;
 
@@ -109,7 +109,7 @@ export class XHome extends React.Component {
                                         <li key={_reamLi.key} className="x-col-xs-4">
                                           <a target={_reamLi.target}
                                              href={_reamLi.link}
-                                             onClick={() => __this.__navLoad(_reamLi.target, _reamLi.name)}
+                                            //  onClick={() => __this.__navLoad(_reamLi.target, _reamLi.name)}
                                              className="x-transition_border">
                                             <i className={_reamLi.iconClass + " x-margin-right-sm"}></i>
                                             {_reamLi.name}
@@ -136,20 +136,21 @@ export class XHome extends React.Component {
         <div ref={(navContent) => this.$navContent = $(navContent)} className="x-pos-relative">
           <div className="x-container x-font-xs">
             {
-              (function(navTitle, _this){
-                if(navTitle) {
-                  return (
-                    <div className="x-col-lg-12">
-                      <a className="x-link" onClick={() => _this.props.createNavTitle("index")}>首页</a>
-                      <a className="x-text-default x-split-left-tilt"></a>
-                      <a className="x-text-default">{navTitle}</a>
-                    </div>
-                  )
-                }
-              })(this.props.navTitle, this)
+              // (function(navTitle, _this){
+              //   if(navTitle) {
+              //     return (
+              //       <div className="x-col-lg-12">
+              //         <a className="x-link" onClick={() => _this.props.createNavTitle("index")}>首页</a>
+              //         <a className="x-text-default x-split-left-tilt"></a>
+              //         <a className="x-text-default">{navTitle}</a>
+              //       </div>
+              //     )
+              //   }
+              // })(this.props.navTitle, this)
             }
-            <div className="x-col-lg-3"></div>
-            <div className="x-col-lg-9"></div>
+            {/* <div className="x-col-lg-3"></div>
+            <div className="x-col-lg-9"></div> */}
+            {this.props.children}
           </div>
         </div>
       </div>
@@ -187,7 +188,8 @@ export class XHome extends React.Component {
           {
             key : "nav_ui_layout",
             name : "布局",
-            iconClass : "fa fa-th-large"
+            iconClass : "fa fa-th-large",
+            link : "#/home/123"
           },
           {
             key : "nav_ui_modial",
@@ -458,46 +460,46 @@ export class XHome extends React.Component {
 
 }
 
-const counter = (state, action) => {
-  switch (action.type) {
-    case "createNavTitle":
-      if(action.args === "index") return {navTitle : null};
-      return {navTitle : action.args};
-      break;
-    default:
-      return {};
-  }
-}
-
-const store = createStore(counter);
-
-const actions = {
-  createNavTitle : (args) => ({type : "createNavTitle", args})
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    navTitle : state.navTitle
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    createNavTitle : (args) => dispatch(actions.createNavTitle(args))
-  }
-}
-
-const ReduxHome = connect (
-  mapStateToProps,
-  mapDispatchToProps
-)(XHome)
-
-const Home = () => {
-  return (
-    <Provider store={store}>
-      <ReduxHome/>
-    </Provider>
-  )
-}
-
-export default Home;
+// const counter = (state, action) => {
+//   switch (action.type) {
+//     case "createNavTitle":
+//       if(action.args === "index") return {navTitle : null};
+//       return {navTitle : action.args};
+//       break;
+//     default:
+//       return {};
+//   }
+// }
+//
+// const store = createStore(counter);
+//
+// const actions = {
+//   createNavTitle : (args) => ({type : "createNavTitle", args})
+// }
+//
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     navTitle : state.navTitle
+//   }
+// }
+//
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//   return {
+//     createNavTitle : (args) => dispatch(actions.createNavTitle(args))
+//   }
+// }
+//
+// const ReduxHome = connect (
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(XHome)
+//
+// const Home = () => {
+//   return (
+//     <Provider store={store}>
+//       <ReduxHome/>
+//     </Provider>
+//   )
+// }
+//
+// export default Home;
