@@ -134,24 +134,7 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div ref={(navContent) => this.$navContent = $(navContent)} className="x-pos-relative">
-          <div className="x-container x-font-xs">
-            {
-              // (function(navTitle, _this){
-              //   if(navTitle) {
-              //     return (
-              //       <div className="x-col-lg-12">
-              //         <a className="x-link" onClick={() => _this.props.createNavTitle("index")}>首页</a>
-              //         <a className="x-text-default x-split-left-tilt"></a>
-              //         <a className="x-text-default">{navTitle}</a>
-              //       </div>
-              //     )
-              //   }
-              // })(this.props.navTitle, this)
-            }
-            {/* <div className="x-col-lg-3"></div>
-            <div className="x-col-lg-9"></div> */}
-            {this.props.children}
-          </div>
+          {this.props.children}
         </div>
       </div>
     )
@@ -189,32 +172,37 @@ export default class Home extends React.Component {
             key : "nav_ui_layout",
             name : "布局",
             iconClass : "fa fa-th-large",
-            link : "#/home/123"
+            link : "#/home/layout/布局"
           },
           {
             key : "nav_ui_modial",
             name : "模态框",
-            iconClass : "fa fa-window-restore"
+            iconClass : "fa fa-window-restore",
+            link : "#/home/modial/模态框"
           },
           {
             key : "nav_ui_tip",
             name : "提示框",
-            iconClass : "fa fa-exclamation-triangle"
+            iconClass : "fa fa-exclamation-triangle",
+            link : "#/home/tip/提示框"
           },
           {
             key : "nav_ui_loading",
             name : "加载框",
-            iconClass : "fa fa-spinner fa-pulse"
+            iconClass : "fa fa-spinner fa-pulse",
+            link : "#/home/loading/加载框"
           },
           {
             key : "nav_ui_label",
             name : "标签",
-            iconClass : "fa fa-bookmark"
+            iconClass : "fa fa-bookmark",
+            link : "#/home/label/标签"
           },
           {
             key : "nav_ui_timer_link",
             name : "时间轴",
-            iconClass : "fa fa-clock-o"
+            iconClass : "fa fa-clock-o",
+            link : "#/home/timer-link/时间轴"
           }
         ]
       },
@@ -226,37 +214,44 @@ export default class Home extends React.Component {
           {
             key : "nav_input_btn",
             name : "按钮",
-            iconClass : "fa fa-hand-o-down"
+            iconClass : "fa fa-hand-o-down",
+            link : "#/home/btn/按钮"
           },
           {
             key : "nav_input_input",
             name : "输入框",
-            iconClass : "fa fa-keyboard-o"
+            iconClass : "fa fa-keyboard-o",
+            link : "#/home/input/输入框"
           },
           {
-            key : "nav_input_drop",
+            key : "nav_input_select",
             name : "下拉框",
-            iconClass : "fa fa-angle-down"
+            iconClass : "fa fa-angle-down",
+            link : "#/home/select/下拉框"
           },
           {
             key : "nav_input_checkbox",
             name : "勾选框",
-            iconClass : "fa fa-check-square"
+            iconClass : "fa fa-check-square",
+            link : "#/home/checkbox/勾选框"
           },
           {
             key : "nav_input_radio",
             name : "单选框",
-            iconClass : "fa fa-dot-circle-o"
+            iconClass : "fa fa-dot-circle-o",
+            link : "#/home/radio/单选框"
           },
           {
-            key : "nav_input_data",
+            key : "nav_input_date",
             name : "日期时间",
-            iconClass : "fa fa-clock-o"
+            iconClass : "fa fa-clock-o",
+            link : "#/home/date/日期时间"
           },
           {
             key : "nav_input_upload",
             name : "上传",
-            iconClass : "fa fa-upload"
+            iconClass : "fa fa-upload",
+            link : "#/home/upload/上传"
           }
         ]
       },
@@ -268,22 +263,26 @@ export default class Home extends React.Component {
           {
             key : "nav_media_carousel",
             name : "轮播",
-            iconClass : "fa fa-file-movie-o"
+            iconClass : "fa fa-file-movie-o",
+            link : "#/home/carousel/轮播"
           },
           {
             key : "nav_media_image",
             name : "缩略图",
-            iconClass : "fa fa-image"
+            iconClass : "fa fa-image",
+            link : "#/home/image/缩略图"
           },
           {
             key : "nav_media_tab",
             name : "Tab",
-            iconClass : "fa fa-tags"
+            iconClass : "fa fa-tags",
+            link : "#/home/tab/Tab"
           },
           {
             key : "nav_media_audio",
             name : "音频",
-            iconClass : "fa fa-film"
+            iconClass : "fa fa-film",
+            link : "#/home/audio/音频"
           }
         ]
       },
@@ -295,22 +294,26 @@ export default class Home extends React.Component {
           {
             key : "nav_chart_map",
             name : "地图",
-            iconClass : "fa fa-map-marker"
+            iconClass : "fa fa-map-marker",
+            link : "#/home/map/图表"
           },
           {
             key : "nav_chart_chart",
             name : "统计图表",
-            iconClass : "fa fa-pie-chart"
+            iconClass : "fa fa-pie-chart",
+            link : "#/home/chart/统计图表"
           },
           {
             key : "nav_chart_table",
             name : "表格",
-            iconClass : "fa fa-table"
+            iconClass : "fa fa-table",
+            link : "#/home/table/表格"
           },
           {
             key : "nav_chart_table_tree",
             name : "表格树",
-            iconClass : "fa fa-th-list"
+            iconClass : "fa fa-th-list",
+            link : "#/home/table-tree/表格树"
           }
         ]
       },
@@ -322,17 +325,20 @@ export default class Home extends React.Component {
           {
             key : "nav_nav_bar",
             name : "导航栏",
-            iconClass : "fa fa-send"
+            iconClass : "fa fa-send",
+            link : "#/home/nav-bar/导航栏"
           },
           {
             key : "nav_nav_pager",
             name : "分页",
-            iconClass : "fa fa-chevron-right"
+            iconClass : "fa fa-chevron-right",
+            link : "#/home/pager/分页"
           },
           {
             key : "nav_nav_tree",
             name : "树",
-            iconClass : "fa fa-sitemap"
+            iconClass : "fa fa-sitemap",
+            link : "#/home/tree/树"
           }
         ]
       },
@@ -344,27 +350,32 @@ export default class Home extends React.Component {
           {
             key : "nav_other_transition",
             name : "过渡",
-            iconClass : "fa fa-exchange"
+            iconClass : "fa fa-exchange",
+            link : "#/home/transition/过渡"
           },
           {
             key : "nav_other_animation",
             name : "动画",
-            iconClass : "fa fa-cog fa-spin"
+            iconClass : "fa fa-cog fa-spin",
+            link : "#/home/animation/动画"
           },
           {
             key : "nav_other_effect",
             name : "特效",
-            iconClass : "fa fa-assistive-listening-systems"
+            iconClass : "fa fa-assistive-listening-systems",
+            link : "#/home/effect/特效"
           },
           {
             key : "nav_other_move",
             name : "移动",
-            iconClass : "fa fa-arrows"
+            iconClass : "fa fa-arrows",
+            link : "#/home/move/移动"
           },
           {
             key : "nav_other_resize",
             name : "浏览器窗口调整",
-            iconClass : "fa fa-arrows-alt"
+            iconClass : "fa fa-arrows-alt",
+            link : "#/home/resize/浏览器窗口调整"
           }
         ]
       },
@@ -376,12 +387,14 @@ export default class Home extends React.Component {
           {
             key : "nav_api_tool",
             name : "工具类",
-            iconClass : "fa fa-briefcase"
+            iconClass : "fa fa-briefcase",
+            link : "#/home/tool/工具类"
           },
           {
             key : "nav_api_format",
             name : "规范",
-            iconClass : "fa fa-file-code-o"
+            iconClass : "fa fa-file-code-o",
+            link : "#/home/format/规范"
           },
           {
             key : "nav_api_html5",
