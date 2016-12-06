@@ -1,0 +1,16 @@
+@import "../style/color";
+
+table {
+  width: 100%;
+
+  & tbody {
+    & tr th { width: 35%; text-align: left; font-size: .2rem; color: $primary; }
+    & tr td {
+      border: 1px solid $light-gray;
+      text-align: center;
+      & a {
+        color: $primary;
+      }
+    }
+  }
+}

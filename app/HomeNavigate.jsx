@@ -6,8 +6,11 @@ import { Provider, connect } from "react-redux";
 
 export default class XHomeNavigate extends React.Component {
 
+  __DATA__ = null;
+
   constructor(props) {
     super(props);
+    this.__initData();
   }
 
   render() {
@@ -29,8 +32,50 @@ export default class XHomeNavigate extends React.Component {
             }
           })(this.props.routeParams, this)
         }
+        <div className="x-col-lg-12 x-margin-top-xs">
+          <div className="x-row">
+            <div className="x-col-lg-3">
+              <div className="x-layout x-bg-white">
+                <ul className="x-ul">
+                  <h3>文档说明</h3>
+                  <li>asd</li>
+                  <li>asd</li>
+                  <li>asd</li>
+                  <li>asd</li>
+                </ul>
+              </div>
+            </div>
+            <div className="x-col-lg-9">
+              <div className="x-row x-layout x-bg-white">
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+                <h1>asdasdasdasd</h1>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
+  }
+
+  __initData() {
+    this.__DATA = {
+      //环境搭建
+      environment : {
+        navList : [
+
+        ],
+        
+      }
+
+    }
   }
 
 }

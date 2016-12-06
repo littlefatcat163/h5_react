@@ -2,16 +2,17 @@
 @import "constant";
 // 容器
 .x-container {
+  //@media (min-width: $sm-width) { width: 540px; }
   @media (min-width: $md-width) { width: 7.50rem; }
   @media (min-width: $lg-width) { width: 9.70rem; }
-  @media (min-width: $xl-width) { width: 11.7rem; }
+  @media (min-width: $xl-width) { width: 11.70rem; }
   padding: 0 .15rem;
   margin: auto;
   position: relative;
   background-color:inherit;
 }
 
-.x-container, .x-row {
+.x-container, .x-row, .x-layout {
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
 }
@@ -909,6 +910,9 @@
     vertical-align: middle;
   }
 }
+
+.x-left { display: block; float: left; }
+.x-right { display: block; float: right; }
 
 //position 定位
 .x-pos-fixed {

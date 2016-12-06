@@ -13,6 +13,7 @@ export default class Home extends React.Component {
 
   $collapse = null;
   $nav = null;
+  $navHead = null;
   $navIndex = null;
   $navContent = null;
 
@@ -25,10 +26,10 @@ export default class Home extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="x-layout">
         <nav ref={(nav) => this.$nav = $(nav)} className="x-navbar x-bg-light-black x-font-white x-navbar-fixed-top">
           <div className="x-container">
-            <div className="x-navbar-header border-gray">
+            <div className="x-navbar-header border-gray" ref={(navHead) => this.$navHead = $(navHead)}>
               <a className="x-navbar-brand" href="/">React实践</a>
               <button className="x-navbar-toggle" onClick={(e) => this.__collapse(e)}>
                 <span className="fa fa-navicon"></span>
@@ -36,16 +37,16 @@ export default class Home extends React.Component {
             </div>
             <div className="x-navbar-collapse">
               <ul className="x-nav x-navbar-nav">
-                <li><a>环境搭建</a></li>
+                <li><a href="#/home/Environment/环境搭建">环境搭建</a></li>
                 <li><a>相关说明</a></li>
+              </ul>
+              <ul className="x-nav x-navbar-nav x-navbar-right">
                 <li>
                   <a target="_blank" href="https://github.com/theMxb/h5_react">
                     <i className="fa fa-github x-margin-right-xs"></i>
                     github
                   </a>
                 </li>
-              </ul>
-              <ul className="x-nav x-navbar-nav x-navbar-right">
                 <li>
                   <a target="_blank" href="http://write.blog.csdn.net/postlist?ticket=ST-351554-7GS3jGKRbiI3DdEKyfzY-passport.csdn.net">
                     <i className="fa fa-weibo x-margin-right-xs"></i>
@@ -144,8 +145,8 @@ export default class Home extends React.Component {
     this.$collapse = $(ReactDOM.findDOMNode(this)).find(".x-navbar-collapse");
     this.__transitionEndevName = getTransitionEndevName(this.$collapse[0]);
     this.$collapse[0].addEventListener(this.__transitionEndevName, (e) => this.__transitionEnd(e));
-    this.$navIndex.css({"top": this.$nav.height()});
-    this.$navContent.css({"top" : this.$nav.height() + this.$navIndex.height() + 10});
+    this.$navIndex.css({"top": this.$navHead.height()});
+    this.$navContent.css({"top" : this.$navHead.height() + this.$navIndex.height() + 10});
     $(window).bind("resize", this.__windowResize);
   }
 
@@ -172,7 +173,7 @@ export default class Home extends React.Component {
             key : "nav_ui_layout",
             name : "布局",
             iconClass : "fa fa-th-large",
-            link : "#/home/layout/布局"
+            link : "#/home/HomeNavigate/布局"
           },
           {
             key : "nav_ui_modial",
@@ -447,27 +448,27 @@ export default class Home extends React.Component {
   }
 
   __transitionEnd(e) {
-    $(e.target).removeClass("collapsing");
+    $(e.target).removeClass("x-collapsing");
     this.$collapse.height("");
   }
 
   __windowResize = () => this.__compNavIndexTop();
 
   __compNavIndexTop() {
-    this.$navIndex.css({"top": this.$nav.height()});
+    this.$navIndex.css({"top": this.$navHead.height()});
   }
 
   __collapse(e) {
     if(!this.__height) this.__height = this.$collapse.height();
-    let expand = this.$collapse.hasClass("in");
+    let expand = this.$collapse.hasClass("x-in");
     if(this.$collapse.height() && expand ) this.$collapse.height(this.__height);
-    this.$collapse.addClass("collapsing");
+    this.$collapse.addClass("x-collapsing");
     if(expand) {
       this.$collapse.height(0);
-      this.$collapse.removeClass("in");
+      this.$collapse.removeClass("x-in");
     } else {
       this.$collapse.height(this.__height);
-      this.$collapse.addClass("in");
+      this.$collapse.addClass("x-in");
     }
   }
 

@@ -1,6 +1,7 @@
 h5_react                                                --根目录
   app                                                   --代码内容
     aid                                                 --辅助目录,如第三方图标库或其他库的引用
+    api                                                 --对应Home与HomeNavigate中提供的组件的demo与api说明
     components                                          --组件目录
     style                                               --样式
     tool                                                --工具目录(存粹的js方法)

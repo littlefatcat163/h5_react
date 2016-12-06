@@ -29,8 +29,8 @@ const rootRouter = {
           path : "/home/:id/:name",
           getComponent(nextState, callback) {
             require.ensure([], (require) => {
-              callback(null, require("./HomeNavigate.jsx").default)
-            }, "HomeNavigate")
+              callback(null, require("./api/" + nextState.params.id + ".jsx").default)
+            })
           }
         }
       ]

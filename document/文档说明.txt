@@ -14,4 +14,5 @@
 注: 字体样式的兼容问题留给苹果处理
 (
   scss　1.@media不支持rem单位
+  rem单位注意 html中定义的font-size不能低于10px 否则以12px计算
 )
