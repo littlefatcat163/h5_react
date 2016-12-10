@@ -1,0 +1,25 @@
+@import "../style/color";
+@import "../style/constant";
+
+.x-api-left {
+  position: fixed;
+  top: .95rem;
+  width: 2.35rem;
+  max-height: 83%;
+  overflow: auto;
+  @media (max-width: $lg-width) { display: none;}
+}
+
+.x-api-right {
+  margin-left: 2.6rem;
+  display: block;
+  @media (max-width: $lg-width) { margin-left: 0; }
+
+  .x-api-right-toggle {
+    background-color: $white;
+    border: 1px solid $light-gray;
+    &.active {
+      border-color: $primary;
+    }
+  }
+}

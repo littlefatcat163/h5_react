@@ -21,7 +21,7 @@ const rootRouter = {
         getComponent(nextState, callback) {
           require.ensure([], (require) => {
             callback(null, require("./Home.jsx").default)
-          }, "Home");
+          }, "home");
         },
     //  },
       childRoutes : [

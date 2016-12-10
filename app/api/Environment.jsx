@@ -1,5 +1,6 @@
 import React from "react";
 import APIComponent from "./APIComponent";
+import $ from "jquery";
 
 import "./environment.scss";
 
@@ -7,25 +8,23 @@ export default class Environment extends APIComponent {
 
   render() {
     return(
-      <div className="x-container x-font-xs">
+      <div className="x-container x-font-xs" ref={(thisDom) => this.__thisDom = thisDom}>
         {/* super.renderNavHead() */}
         <div className="x-col-lg-12">
           <div className="x-row">
-            <div className="x-col-lg-3">
-              <div className="x-layout x-bg-white x-border-light-gray">
-                <ul className="x-ul">
-                  <h3>部署流程</h3>
-                  <li className="active">node</li>
-                  <li>npm</li>
-                  <li>github</li>
-                  <li>项目地址</li>
-                  <li>编译部署</li>
-                </ul>
-              </div>
+            <div className="x-layout x-bg-white x-border-light-gray x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>
+              <ul className="x-ul">
+                <h3>{this.props.routeParams.name}</h3>
+                <li data-target="node">node</li>
+                <li data-target="npm">npm</li>
+                <li data-target="github">github</li>
+                <li data-target="project">项目地址</li>
+                <li data-target="build">编译部署</li>
+              </ul>
             </div>
-            <div className="x-col-lg-9">
-              <div className="x-row x-margin-bottom-md">
-                <div className="x-col-lg-12 x-bg-white x-border-light-gray">
+            <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>
+              <div className="x-row x-margin-bottom-md" data-toggle="node">
+                <div className="x-col-lg-12 x-api-right-toggle">
                   <h1>node</h1>
                   <h5>
                     Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 npm，是全球最大的开源库生态系统。
@@ -64,8 +63,8 @@ export default class Environment extends APIComponent {
                   </p>
                 </div>
               </div>
-              <div className="x-row x-margin-bottom-md">
-                <div className="x-col-lg-12 x-bg-white x-border-light-gray">
+              <div className="x-row x-margin-bottom-md" data-toggle="npm">
+                <div className="x-col-lg-12 x-api-right-toggle">
                   <h1>npm</h1>
                   <h5>
                     NPM的全称是Node Package Manager，是随同NodeJS一起安装的包管理和分发工具，它很方便让JavaScript开发者下载、安装、上传以及管理已经安装的包。
@@ -161,8 +160,8 @@ export default class Environment extends APIComponent {
                   </p>
                 </div>
               </div>
-              <div className="x-row x-margin-bottom-md">
-                <div className="x-col-lg-12 x-bg-white x-border-light-gray">
+              <div className="x-row x-margin-bottom-md" data-toggle="github">
+                <div className="x-col-lg-12 x-api-right-toggle">
                   <h1>github desktop</h1>
                   <h5>
                     github客户端,方便管理github项目
@@ -185,8 +184,8 @@ export default class Environment extends APIComponent {
                   </p>
                 </div>
               </div>
-              <div className="x-row x-margin-bottom-md">
-                <div className="x-col-lg-12 x-bg-white x-border-light-gray">
+              <div className="x-row x-margin-bottom-md" data-toggle="project">
+                <div className="x-col-lg-12 x-api-right-toggle">
                   <h1>项目地址</h1>
                   <p>
                     主要用于测试与练习demo
@@ -202,8 +201,8 @@ export default class Environment extends APIComponent {
                   <p></p>
                 </div>
               </div>
-              <div className="x-row x-margin-bottom-md">
-                <div className="x-col-lg-12 x-bg-white x-border-light-gray">
+              <div className="x-row x-margin-bottom-md" data-toggle="build">
+                <div className="x-col-lg-12 x-api-right-toggle">
                   <h1>编译部署</h1>
                   <p>
                     <b>一、 <a className="x-font-primary" target="_blank" href="https://github.com/theMxb/h5_react">h5-react</a></b>
@@ -228,10 +227,6 @@ export default class Environment extends APIComponent {
         </div>
       </div>
     )
-  }
-
-  componentDidMount() {
-
   }
 
 }

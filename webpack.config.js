@@ -20,8 +20,8 @@ module.exports = {
   },
   output : {
     path : path.resolve(__dirname, "build"),
-    filename : "[name].[hash].js",
-    chunkFilename : "[name].[chunkhash:5].chunk.js"//异步加载
+    filename : "assets/[name].[hash].js",
+    chunkFilename : "chunk/[name].[chunkhash:5].chunk.js"//异步加载
     //publicPath : '',
   },
   resolve : {
@@ -77,7 +77,7 @@ module.exports = {
   plugins : [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js', Infinity),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'assets/vendors.js', Infinity),
     //new webpack.optimize.CommonsChunkPlugin('common.js'),
     //new ExtractTextPlugin("[name].css"),
     new HtmlWebpackPlugin({

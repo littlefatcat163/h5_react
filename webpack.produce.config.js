@@ -11,8 +11,8 @@ module.exports = {
   },
   output : {
     path : path.resolve(__dirname, "build"),
-    filename : "[name].min.js",
-    chunkFilename : "[name].min.js"
+    filename : "assets/[name].min.js",
+    chunkFilename : "chunk/[name].min.js"
   },
   resolve : {
     extensions:["",".js",".json",".jsx",".es6","css","scss","png","jpg","jpeg"],
@@ -66,7 +66,7 @@ module.exports = {
          NODE_ENV: JSON.stringify("production")
        }
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.min.js', Infinity),
+    new webpack.optimize.CommonsChunkPlugin('vendors', 'assets/vendors.min.js', Infinity),
     new webpack.optimize.UglifyJsPlugin({
     //   mangle: {
     //   except: ['$super', '$', 'exports', 'require', 'ref']
