@@ -163,12 +163,18 @@ h6, .h6 {
 .x-margin-right-md { margin-right: .15rem; }
 .x-margin-left-sm { margin-left: .05rem; }
 .x-margin-left-xs { margin-left: .1rem; }
+.x-margin-left-md { margin-left: .15rem; }
+.x-margin-left-lm { margin-left: .20rem; }
 .x-margin-top-sm { margin-top: .05rem; }
 .x-margin-top-xs { margin-top: .1rem; }
 .x-margin-top-md { margin-top: .15rem; }
 .x-margin-bottom-sm { margin-bottom: .05rem; }
 .x-margin-bottom-xs { margin-bottom: .1rem; }
 .x-margin-bottom-md { margin-bottom: .15rem; }
+
+/*  内边距   */
+.x-padding-xs { padding: .10rem; }
+.x-padding-md { padding: .15rem; }
 
 /*  size  */
 .x-full-width { width: 100%; }

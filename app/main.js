@@ -4,10 +4,12 @@ import 'babel-polyfill';//浏览器兼容 ie >= 9
 import "./style/style.scss";
 import "./aid/font-awesome-4.7.0/scss/font-awesome.scss";
 import { Router, Route, hashHistory, browserHistory, IndexRoute, Redirect, IndexRedirect } from 'react-router';
+import { routes as apiRoutes } from "./api/apiRoutes";
 //import { createStore, combineReducers } from 'redux';
 //import { Provider, connect } from 'react-redux';
 //import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 //import re from "./reducers/re";
+
 
 const rootRouter = {
   path : "/",
@@ -24,15 +26,26 @@ const rootRouter = {
           }, "home");
         },
     //  },
+      // childRoutes : [
+      //   {
+      //     path : "/home/:id/:name",
+      //     getComponent(nextState, callback) {
+      //       require.ensure([], (require) => {
+      //         callback(null, require("./api/" + nextState.params.id + ".jsx").default)
+      //       })
+      //     }
+      //   }
+      // ]
       childRoutes : [
-        {
-          path : "/home/:id/:name",
-          getComponent(nextState, callback) {
-            require.ensure([], (require) => {
-              callback(null, require("./api/" + nextState.params.id + ".jsx").default)
-            })
-          }
-        }
+        ...apiRoutes,
+        // {
+        //   path : "/home/ss",
+        //   getComponent(nextState, callback) {
+        //     require.ensure([], (require) => {
+        //       callback(null, require("./api/Ss.jsx").default)
+        //     })
+        //   }
+        // }
       ]
     }
   ]

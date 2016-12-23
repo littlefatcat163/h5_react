@@ -135,7 +135,13 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div ref={(navContent) => this.$navContent = $(navContent)} className="x-pos-relative">
-          {this.props.children}
+          {/*this.props.children*/}
+          {
+            function(_this){
+              if(_this.props.children) return _this.props.children;
+              else return <div>react <span className="fa fa-copyright"/> </div>;
+            }(this)
+          }
         </div>
       </div>
     )
@@ -395,7 +401,7 @@ export default class Home extends React.Component {
             key : "nav_api_format",
             name : "规范",
             iconClass : "fa fa-file-code-o",
-            link : "#/home/format/规范"
+            link : "#/home/Format/规范"
           },
           {
             key : "nav_api_html5",

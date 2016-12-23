@@ -17,4 +17,9 @@ export default class XSystem {
     return /windows|win32/i.test(navigator.userAgent);
   }
 
+  //是否是chrome内核
+  static isWebkit() {
+    return navigator.userAgent.toLowerCase().indexOf(' applewebkit/') > -1;
+  }
+
 }

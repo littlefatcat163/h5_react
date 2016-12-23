@@ -7,7 +7,13 @@
   width: 2.35rem;
   max-height: 83%;
   overflow: auto;
+  border: 1px solid $light-gray;
+  background-color: $white;
+  
   @media (max-width: $lg-width) { display: none;}
+
+  &::before { content: " "; display: table; }
+  &::after { content: " "; clear: both; display: table; }
 }
 
 .x-api-right {
