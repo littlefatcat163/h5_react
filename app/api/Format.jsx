@@ -26,6 +26,14 @@ export default class Format extends APIComponent {
           <li data-target="sassInterpolation">Interpolation</li>
           <li data-target="sassDefault">变量默认值</li>
           <li data-target="sassImport">@import</li>
+          <li data-target="sassMedia">@media</li>
+          <li data-target="sassExtend">@extend</li>
+          <li data-target="sassIf">@if</li>
+          <li data-target="sassFor">@for</li>
+          <li data-target="sassEach">@each</li>
+          <li data-target="sassWhile">@while</li>
+          <li data-target="sassMixin">@mixin</li>
+          <li data-target="sassHelp">附属文档</li>
         </ul>
         <ul className="x-ul">
           <h3>{this.props.routeParams.name}</h3>
@@ -1393,6 +1401,408 @@ export default class Format extends APIComponent {
                 是不允许的
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassMedia">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@media</h1>
+            <div className="x-font-lm">
+              <p>
+                <span className="x-code">@media</span>
+                在Sass中的行为就像在纯CSS中，可以嵌套在CSS规则，且被冒泡到样式表的顶层，
+                将所有的选择器放在规则内部
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                {".sidebar {"}
+                <div className="x-margin-left-md">{"width: 300px;"}</div>
+                <div className="x-margin-left-md">
+                  @medai screen and (orientation: landscape) {"{"}
+                  <div className="x-margin-left-md">{"width: 500px;"}</div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+              <p>
+                被翻译为：
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                {".sidebar {"}
+                <div className="x-margin-left-md">width: 300px; {"}"}</div>
+                <div className="x-margin-left-md">
+                  @media screen and (orientation: landscape) {"{"}
+                  <div className="x-margin-left-md">
+                    .sidebar {"{"}
+                    <div className="x-margin-left-md">width: 500px; {"} }"}</div>
+                  </div>
+                </div>
+                {"}"}
+              </div>
+              <p>
+                <span className="x-code">@media</span>
+                支持彼此嵌套，例如：
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                @media screen {"{"}
+                <div className="x-margin-left-md">
+                  .sidebar {"{"}
+                  <div className="x-margin-left-md">
+                    @media (orientation: landscape) {"{"}
+                    <div className="x-margin-left-md">width: 500px;</div>
+                    {"}"}
+                  </div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+              <p>
+                被编译为：
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                @media screen and (orientation: landscape) {"{"}
+                <div className="x-margin-left-md">
+                  .sidebar {"{"}
+                  <div className="x-margin-left-md">width: 500px; {"} }"}</div>
+                </div>
+              </div>
+              <p>
+                <span className="x-code">@media</span>
+                支持SassScript表达式（包括变量，函数和运算符），例如
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                <div>$media: screen;</div>
+                <div>$feature: -webkit-min-device-pixel-ratio;</div>
+                <div>$value: 1.5;</div>
+                <br/>
+                {"@media #{$media} and ($feature: $value) {"}
+                <div className="x-margin-left-md">
+                  .sidebar {"{"}
+                  <div className="x-margin-left-md">width: 500px;</div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+              <p>被翻译为：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @media screen and (-webkit-min-device-pixel-ratio: 1.5) {"{"}
+                <div className="x-margin-left-md">
+                  .sidebar {"{"}
+                  <div className="x-margin-left-md">
+                    width: 500px; {"} }"}
+                  </div>
+                </div>
+              </div>
+              <br/>
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassExtend">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@extend</h1>
+            <div className="x-font-lm">
+              <p>继承样式，例如：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                .error {"{"}
+                <div className="x-margin-left-md">border: 1px #f00;</div>
+                <div className="x-margin-left-md">background-color: #fdd;</div>
+                {"}"}
+                <br/>
+                .seriousError {"{"}
+                <div className="x-margin-left-md">@extend .error;</div>
+                <div className="x-margin-left-md">border-width: 3px;</div>
+                {"}"}
+                <br/>
+                #fake-links .link {"{"}
+                <div className="x-margin-left-md">@extend a;</div>
+                {"}"}
+                <br/>
+                a {"{"}
+                <div className="x-margin-left-md">color: blue;</div>
+                <div className="x-margin-left-md">
+                  &:hover {"{"}
+                  <div className="x-margin-left-md">text-decoration: underline;</div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+              <p>被翻译为：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                .error, .seriousError {"{"}
+                <div className="x-margin-left-md">border: 1px #f00;</div>
+                <div className="x-margin-left-md">background-color: #fdd;</div>
+                {"}"}
+                <br/>
+                .seriousError {"{"}
+                <div className="x-margin-left-md">border-width: 3px;</div>
+                {"}"}
+                <br/>
+                a, #fake-links .link {"{"}
+                <div className="x-margin-left-md">color: blue; {"}"}</div>
+                <div className="x-margin-left-md">
+                  a:hover, #fake-links .link:hover {"{"}
+                  <div className="x-margin-left-md">text-decoration: underline; {"}"}</div>
+                </div>
+              </div>
+              <p>
+                <span className="x-code">@extend</span> - Only Selectors
+                <br/>
+                可用于提供样式给予其他样式使用继承,防止重复代码以及样式冲突
+                <br/>
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                #content a%extreme {"{"}
+                <div className="x-margin-left-md">color: blue;</div>
+                <div className="x-margin-left-md">font-weight: bold;</div>
+                <div className="x-margin-left-md">font-size: 2em;</div>
+                {"}"}
+                <br/>
+                .notice {"{"}
+                <div className="x-margin-left-md">@extend %extreme;</div>
+                {"}"}
+              </div>
+              <p>被编译为：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                #content a.notice {"{"}
+                <div className="x-margin-left-md">color: blue;</div>
+                <div className="x-margin-left-md">font-weight: bold;</div>
+                <div className="x-margin-left-md">font-size: 2em; {"}"} </div>
+              </div>
+              <p>
+                <span className="x-code">@extend</span>
+                不产生任何新的选择器，只需要在选择器后添加
+                <span className="x-code">!optional</span>
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                a.important {"{"}
+                <div className="x-margin-left-md">@extend .notice !optional;</div>
+                {"}"}
+              </div>
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassIf">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@if</h1>
+            <div className="x-font-lm">
+              <div className="x-padding-xs x-border-light-gray">
+                $type: monster;
+                <br/>
+                p {"{"}
+                <div className="x-margin-left-md">
+                  @if $type == scean {"{"}
+                  <div className="x-margin-left-md">color: blue;</div>
+                  {"}"} @else if $type == matador {"{"}
+                  <div className="x-margin-left-md">color: red;</div>
+                  {"}"} @else if $type == monster {"{"}
+                  <div className="x-margin-left-md">color: green;</div>
+                  {"}"} @else {"{"}
+                  <div className="x-margin-left-md">color: black;</div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+              <p>被编译为:</p>
+              <div className="x-padding-xs x-border-light-gray">
+                p {"{"}
+                <div className="x-margin-left-md">color: green; {"}"}</div>
+                {"}"}
+              </div>
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassFor">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@for</h1>
+            <div className="x-font-lm">
+
+              <div className="x-padding-xs x-border-light-gray">
+                @for $i from 1 through 3 {"{"}
+                <div className="x-margin-left-md">.item-#{"{$i} { width: 2em * $i; }"}</div>
+                {"}"}
+              </div>
+
+              <p>被编译为：</p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                .item-1 {"{"}
+                <div className="x-margin-left-md">width: 2em; {"}"}</div>
+                .item-2 {"{"}
+                <div className="x-margin-left-md">width: 4em; {"}"}</div>
+                .item-3 {"{"}
+                <div className="x-margin-left-md">width: 6em; {"}"}</div>
+              </div>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassEach">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@each</h1>
+            <div className="x-font-lm">
+
+              <div className="x-padding-xs x-border-light-gray">
+                @each $animal in puma, sea-slug, egret, salamander {"{"}
+                <div className="x-margin-left-md">
+                  {".#{$animal}-icon {"}
+                  <div className="x-margin-left-md">
+                    {"background-image: url('/images/#{$animal}.png');"}
+                  </div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+
+              <p>被编译为：</p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                .puma-icon {"{"}
+                <div className="x-margin-left-md">{"background-image: url('/images/puma.png'); }"}</div>
+                .sea-slug-icon {"{"}
+                <div className="x-margin-left-md">{"background-image: url('/images/sea-slug.png'); }"}</div>
+                .egret-icon {"{"}
+                <div className="x-margin-left-md">{"background-image: url('/images/egret.png'); }"}</div>
+                .salamander-icon {"{"}
+                <div className="x-margin-left-md">{"background-image: url('/images/salamander.png'); }"}</div>
+              </div>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassWhile">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@while</h1>
+            <div className="x-font-lm">
+
+              <div className="x-padding-xs x-border-light-gray">
+                $i: 6;
+                <br/>
+                @while $i > 0 {"{"}
+                <div className="x-margin-left-md">.item-#{"{$i} { width: 2em * $i; }"}</div>
+                <div className="x-margin-left-md">$i: $i - 2;</div>
+                {"}"}
+              </div>
+              <p>被编译为:</p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                .item-6 {"{"}
+                <div className="x-margin-left-md">width: 12em; {"}"}</div>
+                .item-4 {"{"}
+                <div className="x-margin-left-md">width: 8em; {"}"}</div>
+                .item-2 {"{"}
+                <div className="x-margin-left-md">width: 4em; {"}"}</div>
+              </div>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassMixin">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@mixin</h1>
+            <div className="x-font-lm">
+
+              <p>
+                <span className="x-code">@mixin</span>
+                与
+                <span className="x-code">@include</span>
+                结合使用,重复使用样式
+              </p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                @mixin large-text {"{"}
+                <div className="x-margin-left-md">
+                  font: {"{"}
+                  <div className="x-margin-left-md">family: Arial;</div>
+                  <div className="x-margin-left-md">size: 20px;</div>
+                  <div className="x-margin-left-md">weight: bold;</div>
+                  {"}"}
+                  <br/>
+                  color: #ff0000;
+                </div>
+                {"}"}
+              </div>
+
+              <br/>
+
+              <div className="x-padding-xs x-border-light-gray">
+                .page-title {"{"}
+                <div className="x-margin-left-md">@include large-text;</div>
+                <div className="x-margin-left-md">padding: 4px;</div>
+                {"}"}
+              </div>
+
+              <p>被编译为：</p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                .page-title {"{"}
+                <div className="x-margin-left-md">font-family: Arial;</div>
+                <div className="x-margin-left-md">font-size: 20px;</div>
+                <div className="x-margin-left-md">font-weight: bold;</div>
+                <div className="x-margin-left-md">color: #ff0000;</div>
+                <div className="x-margin-left-md">padding: 4px; {"}"}</div>
+              </div>
+
+              <p>Arguments</p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                @mixin sexy-border($color, $width) {"{"}
+                <div className="x-margin-left-md">
+                  border: {"{"}
+                  <div className="x-margin-left-md">color: $color;</div>
+                  <div className="x-margin-left-md">width: $width;</div>
+                  <div className="x-margin-left-md">style: dashed;</div>
+                  {"}"}
+                </div>
+                {"}"}
+                <br/>
+                <br/>
+                p {"{ @include  sexy-border(blue, 1in); }"}
+              </div>
+
+              <p>被编译为：</p>
+
+              <div className="x-padding-xs x-border-light-gray">
+                p {"{"}
+                <div className="x-margin-left-md">border-color: blue;</div>
+                <div className="x-margin-left-md">border-width: 1in;</div>
+                <div className="x-margin-left-md">border-style: dashed; {"}"}</div>
+              </div>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassHelp">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>附属文档</h1>
+            <div className="x-font-lm">
+
+              <div className="x-padding-xs">
+
+                <div className="x-margin-left-md">
+                  <a className="x-font-primary" target="_blank" href="http://sass.bootcss.com/docs/sass-reference/">1.官方文档</a>
+                </div>
+
+              </div>
+
+              <p>
+                除了特殊属性外，其他可以使用简单的属性，编译完毕后自行增加浏览器前缀，
+                <span className="x-code">(ie9+等主流浏览器)</span>
+              </p>
+
+            </div>
+            <br/>
           </div>
         </div>
 
