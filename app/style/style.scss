@@ -152,10 +152,12 @@ h6, .h6 {
 /*  字体大小  */
 .x-font-sm { font-size: .12rem; }
 .x-font-xs { font-size: .14rem; }
-.x-font-lm { font-size: .16rem; }
-.x-font-lg { font-size: .18rem; }
-.x-font-ls { font-size: .2rem; }
-.x-font-xl { font-size: .22rem; }
+.x-font-lm { font-size: .15rem; line-height: 1.8; letter-spacing: 1px; }
+.x-font-lg { font-size: .16rem; }
+.x-font-ls { font-size: .18rem; }
+.x-font-xl { font-size: .2rem; }
+
+.x-code { color: $rose-red; padding: 2px 4px; background-color: #fff; font-size: 90%; }
 
 /*  外边距   */
 .x-margin-right-sm { margin-right: .05rem; }

@@ -23,6 +23,9 @@ export default class Format extends APIComponent {
           <li data-target="sassDataType">数据类型</li>
           <li data-target="sassNumOper">数字运算</li>
           <li data-target="sassColorOper">颜色运算</li>
+          <li data-target="sassInterpolation">Interpolation</li>
+          <li data-target="sassDefault">变量默认值</li>
+          <li data-target="sassImport">@import</li>
         </ul>
         <ul className="x-ul">
           <h3>{this.props.routeParams.name}</h3>
@@ -1193,7 +1196,207 @@ export default class Format extends APIComponent {
           </div>
         </div>
 
-        <div className="x-row x-margin-bottom-md" data-toggle="codeStyle">
+        <div className="x-row x-margin-bottom-md" data-toggle="sassInterpolation">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>Interpolation:<span className="x-font-primary x-margin-left-xs">{"#{}"}</span></h1>
+            <div className="x-font-gray">
+              <div>
+                <span className="x-font-primary x-margin-right-xs">{"#{}"}</span>
+                内插语法, 在选择器与属性名称中使用SassScript变量
+              </div>
+              <i>
+                使用
+                <span className="x-font-primary x-margin-left-xs x-margin-right-xs">{"#{}"}</span>
+                意味着附近的操作将被视为纯CSS
+              </i>
+            </div>
+            <div className="x-padding-xs x-border-light-gray">
+              <div>{"$name: foo;"}</div>
+              <div>{"$attr: border;"}</div>
+              <div>{"p.#{$name} {"}</div>
+              <div className="x-margin-left-md">{"#{$attr}-color: blue;"}</div>
+              <div className="x-margin-left-md">{"$font-size: 12px;"}</div>
+              <div className="x-margin-left-md">{"$line-height: 30px;"}</div>
+              <div className="x-margin-left-md">{"$font: #{$font-size}/#{$line-height};"}</div>
+              <div>{"}"}</div>
+            </div>
+            <br/>
+            被编译为:
+            <br/>
+            <br/>
+            <div className="x-padding-xs x-border-light-gray">
+              <div>{"p.foo {"}</div>
+              <div className="x-margin-right-md">{"border-color: blue;"}</div>
+              <div className="x-margin-right-md">{"font: 12px/30px; }"}</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassDefault">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>变量默认值:<span className="x-margin-left-xs x-font-primary">!default</span></h1>
+            <label>
+              在变量尚未赋值前, 通过在值的末尾处添加
+              <span className="x-margin-left-xs x-margin-right-xs">!default</span>
+              标记来指定, 若该变量已经被赋值, 就不会再次赋值, 反之, 则被赋予值,
+              变量值若为null, 会被!default当作没有赋值
+            </label>
+            <div className="x-padding-xs x-border-light-gray">
+              <div>$content: "First content";</div>
+              <div>$content: "Second content?" !default;</div>
+              <div>$new_content: "First time reference" !default;</div>
+              <div>$new_content_null: null;</div>
+              <div>$new_content_null: "Not-null content" !default;</div>
+              <br/>
+              <br/>
+              <div>
+                {"#main {"}
+                <div className="x-margin-left-md">
+                  <div>{"content: $content;"}</div>
+                  <div>{"new-content: $new_content;"}</div>
+                  <div>{"new-content-null: $new_content_null;"}</div>
+                </div>
+                {"}"}
+              </div>
+            </div>
+            <br/>
+            被翻译为:
+            <br/>
+            <br/>
+            <div className="x-padding-xs x-border-light-gray">
+              {"#mian {"}
+              <div className="x-margin-left-md">content: "First content";</div>
+              <div className="x-margin-left-md">new-content: "First time reference";</div>
+              <div className="x-margin-left-md">new-content-null: "Not-null content"; {"}"}</div>
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="sassImport">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">@import</h1>
+            <div className="x-font-lm">
+              Sass扩展了CSS的<span className="x-code">@import</span>规则，让它能够引入Scss和Sass文件，并将文件合并输出一个单一的CSS文件。
+              被导入文件中所定义的变量或<span className="x-code">mixins</span>都可以在主文件中使用。
+              <br/>
+              <br/>
+              Sass会在当前目录下寻找其他Sass文件，如果是 Rack、 Rails 或 Merb 环境中则是Sass文件目录。也可以通过<span className="x-code">:load_paths</span>选项 或者
+              在命令中使用<span className="x-code">--load-path</span> 选项来指定额外的搜索目录。
+              <br/>
+              <br/>
+              <span className="x-code">@import</span>根据文件名引入。默认情况下，它会寻找Sass文件并直接引入，但是，在少数几种情况下，它会被编译成CSS的
+              <span className="x-code">@import</span>规则：
+              <ul>
+                <li>如果文件的扩展名是<span className="x-code">.css</span></li>
+                <li>如果文件名以<span className="x-code">http://</span>开头</li>
+                <li>如果文件名是<span className="x-code">url()</span></li>
+                <li>如果<span className="x-code">@import</span>包含了任何媒体查询( meida queries )</li>
+              </ul>
+              如果上述情况都没有出现，并且扩展名是<span className="x-code">.scss</span>或<span className="x-code">.sass</span>，
+              该名称的文件就会被引入。如果没有扩展名，Sass将试着找出具有<span className="x-code">.scss</span>或<span className="x-code">.sass</span>
+              扩展名的同名文件并将其引入。
+              <p>例如：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @import "foo.scss";
+              </div>
+              <p>或</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @import "foo";
+              </div>
+              <p>两者都将引入foo.scss文件, 而</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @import "foo.css";
+                <br/>
+                @import "foo" screen;
+                <br/>
+                @import "http://foo.com/bar";
+                <br/>
+                @import url(foo);
+              </div>
+              <p>将被编译为：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @import "foo.css";
+                <br/>
+                @import "foo" screen;
+                <br/>
+                @import "http://foo.com/bar";
+                <br/>
+                @import url(foo);
+              </div>
+              <p>也可以通过一个<span className="x-code">@import</span>引入多个文件。例如：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @import "rounded-corners", "text-shadow";
+              </div>
+              <p>
+                将引入
+                <span className="x-code">rounded-corners</span>
+                和
+                <span className="x-code">text-shadow</span>
+                两个文件
+              </p>
+              <p className="x-font-ls">
+                <b>片段</b>
+              </p>
+              <p>
+                如果有一个Scss或Sass文件需要引入,但又不希望引入的文件被编译为一个css文件,那么这时候就可以在文件名前面加一个下划线，
+                这就告诉Sass不要把它编译为css文件，导入与之前一致，且可以省略文件前面的下划线。
+              </p>
+              <p>
+                例如，有一个文件叫做<span className="x-code">_colors.scss</span>。
+                这样不会生成<span className="x-code">_colors.css</span>文件
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                @import "colors";
+              </div>
+              <p>
+                这样就能引入_colors.scss文件
+              </p>
+              <p>
+                注意，在同一目录下面不能同时存在带下划线与不带下划线的同名文件。
+                例如，<span className="x-code">_colors.scss</span>不能与
+                <span className="x-code">color.scss</span>并存
+              </p>
+              <p className="x-font-ls">
+                <b>嵌套</b>
+              </p>
+              <p>
+                <span className="x-code">@import</span>
+                可以包含在CSS规则和 <span className="x-code">@media</span>规则中
+              </p>
+              <p>例如：<span className="x-code">example.scss</span></p>
+              <div className="x-padding-xs x-border-light-gray">
+                {".example {"}
+                <div className="x-margin-left-md">{"color: red;"}</div>
+                {"}"}
+              </div>
+              <br/>
+              <div className="x-padding-xs x-border-light-gray">
+                {"#main {"}
+                <div className="x-margin-left-md">@import "example";</div>
+                {"}"}
+              </div>
+              <p>被编译为：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                {"#main .example {"}
+                <div className="x-margin-left-md">{"color: red;"}</div>
+                {"}"}
+              </div>
+              <p>
+                <span className="x-code">@mixin</span>
+                或
+                <span className="x-code">@charset</span>
+                或
+                <span className="x-code">mixins</span>
+                或控制指令中嵌套
+                <span className="x-code">@import</span>
+                是不允许的
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="codeStyle" style={{height: 600}}>
           <div className="x-col-lg-12 x-api-right-toggle">
             <h1>编程风格</h1>
             <p>

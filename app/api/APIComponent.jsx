@@ -124,10 +124,37 @@ export default class APIComponent extends React.Component {
           }
         });
         if($curToggle) {
+
           $(_this.__rightToggle).find("[data-toggle]").children().removeClass("active");
           $curToggle.children().addClass("active");
           $(_this.__leftTarget).find("[data-target]").removeClass("active");
-          $(_this.__leftTarget).find("[data-target='" + $curToggle.attr("data-toggle") + "']").addClass("active");
+          var $target = $(_this.__leftTarget).find("[data-target='" + $curToggle.attr("data-toggle") + "']");
+          $target.addClass("active");
+          if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return false;
+
+          if(_this.__leftTarget.scrollHeight <= _this.__leftTarget.offsetHeight) return;
+          // let difHeight = $target.outerHeight();
+          //
+          // $.each($target.prevAll(), function(index, prev) {
+          //   if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return false;
+          //   difHeight += prev.offsetHeight;
+          // });
+          //
+          // if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return;
+          // $.each($target.parent().prevAll(), function(index, prev) {
+          //   if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return false;
+          //   difHeight += prev.offsetHeight + 10;
+          // });
+          // if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return;
+          //
+          // if(difHeight > _this.__leftTarget.offsetHeight) {
+          //   if($target.position().top + $target.height() > _this.__leftTarget.offsetHeight) $(_this.__leftTarget).scrollTop(difHeight - _this.__leftTarget.offsetHeight + 2);
+          // } else if(difHeight < _this.__leftTarget.offsetHeight) {
+          //   if($target.position().top < 0) $(_this.__leftTarget).scrollTop(0);
+          // }
+          if($target.position().top + $target.height() > _this.__leftTarget.offsetHeight){
+            $(_this.__leftTarget).scrollTop($target.position().top + $target.height() + 16 - $(_this.__leftTarget).children().first().position().top - _this.__leftTarget.offsetHeight);
+          } else if($target.position().top < 0) $(_this.__leftTarget).scrollTop(0);
         }
       }
     }, 5);

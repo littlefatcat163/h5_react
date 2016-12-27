@@ -79,7 +79,7 @@ module.exports = {
     //new ExtractTextPlugin("[name].min.css"),
     new HtmlWebpackPlugin({
       title: "I am index.html",
-      template : path.resolve(__dirname, "app/__index.html"),
+      template : path.resolve(__dirname, "app/__index-produce.html"),
       filename : "index.html",
       chunks : ["vendors", "bundle"],
       inject : "body"
