@@ -36,8 +36,17 @@ export default class Format extends APIComponent {
           <li data-target="sassHelp">附属文档</li>
         </ul>
         <ul className="x-ul">
-          <h3>{this.props.routeParams.name}</h3>
-          <li data-target="codeStyle">编程风格</li>
+          <h3>ES6规范</h3>
+          <li data-target="es6Scope">块级作用域</li>
+          <li data-target="es6Str">字符串</li>
+          <li data-target="es6Agm">解构赋值</li>
+          <li data-target="es6Obj">对象</li>
+          <li data-target="es6Array">数组</li>
+          <li data-target="es6Func">函数</li>
+          <li data-target="es6Map">Map</li>
+          <li data-target="es6Class">Class</li>
+          <li data-target="es6Module">模块</li>
+          <li data-target="es6Help">附属文档</li>
         </ul>
       </div>
     )
@@ -1790,8 +1799,16 @@ export default class Format extends APIComponent {
 
               <div className="x-padding-xs">
 
-                <div className="x-margin-left-md">
+                <div className="x-margin-left-md x-margin-bottom-sm">
                   <a className="x-font-primary" target="_blank" href="http://sass.bootcss.com/docs/sass-reference/">1.官方文档</a>
+                </div>
+
+                <div className="x-margin-left-md x-margin-bottom-sm">
+                  <a className="x-font-primary" target="_blank" href="http://www.w3school.com.cn/css/index.asp">2.CSS教程</a>
+                </div>
+
+                <div className="x-margin-left-md x-margin-bottom-sm">
+                  <a className="x-font-primary" target="_blank" href="http://www.w3school.com.cn/css3/index.asp">3.CSS3教程</a>
                 </div>
 
               </div>
@@ -1801,20 +1818,567 @@ export default class Format extends APIComponent {
                 <span className="x-code">(ie9+等主流浏览器)</span>
               </p>
 
+              <div className="x-padding-xs x-border-light-gray">
+                @keyframes mk {"{"}
+                <div className="x-margin-left-md">from {"{ background: red; }"}</div>
+                <div className="x-margin-left-md">from {"{ background: yellow; }"}</div>
+                {"}"}
+              </div>
+              <p>被编译为：</p>
+              <div className="x-padding-xs x-border-light-gray">
+                @keyframes mk {"{"}
+                <div className="x-margin-left-md">from {"{ background: red; }"}</div>
+                <div className="x-margin-left-md">from {"{ background: yellow; }"}</div>
+                {"}"}
+                <br/>
+                @-webkit-keyframes mk {"{"}
+                <div className="x-margin-left-md">from {"{ background: red; }"}</div>
+                <div className="x-margin-left-md">from {"{ background: yellow; }"}</div>
+                {"}"}
+                <br/>
+                @-moz-keyframes mk {"{"}
+                <div className="x-margin-left-md">from {"{ background: red; }"}</div>
+                <div className="x-margin-left-md">from {"{ background: yellow; }"}</div>
+                {"}"}
+                <br/>
+                @-o-keyframes mk {"{"}
+                <div className="x-margin-left-md">from {"{ background: red; }"}</div>
+                <div className="x-margin-left-md">from {"{ background: yellow; }"}</div>
+                {"}"}
+              </div>
+
             </div>
             <br/>
           </div>
         </div>
 
-        <div className="x-row x-margin-bottom-md" data-toggle="codeStyle" style={{height: 600}}>
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Scope">
           <div className="x-col-lg-12 x-api-right-toggle">
-            <h1>编程风格</h1>
-            <p>
-              使用ES6新语法,与传统的js结合,写出合理的,易于阅读和维护的代码。
-            </p>
-            <hr/>
-            <p>
-            </p>
+            <h1>块级作用域</h1>
+            <div className="x-font-lm">
+
+              <p>
+                <span className="x-code">const</span>
+                声明一个只读的常量，只在该作用域中有效，若是固定的简单常量则命名规范全大写，单词以下划线分割，
+                反之，则参见let命名
+                例如
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                const MAX_NUM = 10;
+                <br/>
+                console.log(MAX_NUM); <span className="x-margin-left-xs x-font-gray">// 10</span>
+                <br/>
+                MAX_NUM = 1; <span className="x-margin-left-xs x-font-gray">// TypeError: Assignment to constant variable.</span>
+                <br/>
+                <br/>
+                const foo; <span className="x-margin-left-xs x-font-gray">// SyntaxError: Missing initializer in const declaration</span>
+                <br/>
+                <br/>
+                {"{"}
+                <div className="x-margin-left-md">
+                  const NUM = 1;
+                  <br/>
+                  console.log(NUM); <span className="x-margin-left-xs x-font-gray">// 1</span>
+                </div>
+                {"}"}
+                <br/>
+                console.log(NUM);<span className="x-margin-left-xs x-font-gray">// Uncaught ReferenceError: MAX is not defined</span>
+              </div>
+
+              <br/><hr/>
+
+              <p>
+                <span className="x-code">let</span>
+                声明变量，只在该作用域中有效，命名规范驼峰或全小写(单词以下划线分割)，例如
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                {"{"}
+                <div className="x-margin-left-md">let a = "a";</div>
+                <div className="x-margin-left-md">var b = "b";</div>
+                {"}"}
+                <br/>
+                b <span className="x-margin-left-xs x-font-gray">// b</span>
+                <br/>
+                a <span className="x-margin-left-xs x-font-gray">// ReferenceError: a is not defined.</span>
+              </div>
+
+              <br/><hr/>
+
+              <p>
+                相同作用于下，
+                <span className="x-code">const</span>
+                、
+                <span className="x-code">let</span>
+                、
+                <span className="x-code">var</span>
+                不能声明重复声明
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                var message = "message";
+                <br/>
+                let age = 20;
+                <br/>
+                <br/>
+                <span className="x-font-gray">// 以下报错</span>
+                <br/>
+                const message = "message";
+                <br/>
+                var age = 20;
+              </div>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Str">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>字符串</h1>
+            <div className="x-font-lm">
+
+              <p>
+                静态字符串一律使用单引号<span className="x-code">''</span>
+                或反引号<span className="x-code">``</span>
+                ，动态字符串使用反引号
+                <span className="x-code">``</span>
+                </p>
+              <div className="x-padding-xs x-border-light-gray">
+                const a = 'a'; <span className="x-margin-left-xs x-font-gray">// a</span>
+                <br/>
+                const b = `b${"{a}"}`; <span className="x-margin-left-xs x-font-gray">// ba</span>
+                <br/>
+                const c = `c`; <span className="x-margin-left-xs x-font-gray">// c</span>
+                <br/>
+                const d = `'"d"'`; <span className="x-margin-left-xs x-font-gray">// '"d"'</span>
+                <br/>
+                <i className="x-font-gray">
+                  // 优先使用<span className="x-code">``</span>，
+                  因为字符串中经常会有
+                  <span className="x-code">''</span>、
+                  <span className="x-code">""</span>，这就可以省去写过多的转义
+                </i>
+              </div>
+              <p>
+                <span className="x-code">{"${}"}</span>
+                表示插入值，前提是需要有定义好的变量命名与之对应
+                <br/>
+                <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/string">字符串的扩展</a>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Agm">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>解构赋值</h1>
+            <div className="x-font-lm">
+
+              <p>使用数组成员对变量赋值时</p>
+              <div className="x-padding-xs x-border-light-gray">
+                const attr = [1, 2, 3];
+                <br/>
+                const [first, second] = attr;
+                <span className="x-margin-left-xs x-font-gray">// 1 = first = attr[0], 2 = second = attr[1]</span>
+                <br/>
+                const [a, , b, c,] = attr;
+                <span className="x-margin-left-xs x-font-gray">// 1 = a = attr[0], 3 = b = attr[2], undefined = c</span>
+              </div>
+
+              <p>函数的参数如果是对象的成员</p>
+              <div className="x-padding-xs x-border-light-gray">
+                function getFullName1(obj) {"{"}
+                <div className="x-margin-left-md">
+                  const {"{ firstName, lastName }"} = obj;
+                  <br/>
+                  console.log(firstName + ` ` + lastName);
+                </div>
+                {"}"}
+                <br/>
+                <br/>
+                function getFullName2({"{ lastName, firstName }"}) {"{"}
+                <div className="x-margin-left-md">
+                  console.log(lastName + ` ` + firstName);
+                </div>
+                {"}"}
+                <br/>
+                <br/>
+                const obj = {"{ firstName:`first`, lastName: `last` }"} ;
+                <br/>
+                getFullName1(obj); <span className="x-margin-left-md x-font-gray">// first last</span>
+                <br/>
+                getFullName2(obj); <span className="x-margin-left-md x-font-gray">// last first</span>
+              </div>
+
+              <p>
+                数组不能随意更改顺序去解构赋值，因为数组对象默认的key就是下标值，
+                对象只要key能与解构变量名相同则自行匹配
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Obj">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>对象</h1>
+            <div className="x-font-lm">
+
+              <p>单行定义的对象，最后一个成员不以逗号结尾，多行定义对象，最后一个成员以逗号结尾</p>
+              <div className="x-padding-xs x-border-light-gray">
+                const a = {"{ k1: v1, k2: v2 }"};
+                <br/>
+                const b = {"{"}
+                <div className="x-margin-left-md">k1: v1,</div>
+                <div className="x-margin-left-md">k2: v2,</div>
+                {"}"};
+              </div>
+
+              <p>
+                <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/object">对象的扩展</a>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Array">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>数组</h1>
+            <div className="x-font-lm">
+
+              <p>使用扩展运算符<span className="x-code">...</span>获取数组内的成员</p>
+              <div className="x-padding-xs x-border-light-gray">
+                const array = [1, 2, 3];
+                <br/>
+                console.log(...array); <span className="x-margin-left-xs x-font-gray">// 1 2 3</span>
+              </div>
+
+              <p><span className="x-code">Array.from</span>将类似数组的对象转为数组</p>
+              <div className="x-padding-xs x-border-light-gray">
+                const foo = document.querySelectorAll('.foo');
+                <br/>
+                const nodes = Array.from(foo);
+              </div>
+
+              <p>
+                遍历数组
+                <span className="x-code">for..in</span>、
+                <span className="x-code">forEach</span>、
+                <span className="x-code">map</span>、
+                <span className="x-code">for..of</span>
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                const array = [1, 2, 3];
+                <hr/>
+                <div>
+                  for(let i in array) {"{"}
+                  <div className="x-margin-left-md">if(i == 0) continue;</div>
+                  <div className="x-margin-left-md">{"console.log(`${i} : ${array[i]}`);"}</div>
+                  <div className="x-margin-left-md">if(i == 1) break;</div>
+                  {"}"}
+                  <br/>
+                  <span className="x-font-gray">
+                    1 : 2
+                    <br/>
+                    支持
+                    <span className="x-code">continue</span>
+                    和
+                    <span className="x-code">break</span>
+                  </span>
+                </div>
+                <hr/>
+                <div>
+                  array.forEach(function(arr, index) {"{"}
+                  <div className="x-margin-left-md">if(index == 1) return;</div>
+                  <div className="x-margin-left-md">console.log({"`${index} : ${arr}`"});</div>
+                  {"}"});
+                  <br/>
+                  <span className="x-font-gray">
+                    0 : 1
+                    <br/>
+                    2 : 3
+                    <br/>
+                    不支持
+                    <span className="x-code">continue</span>
+                    和
+                    <span className="x-code">break</span>
+                    ，
+                    <span className="x-code">return</span>
+                    代替 <span className="x-code">continue</span>
+                  </span>
+                </div>
+                <hr/>
+                <div>
+                  const _array = array.map(function(arr, index) {"{"}
+                  <div className="x-margin-left-md">console.log({"`${index} : ${arr}`"});</div>
+                  <div className="x-margin-left-md">return arr + 3;</div>
+                  {"}"});
+                  <br/>
+                  <span className="x-font-gray">
+                    0 : 1
+                    <br/>
+                    1 : 2
+                    <br/>
+                    2 : 3
+                    <br/>
+                    _array = [4, 5, 6];
+                    <span className="x-code">map</span>
+                    主要是用于从一个数组中作调整，从而返回出一个新的数组，不支持
+                    <span className="x-code">continue</span>和
+                    <span className="x-code">break</span>
+                  </span>
+                </div>
+                <hr/>
+                <div>
+                  for(let i of array) {"{"}
+                  <div className="x-margin-left-md">{"console.log(`${i}`);"}</div>
+                  {"}"}
+                  <br/>
+                  <span className="x-font-gray">
+                    1
+                    <br/>
+                    2
+                    <br/>
+                    3
+                    <br/>
+                    支持
+                    <span className="x-code">continue</span>
+                    和
+                    <span className="x-code">break</span>，
+                    <span className="x-code">for..in</span> 对应下标值，
+                    <span className="x-code">for..of</span> 对应数组值
+                  </span>
+                </div>
+              </div>
+
+              <p>
+                <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/array">数组的扩展</a>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Func">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>函数</h1>
+            <div>
+              <div className="x-font-lm">
+
+                <p>
+                  箭头函数取代
+                  <span className="x-code">Function.prototype.bind</span>，
+                  不应再用self/_this/that绑定this
+                </p>
+                <div className="x-padding-xs x-border-light-gray">
+                  const boundMethod = (...params) => method.apply(this, params);
+                  <br/>
+                  <span className="x-font-gray">
+                    相当于
+                    <br/>
+                    const boundMethod = function(...params) {"{"}
+                    <div className="x-margin-left-md">return method.apply(this, params).bind(this);</div>
+                    {"}"}
+                  </span>
+                </div>
+
+                <p>
+                  所有的配置项都应该集中在一个对象,且放在最后一个参数，布尔值不可以直接作为参数使用
+                </p>
+                <div className="x-padding-xs x-border-light-gray">
+                  {"function divide(a, b, { option = false } = {}) { ... }"}
+                </div>
+
+                <p>
+                  不要再函数体内使用arguments变量，使用rest运算符
+                  (<span className="x-code">...</span>)代替
+                </p>
+                <div className="x-padding-xs x-border-light-gray">
+                  {"function concatenateAll(...args) { ... }"}
+                </div>
+
+                <p>
+                  使用默认语法设置函数参数默认值
+                </p>
+                <div className="x-padding-xs x-border-light-gray">
+                  {"function handleThings(opts = {}) { ... }"}
+                </div>
+
+                <p>
+                  <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/function">函数的扩展</a>
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Map">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>Map</h1>
+            <div className="x-font-lm">
+
+              <p>
+                注意区分
+                <span className="x-code">Object</span>和
+                <span className="x-code">Map</span>，若只是需要
+                <span className="x-code">key : value</span>的数据结构，使用
+                <span className="x-code">Map</span>，因为
+                <span className="x-code">Map</span>有内建的遍历机制
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                let map = new Map(arr);
+                <br/>
+                <br/>
+                for (let key of map.keys()) {"{"}
+                <div className="x-margin-left-md">console.log(key);</div>
+                {"}"}
+                <br/>
+                <br/>
+                for (let value of map.values()) {"{"}
+                <div className="x-margin-left-md">console.log(value);</div>
+                {"}"}
+                <br/>
+                <br/>
+                for (let item of map.entries()) {"{"}
+                <div className="x-margin-left-md">console.log(item);</div>
+                {"}"}
+              </div>
+
+              <p>
+                <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/set-map">Map和Set</a>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Class">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1 className="x-font-primary">class</h1>
+            <div className="x-font-lm">
+
+              <p>定义类</p>
+              <div className="x-padding-xs x-border-light-gray">
+                class Test {"{"}
+                <div className="x-margin-left-md">
+                  constructor() {"{"}
+                  <div className="x-margin-left-md">// ...</div>
+                  {"}"}
+                </div>
+                <div className="x-margin-left-md">
+                  pop() {"{"}
+                  <div className="x-margin-left-md"> console.log("pop"); </div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+
+              <p>
+                extends 继承类，且不影响
+                <span className="x-code">instanceOf</span>运算
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                class TestChild extends Test{"{"}
+                <div className="x-margin-left-md">
+                  constructor() {"{"}
+                  <div className="x-margin-left-md">// ...</div>
+                  {"}"}
+                </div>
+                <div className="x-margin-left-md">
+                  pop() {"{"}
+                  <div className="x-margin-left-md"> console.log("child pop"); </div>
+                  {"}"}
+                </div>
+                {"}"}
+              </div>
+
+              <p>
+                <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/class">class的扩展</a>
+              </p>
+
+            </div>
+            <br/>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Module">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>模块</h1>
+            <div className="x-font-lm">
+
+              <p>
+                若模块只输出一个值，使用
+                <span className="x-code">export default</span>，
+                若模块有多个输出值，直接使用 <span className="x-code">export</span>
+              </p>
+
+              <p>模块默认输出一个函数，输出的函数名首字母小写</p>
+              <div className="x-padding-xs x-border-light-gray">
+                function test() {"{ // ... }"}
+                <br/>
+                export default test;
+              </div>
+
+              <p>模块默认输出一个对象，输出的对象名首字母应该大写</p>
+              <div className="x-padding-xs x-border-light-gray">
+                const ExportObj = {"{ // ... }"}
+                <br/>
+                export default ExportObj;
+              </div>
+
+              <p>
+                输出多个，文件名constant
+              </p>
+              <div className="x-padding-xs x-border-light-gray">
+                export const MAX_NUM = 999;
+                export const MIN_NUM = -999;
+              </div>
+
+              <p>导入</p>
+              <div className="x-padding-xs x-border-light-gray">
+                import test from "./test";
+                <br/>
+                import ExportObj from "./ExportObj";
+                <br/>
+                import {"{MAX_NUM, MIN_NUM}"} from "./constant";
+                <br/>
+                //import * as constant from "./constant";
+                <br/>
+                //constant.MAX_NUM  999
+              </div>
+
+              <p>
+                <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/#docs/module">Module的扩展</a>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div className="x-row x-margin-bottom-md" data-toggle="es6Help">
+          <div className="x-col-lg-12 x-api-right-toggle">
+            <h1>附属文档</h1>
+            <div className="x-font-lm">
+
+              <div className="x-padding-xs">
+
+                <div className="x-margin-left-md x-margin-bottom-sm">
+                  <a className="x-font-primary" target="_blank" href="http://www.w3school.com.cn/js/index.asp">1.js教程</a>
+                </div>
+
+                <div className="x-margin-left-md x-margin-bottom-sm">
+                  <a className="x-font-primary" target="_blank" href="http://es6.ruanyifeng.com/">2.es6 入门</a>
+                </div>
+
+                <div className="x-margin-left-md">
+                  <a className="x-font-primary" target="_blank" href="http://blog.csdn.net/u013224660/article/details/53928837">3.es6管理类中的私有数据</a>
+                </div>
+
+              </div>
+
+            </div>
           </div>
         </div>
 

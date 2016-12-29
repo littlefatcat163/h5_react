@@ -43,11 +43,34 @@ export default class APIComponent extends React.Component {
   }
 
   renderLeftDOM() {
-    console.error("Please rewrite the function->renderLeftDOM(){ return <div className='x-api-left' ref={(leftTarget) => this.__leftTarget = leftTarget}></div> } !");
+    console.error(`Please rewrite the renderLeftDOM function -> \n` +
+                  `   renderLeftDOM() { \n` +
+                  `     return (\n`+
+                  `       <div className="x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>\n` +
+                  `         <ul className="x-ul">\n` +
+                  `           <h3>test</h3>\n` +
+                  `           <li data-target="_target">toTargetToggle</li>\n` +
+                  `         </u>\n` +
+                  `       </div>\n` +
+                  `     )\n` +
+                  `   }`
+                );
   }
 
   renderRightDOM() {
-    console.error("Please rewrite the function->renderRightDOM(){ return <div className='x-api-right' ref={(rightToggle) => this.__rightToggle = rightToggle}></div> } !");
+    console.error(`Please rewrite the renderRightDOM function-> \n` +
+                  `   renderRightDOM() { \n` +
+                  `     return (\n` +
+                  `       <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>\n` +
+                  `         <div className="x-row x-margin-bottom-md" data-toggle="_target">\n` +
+                  `           <div className="x-col-lg-12 x-api-right-toggle">\n` +
+                  `             <h1>test</h1>\n` +
+                  `           </div>\n` +
+                  `         </div>\n` +
+                  `       </div> \n` +
+                  `     )\n` +
+                  `   }`
+                 );
   }
 
   componentDidMount() {
@@ -115,14 +138,21 @@ export default class APIComponent extends React.Component {
       if(!_this.__cutoverEvent) {
         let $toggleList = $(_this.__rightToggle).find("[data-toggle]");
         let $curToggle = null;
-        let scrollTop = $(_this.__bodyTag).scrollTop() + $(_this.__thisDom).parent().offset().top;
-        $.each($toggleList, function(index, toggle) {
-          if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return false;
-          if(scrollTop >= toggle.offsetTop && scrollTop <= toggle.offsetTop + $(toggle).height()) {
-            $curToggle = $(toggle);
-            return false;
-          }
-        });
+        if($(_this.__bodyTag).scrollTop() + $(window).height() == $(_this.__bodyTag)[0].scrollHeight) {
+          $curToggle = $($($toggleList).last());
+        } else if($(_this.__bodyTag).scrollTop() == 0) {
+          $curToggle = $($($toggleList).first());
+        } else {
+          let scrollTop = $(_this.__bodyTag).scrollTop() + $(_this.__thisDom).parent().offset().top;
+          $.each($toggleList, function(index, toggle) {
+            if(_this.__cutoverEvent || currentScrollEventNum != _this.__scrollEventNum) return false;
+            if(scrollTop >= toggle.offsetTop && scrollTop <= toggle.offsetTop + $(toggle).height()) {
+              $curToggle = $(toggle);
+              return false;
+            }
+          });
+        }
+
         if($curToggle) {
 
           $(_this.__rightToggle).find("[data-toggle]").children().removeClass("active");
