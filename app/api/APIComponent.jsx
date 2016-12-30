@@ -18,6 +18,7 @@ export default class APIComponent extends React.Component {
   }
 
   render() {
+    console.log("...");
     return (
       <div className="x-container x-font-xs" ref={(thisDom) => this.__thisDom = thisDom}>
         <div className="x-col-lg-12">

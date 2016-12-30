@@ -121,6 +121,22 @@
   }
 }
 
+.x-nav-progress {
+
+  position: fixed;
+  width: 100%;
+  z-index: $nav-index + 1;
+  height: 3px;
+
+  div {
+    background-color: $primary;
+    width: 0;
+    height: inherit;
+    transition: width 1s ease;
+  }
+
+}
+
 .x-nav-index {
   position: fixed;
   left: 0;

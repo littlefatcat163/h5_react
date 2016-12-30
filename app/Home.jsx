@@ -16,6 +16,7 @@ export default class Home extends React.Component {
   $navHead = null;
   $navIndex = null;
   $navContent = null;
+  $progress = null;
 
   __navUlList = null;
 
@@ -58,6 +59,9 @@ export default class Home extends React.Component {
             </div>
           </div>
         </nav>
+        <div className="x-nav-progress" ref={(progress) => this.$progress = progress}>
+          <div></div>
+        </div>
         {/* <div className="bg-black font-white pos-fixed">
           <div className="container" style={{height : 280}}>
             <div className="horizontal horizontal-v">
@@ -135,7 +139,6 @@ export default class Home extends React.Component {
           </div>
         </div>
         <div ref={(navContent) => this.$navContent = $(navContent)} className="x-pos-relative">
-          {/*this.props.children*/}
           {
             function(_this){
               if(_this.props.children) return _this.props.children;

@@ -1,14 +1,19 @@
 import React from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom";
 import 'babel-polyfill';//浏览器兼容 ie >= 9
 import "./style/style.scss";
 import "./aid/font-awesome-4.7.0/scss/font-awesome.scss";
 import { Router, Route, hashHistory, browserHistory, IndexRoute, Redirect, IndexRedirect } from 'react-router';
 import { routes as apiRoutes } from "./api/apiRoutes";
-//import { createStore, combineReducers } from 'redux';
-//import { Provider, connect } from 'react-redux';
-//import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
-//import re from "./reducers/re";
+import { createStore, combineReducers } from 'redux';
+import { Provider, connect } from 'react-redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+// import re from "./reducers/re";
+// import App from './reducers/App';
+// import Bar from './reducers/Bar';
+// import Foo from './reducers/Foo';
+// import Home from './reducers/Home';
+//import "./test";
 
 
 const rootRouter = {
@@ -51,14 +56,12 @@ const rootRouter = {
   ]
 };
 
-(function(){
-  ReactDom.render((
-    <Router
-      history={hashHistory}
-      routes={rootRouter}
-    />
-  ), document.getElementById("root"))
-}())
+ReactDOM.render((
+  <Router
+    history={hashHistory}
+    routes={rootRouter}
+  />
+), document.getElementById("root"))
 
 // const reducer = combineReducers({
 //   re,
@@ -67,15 +70,17 @@ const rootRouter = {
 // const store = createStore(
 //   reducer
 // )
-// const history = syncHistoryWithStore(hashHistory, store);
+// const history = syncHistoryWithStore(browserHistory, store);
 //
-// (function(){
-//   ReactDom.render((
-//     <Provider store={store}>
-//       <Router
-//         history={history}
-//         routes={rootRouter}
-//       />
-//     </Provider>
-//   ), document.getElementById("root"))
-// }())
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <Router history={history}>
+//       <Route path="/" component={App}>
+//         <IndexRoute component={Home}/>
+//         <Route path="foo" component={Foo}/>
+//         <Route path="bar" component={Bar}/>
+//       </Route>
+//     </Router>
+//   </Provider>,
+//   document.getElementById('root')
+// )
