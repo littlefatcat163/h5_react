@@ -502,7 +502,8 @@ export default class Home extends React.Component {
 //
 // const mapStateToProps = (state, ownProps) => {
 //   return {
-//     navTitle : state.navTitle
+//     navTitle: state.navTitle,
+//     children: state.children
 //   }
 // }
 //

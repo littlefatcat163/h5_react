@@ -1,7 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link, browserHistory } from 'react-router'
+import Bar from './Bar'
 
-export default function App({ children }) {
+function App({number, children }) {
+  console.log(number);
   return (
     <div>
       <header>
@@ -17,6 +20,12 @@ export default function App({ children }) {
         <button onClick={() => browserHistory.push('/foo')}>Go to /foo</button>
       </div>
       <div style={{ marginTop: '2.5em' }}>{children}</div>
+      <div style={{marginTop: '1em'}}>{number}</div>
+      <Bar/>
     </div>
   )
 }
+
+export default connect(
+  state => ({ number: state.re.number })
+)(App)
