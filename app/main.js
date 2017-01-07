@@ -14,6 +14,7 @@ import { routes as apiRoutes } from "./api/apiRoutes";
 // import Foo from './reducers/Foo';
 // import Home from './reducers/Home';
 //import "./test";
+import HomeNavigate from './HomeNavigate';
 
 
 const rootRouter = {

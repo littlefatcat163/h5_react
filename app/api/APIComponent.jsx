@@ -1,7 +1,10 @@
-import React from "react";
-import $ from "jquery";
-import "./api.scss";
-import xSystem from "../tool/_xSystem";
+import React from 'react';
+import $ from 'jquery';
+import './api.scss';
+import xSystem from '../tool/_xSystem';
+
+const __noticeRenderRate = Symbol(`__noticeRenderRate`);
+const __rate = Symbol(`__rate`);
 
 export default class APIComponent extends React.Component {
 
@@ -11,20 +14,25 @@ export default class APIComponent extends React.Component {
   __cutoverEvent = null;
   __cutoverEventNum = 0;
   __scrollEventNum = 0;
-  __bodyTag = "html";
+  __bodyTag = `html`;
+  [__rate] = 0;
 
   constructor(props) {
     super(props);
+    this[__noticeRenderRate]();
   }
 
   render() {
-    console.log("...");
+    this[__noticeRenderRate](1);
     return (
       <div className="x-container x-font-xs" ref={(thisDom) => this.__thisDom = thisDom}>
         <div className="x-col-lg-12">
           <div className="x-row">
+            {this[__noticeRenderRate](19)}
             {this.renderLeftDOM()}
+            {this[__noticeRenderRate](30)}
             {this.renderRightDOM()}
+            {this[__noticeRenderRate](50)}
           </div>
         </div>
       </div>
@@ -190,5 +198,23 @@ export default class APIComponent extends React.Component {
       }
     }, 5);
   }
+
+  [__noticeRenderRate](rate = 0) {
+    if(this[__rate] > 100) return;
+    this[__rate] += rate;
+    if(this.props.renderRate && this.props.renderRate instanceof Function) this.props.renderRate(this[__rate]);
+  }
+
+}
+
+APIComponent.propTypes = {
+
+  renderRate: React.PropTypes.func
+
+}
+
+APIComponent.defaultProps = {
+
+  renderRate: null
 
 }
