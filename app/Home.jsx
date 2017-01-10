@@ -4,6 +4,7 @@ import $ from "jquery";
 import { createStore } from 'redux'
 import { Provider, connect } from "react-redux";
 import { getTransitionEndevName } from "./tool/_xAnimation";
+import HomeProgress from './HomeProgress';
 
 const __renderChildRate = Symbol(`__renderChildRate`);
 
@@ -484,58 +485,58 @@ export default class Home extends React.Component {
   }
 
   [__renderChildRate](rate) {
-
-    HomeProgress.load(rate);
+    if(this.props.test && this.props.test instanceof Function) this.props.test(rate);
+    //HomeProgress.load(rate);
 
   }
 
 }
 
-class XNavProgress extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { rate: 0 };
-  }
-
-  render() {
-    return (
-      <div className="x-nav-progress">
-        <div style={{ width: `${this.state.rate}%` }}></div>
-      </div>
-    )
-  }
-
-  updateRate(rate) {
-    this.setState({ rate: rate });
-  }
-
-}
-
-class HomeProgress {
-
-  static __rate = 0;
-  static __component = null;
-
-  static load(rate) {
-    this.__rate += rate;
-    if(!this.__component) {
-      let div = document.createElement('div');
-      document.body.appendChild(div);
-      this.__component = ReactDOM.render(<XNavProgress />, div);
-    } else {
-      this.__component.updateRate(this.__rate);
-      if(this.__rate >= 100) {
-        let parentNode = ReactDOM.findDOMNode(this.__component).parentNode;
-        this.__component = null;
-        this.__rate = 0;
-        ReactDOM.unmountComponentAtNode(parentNode);
-        document.body.removeChild(parentNode);
-      }
-    }
-  }
-
-}
+// class XNavProgress extends React.Component {
+//
+//   constructor(props) {
+//     super(props);
+//     this.state = { rate: 0 };
+//   }
+//
+//   render() {
+//     return (
+//       <div className="x-nav-progress">
+//         <div style={{ width: `${this.state.rate}%` }}></div>
+//       </div>
+//     )
+//   }
+//
+//   updateRate(rate) {
+//     this.setState({ rate: rate });
+//   }
+//
+// }
+//
+// class HomeProgress {
+//
+//   static __rate = 0;
+//   static __component = null;
+//
+//   static load(rate) {
+//     this.__rate += rate;
+//     if(!this.__component) {
+//       let div = document.createElement('div');
+//       document.body.appendChild(div);
+//       this.__component = ReactDOM.render(<XNavProgress />, div);
+//     } else {
+//       this.__component.updateRate(this.__rate);
+//       if(this.__rate >= 100) {
+//         let parentNode = ReactDOM.findDOMNode(this.__component).parentNode;
+//         this.__component = null;
+//         this.__rate = 0;
+//         ReactDOM.unmountComponentAtNode(parentNode);
+//         document.body.removeChild(parentNode);
+//       }
+//     }
+//   }
+//
+// }
 
 // const counter = (state, action) => {
 //   switch (action.type) {

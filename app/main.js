@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import 'babel-polyfill';//浏览器兼容 ie >= 9
-import "./style/style.scss";
-import "./aid/font-awesome-4.7.0/scss/font-awesome.scss";
-import { Router, Route, hashHistory, browserHistory, IndexRoute, Redirect, IndexRedirect } from 'react-router';
-import { routes as apiRoutes } from "./api/apiRoutes";
+import React from "react"
+import ReactDOM from "react-dom"
+import 'babel-polyfill'//浏览器兼容 ie >= 9
+import "./style/style.scss"
+import "./aid/font-awesome-4.7.0/scss/font-awesome.scss"
+import { Router, Route, hashHistory, browserHistory, IndexRoute, Redirect, IndexRedirect, RouterContext } from 'react-router'
+import { routes as apiRoutes } from "./api/apiRoutes"
 // import { createStore, combineReducers } from 'redux';
 // import { Provider, connect } from 'react-redux';
 // import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
@@ -14,7 +14,8 @@ import { routes as apiRoutes } from "./api/apiRoutes";
 // import Foo from './reducers/Foo';
 // import Home from './reducers/Home';
 //import "./test";
-import HomeNavigate from './HomeNavigate';
+//import Test from './Testxxx'
+//import HomeProgress from './HomeProgress'
 
 
 const rootRouter = {
@@ -57,12 +58,19 @@ const rootRouter = {
   ]
 };
 
+//let test =
 ReactDOM.render((
-  <Router
-    history={hashHistory}
-    routes={rootRouter}
-  />
+  //<Test>
+    <Router
+      history={hashHistory}
+      routes={rootRouter}
+      //onUpdate={() => test.updateRate(70)}
+      //render={(props) => { test.updateRate(30); return <RouterContext {...props} />; }}
+    />
+  //</Test>
 ), document.getElementById("root"))
+
+//console.log(test)
 
 // const reducer = combineReducers({
 //   re,
