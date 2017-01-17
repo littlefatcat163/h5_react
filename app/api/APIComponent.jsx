@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import './api.scss';
 import xSystem from '../tool/_xSystem';
 
 const __noticeRenderRate = Symbol(`__noticeRenderRate`);
 const __rate = Symbol(`__rate`);
+const __initLoadDOM = Symbol(`__initLoadDOM`);
 
 export default class APIComponent extends React.Component {
 
@@ -19,20 +21,17 @@ export default class APIComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this[__noticeRenderRate]();
   }
 
   render() {
-    this[__noticeRenderRate](1);
     return (
       <div className="x-container x-font-xs" ref={(thisDom) => this.__thisDom = thisDom}>
         <div className="x-col-lg-12">
           <div className="x-row">
-            {this[__noticeRenderRate](19)}
-            {this.renderLeftDOM()}
-            {this[__noticeRenderRate](30)}
-            {this.renderRightDOM()}
-            {this[__noticeRenderRate](50)}
+            <div className="x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>
+            </div>
+            <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>
+            </div>
           </div>
         </div>
       </div>
@@ -83,11 +82,32 @@ export default class APIComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.__addListenerEvent();
+    this[__initLoadDOM]();
   }
 
   componentWillUnmount() {
     this.__removeListenerEvent();
+  }
+
+  [__initLoadDOM]() {
+    this[__noticeRenderRate](1);
+    setTimeout(() => {
+      ReactDOM.render(this.renderLeftDOM(), this.__leftTarget);
+      this[__noticeRenderRate](39);
+
+      setTimeout(() => {
+        ReactDOM.render(this.renderRightDOM(), this.__rightToggle);
+        this[__noticeRenderRate](50);
+
+        setTimeout(() => {
+          this.__addListenerEvent();
+          this[__noticeRenderRate](10);
+        }, 100);
+
+      }, 100);
+
+    }, 100);
+
   }
 
   __addListenerEvent() {

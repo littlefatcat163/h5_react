@@ -127,12 +127,13 @@
   width: 100%;
   z-index: $nav-index + 1;
   height: 3px;
+  top: 0;
 
   div {
     background-color: $primary;
     width: 0;
     height: inherit;
-    transition: width 1s ease;
+    transition: width .23s ease;
   }
 
 }

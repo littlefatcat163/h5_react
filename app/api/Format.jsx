@@ -5,7 +5,7 @@ export default class Format extends APIComponent {
 
   renderLeftDOM() {
     return (
-      <div className="x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>
+      <div>
         <ul className="x-ul">
           <h3>React组件规范</h3>
           <li data-target="reactComponentFormat">组件规范</li>
@@ -54,7 +54,7 @@ export default class Format extends APIComponent {
 
   renderRightDOM() {
     return (
-      <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>
+      <div>
 
         <div className="x-row x-margin-bottom-md" data-toggle="reactComponentFormat">
           <div className="x-col-lg-12 x-api-right-toggle">

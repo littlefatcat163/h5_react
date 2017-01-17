@@ -7,7 +7,7 @@ export default class Environment extends APIComponent {
 
   renderLeftDOM() {
     return (
-      <div className="x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>
+      <div>
         <ul className="x-ul">
           <h3>{this.props.routeParams.name}</h3>
           <li data-target="node">node</li>
@@ -22,7 +22,7 @@ export default class Environment extends APIComponent {
 
   renderRightDOM() {
     return (
-      <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>
+      <div>
         <div className="x-row x-margin-bottom-md" data-toggle="node">
           <div className="x-col-lg-12 x-api-right-toggle">
             <h1>node</h1>
