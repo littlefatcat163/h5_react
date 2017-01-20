@@ -19,13 +19,19 @@ import { routes as apiRoutes } from "./api/apiRoutes"
 
 
 const rootRouter = {
-  path : "/",
-  indexRoute : {
-    onEnter : (nextState, replace) => replace("/home")
+  path: "/",
+  indexRoute: {
+    onEnter: (nextState, replace) => replace("/home")
   },
-  childRoutes : [
+  childRoutes: [
     {
-      path : "/home",
+      path: "/index.html",
+      indexRoute: {
+        onEnter: (nextState, replace) => replace("/home")
+      }
+    },
+    {
+      path: "/home",
       //indexRoute : {
         getComponent(nextState, callback) {
           require.ensure([], (require) => {
@@ -43,7 +49,7 @@ const rootRouter = {
       //     }
       //   }
       // ]
-      childRoutes : [
+      childRoutes: [
         ...apiRoutes,
         // {
         //   path : "/home/ss",

@@ -33,7 +33,7 @@ export default class Home extends React.Component {
         <nav ref={(nav) => this.$nav = $(nav)} className="x-navbar x-bg-light-black x-font-white x-navbar-fixed-top">
           <div className="x-container">
             <div className="x-navbar-header border-gray" ref={(navHead) => this.$navHead = $(navHead)}>
-              <a className="x-navbar-brand" href="/">React实践</a>
+              <a className="x-navbar-brand" href="/index.html">XO-UI</a>
               <button className="x-navbar-toggle" onClick={(e) => this.__collapse(e)}>
                 <span className="fa fa-navicon"></span>
               </button>

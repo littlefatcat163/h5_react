@@ -3,7 +3,7 @@ const SUFFIX = `/:name`;
 
 export const routes = [
   {
-    path : `${PREFIX}Environment${SUFFIX}`,
+    path : `Environment${SUFFIX}`,
     getComponent(nextState, callback) {
       require.ensure([], (require) => {
         callback(null, require(`./Environment.jsx`).default)
@@ -12,7 +12,7 @@ export const routes = [
   }
   ,
   {
-    path : `${PREFIX}Format${SUFFIX}`,
+    path : `Format${SUFFIX}`,
     getComponent(nextState, callback) {
       require.ensure([], (require) => {
         callback(null, require(`./Format.jsx`).default)

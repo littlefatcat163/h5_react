@@ -82,7 +82,7 @@ module.exports = {
     //new webpack.optimize.CommonsChunkPlugin('common.js'),
     //new ExtractTextPlugin("[name].css"),
     new HtmlWebpackPlugin({
-      title : "I am index.html",
+      title : "XO-UI",
       template : path.resolve(__dirname, "app/__index.html"),
       filename : "index.html",
       chunks : ["vendors", "bundle"],
