@@ -9,11 +9,12 @@
   overflow: auto;
   border: 1px solid $light-gray;
   background-color: $white;
-  
+
   @media (max-width: $lg-width) { display: none;}
 
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
+
 }
 
 .x-api-right {
@@ -28,4 +29,108 @@
       border-color: $primary;
     }
   }
+}
+
+.x-api-left-list {
+  ul {
+    display: block;
+    margin: 0;
+    padding: .05rem;
+    list-style: none;
+    li {
+      display: list-item;
+      padding: .04rem;
+      cursor: pointer;
+      border: 1px solid #ececec;
+      border-bottom: 0;
+      background-color: #f5f5f5;
+      &:last-child {
+        border-bottom: 1px solid #ececec;
+      }
+      &:hover {
+        background-color: #efefef;
+        color: #949494;
+      }
+      &.active {
+        background-color: #53a2e6;
+        color: $white;
+      }
+
+    }
+
+    &.x-api-left-ul {
+      padding: 0;
+      li {
+        border-width: 0;
+        background-color: $white;
+        &:hover {
+          background-color: $white;
+          color: inherit;
+          border-width: 0;
+        }
+        &:last-child { border-width: 0;}
+        & div:first-child {
+          padding: .04rem;
+          margin: -.04rem;
+          //background-color: #f5f5f5;
+          font-size: .16rem;
+          border-width: 0;
+          &::before {
+            transition: .25s transform ease;
+            content: "\F107";
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            float: right;
+            margin-top: 2px;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            transform: rotate(90deg);
+          }
+        }
+        ul {
+          padding: .02rem;
+          margin-top: .03rem;
+          //transition: .5s all ease;
+          li {
+            background-color: transparent;
+            border-width: 0;
+            color: #777;
+            &:last-child { border-width: 0;}
+            &:hover { background-color: transparent; }
+            &.x-active {
+              color: $primary;
+              border-width: 1px 0px;
+              border-style: solid;
+              border-color: $primary;
+              &::after {
+                content: '';
+                display: inline-block;
+                border-width: 10px 10px 10px 0px;
+                border-style: solid;
+                border-color: transparent $primary transparent transparent;
+                position: absolute;
+                right: 0;
+              }
+            }
+          }
+        }
+        &.x-active {
+          //ul { display: none; }
+          & div:first-child::before { transform: rotate(0deg); }
+        }
+
+      }
+    }
+  }
+}
+
+.x-base-api {
+  background-color: $white;
+  border-radius: 5px;
+
+  .x-base-api-left {
+    border-right: 1px solid #e5e5e5;
+  }
+
 }

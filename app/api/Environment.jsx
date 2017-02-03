@@ -7,8 +7,8 @@ export default class Environment extends APIComponent {
 
   renderLeftDOM() {
     return (
-      <div>
-        <ul className="x-ul">
+      <div className='x-api-left-list'>
+        <ul>
           <h3>{this.props.routeParams.name}</h3>
           <li data-target="node">node</li>
           <li data-target="npm">npm</li>

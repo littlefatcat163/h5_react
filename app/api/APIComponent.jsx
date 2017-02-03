@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import './api.scss';
-import xSystem from '../tool/_xSystem';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import $ from 'jquery'
+import './api.scss'
+import xSystem from '../tool/_xSystem'
 
-const __noticeRenderRate = Symbol(`__noticeRenderRate`);
-const __rate = Symbol(`__rate`);
-const __initLoadDOM = Symbol(`__initLoadDOM`);
+const __noticeRenderRate = Symbol(`__noticeRenderRate`)
+const __rate = Symbol(`__rate`)
+const __initLoadDOM = Symbol(`__initLoadDOM`)
 
 export default class APIComponent extends React.Component {
 
@@ -54,9 +54,9 @@ export default class APIComponent extends React.Component {
     console.error(`Please rewrite the renderLeftDOM function -> \n` +
                   `   renderLeftDOM() { \n` +
                   `     return (\n`+
-                  `       <div className="x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>\n` +
-                  `         <ul className="x-ul">\n` +
-                  `           <h3>test</h3>\n` +
+                  `       <div className='x-api-left-list'>\n` +
+                  `         <h3>test</h3>\n` +
+                  `         <ul>\n` +
                   `           <li data-target="_target">toTargetToggle</li>\n` +
                   `         </u>\n` +
                   `       </div>\n` +
@@ -69,7 +69,7 @@ export default class APIComponent extends React.Component {
     console.error(`Please rewrite the renderRightDOM function-> \n` +
                   `   renderRightDOM() { \n` +
                   `     return (\n` +
-                  `       <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>\n` +
+                  `       <div>\n` +
                   `         <div className="x-row x-margin-bottom-md" data-toggle="_target">\n` +
                   `           <div className="x-col-lg-12 x-api-right-toggle">\n` +
                   `             <h1>test</h1>\n` +

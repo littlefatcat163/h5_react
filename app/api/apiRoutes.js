@@ -19,4 +19,13 @@ export const routes = [
       }, `api/Format`)
     }
   }
+  ,
+  {
+    path : `Layout${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./Layout.jsx`).default)
+      }, `api/Layout`)
+    }
+  }
 ]

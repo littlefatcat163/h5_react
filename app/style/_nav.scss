@@ -74,6 +74,14 @@
       line-height: .42rem;
       height: .42rem;
     }
+    img { 
+      float: left;
+      @media (max-width: $md-width) {
+        position: relative;
+        top: -.1rem;
+      }
+    }
+
   }
 
   .x-navbar-collapse {
@@ -114,7 +122,7 @@
   &::after { content: " ";  clear: both; display: table; }
 }
 
-.x-navbar-toggle, .x-navbar-brand, .x-nav>li {
+.x-navbar-toggle, .x-navbar-brand>span, .x-nav>li {
   opacity: .6;
   &:hover {
     opacity: 1;

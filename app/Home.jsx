@@ -33,7 +33,10 @@ export default class Home extends React.Component {
         <nav ref={(nav) => this.$nav = $(nav)} className="x-navbar x-bg-light-black x-font-white x-navbar-fixed-top">
           <div className="x-container">
             <div className="x-navbar-header border-gray" ref={(navHead) => this.$navHead = $(navHead)}>
-              <a className="x-navbar-brand" href="/index.html">XO-UI</a>
+              <a className="x-navbar-brand" href="/index.html">
+                <img src='images/logo-3x.png'/>
+                <span>XO</span>
+              </a>
               <button className="x-navbar-toggle" onClick={(e) => this.__collapse(e)}>
                 <span className="fa fa-navicon"></span>
               </button>
@@ -184,7 +187,7 @@ export default class Home extends React.Component {
             key : "nav_ui_layout",
             name : "布局",
             iconClass : "fa fa-th-large",
-            link : "#/home/HomeNavigate/布局"
+            link : "#/home/Layout/布局"
           },
           {
             key : "nav_ui_modial",

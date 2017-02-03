@@ -5,8 +5,8 @@ export default class Format extends APIComponent {
 
   renderLeftDOM() {
     return (
-      <div>
-        <ul className="x-ul">
+      <div className='x-api-left-list'>
+        <ul>
           <h3>React组件规范</h3>
           <li data-target="reactComponentFormat">组件规范</li>
           <li data-target="reactComponentCycle">生命周期</li>
@@ -16,7 +16,7 @@ export default class Format extends APIComponent {
           <li data-target="reactComponentEvent">事件</li>
           <li data-target="reactComponentHelp">附属文档</li>
         </ul>
-        <ul className="x-ul">
+        <ul>
           <h3>Sass规范</h3>
           <li data-target="sassFormat">编写规范</li>
           <li data-target="sassNote">注释</li>
@@ -35,7 +35,7 @@ export default class Format extends APIComponent {
           <li data-target="sassMixin">@mixin</li>
           <li data-target="sassHelp">附属文档</li>
         </ul>
-        <ul className="x-ul">
+        <ul>
           <h3>ES6规范</h3>
           <li data-target="es6Scope">块级作用域</li>
           <li data-target="es6Str">字符串</li>
