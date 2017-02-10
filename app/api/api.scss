@@ -128,9 +128,43 @@
 .x-base-api {
   background-color: $white;
   border-radius: 5px;
+  //padding: .15rem .05rem;
+
+  .x-base-api-row {
+    padding: .05rem;
+  }
+
+  @media (min-width: $lg-width) {
+    & {
+      display: table;
+    }
+
+    .x-base-api-row {
+      display: table-row;
+    }
+
+    .x-base-api-left,.x-base-api-right {
+      display: table-cell;
+      float: none;
+      vertical-align: top;
+      padding-top: .1rem;
+      padding-bottom: .1rem;
+    }
+
+  }
 
   .x-base-api-left {
     border-right: 1px solid #e5e5e5;
+  }
+
+  .x-base-api-right {
+
+    p {
+      margin: 1em 0;
+      color: #5d5d5d;
+      font-size: .15rem;
+    }
+
   }
 
 }

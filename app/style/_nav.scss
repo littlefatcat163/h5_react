@@ -74,8 +74,9 @@
       line-height: .42rem;
       height: .42rem;
     }
-    img { 
+    img {
       float: left;
+      border: none;
       @media (max-width: $md-width) {
         position: relative;
         top: -.1rem;

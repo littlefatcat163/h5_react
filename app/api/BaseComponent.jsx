@@ -24,12 +24,12 @@ export default class BaseComponent extends React.Component {
   render() {
     return (
       <div className="x-container x-font-xs" ref={(thisDOM) => this.__thisDOM = thisDOM}>
-        <div className="x-col-lg-12">
-          <div className="x-row x-base-api">
-            <div className="x-col-lg-2">
-              <div className='x-row x-base-api-left' ref={(leftTargetDOM) => this.__leftTargetDOM = leftTargetDOM}></div>
+        <div className="x-col-lg-12 x-base-api">
+          <div className="x-row x-base-api-row">
+            <div className="x-col-lg-2 x-base-api-left">
+              <div className='x-row' ref={(leftTargetDOM) => this.__leftTargetDOM = leftTargetDOM}></div>
             </div>
-            <div className="x-col-lg-10">
+            <div className="x-col-lg-10 x-base-api-right">
               <div className='x-row' ref={(rightToggleDOM) => this.__rightToggleDOM = rightToggleDOM}></div>
             </div>
           </div>
