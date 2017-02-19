@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import $ from "jquery";
 import { createStore } from 'redux'
-import { Provider, connect } from "react-redux";
+//import { Provider, connect } from "react-redux";
 import { getTransitionEndevName } from "./tool/_xAnimation";
 
 const __renderChildRate = Symbol(`__renderChildRate`);

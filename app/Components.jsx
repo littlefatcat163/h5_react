@@ -1,3 +1,3 @@
-import XoTab from './components/ui/Tab'
+import xoTabs from './components/ui/Tabs'
 
-export const Tab = XoTab;
+export const Tabs = xoTabs;

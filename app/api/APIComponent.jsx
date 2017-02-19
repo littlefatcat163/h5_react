@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
 import './api.scss'
-import xSystem from '../tool/_xSystem'
+import xoSystem from '../tool/_xoSystem'
 
 const __noticeRenderRate = Symbol(`__noticeRenderRate`)
 const __rate = Symbol(`__rate`)
@@ -129,7 +129,7 @@ export default class APIComponent extends React.Component {
       return;
     }
 
-    if(xSystem.isWebkit()) _this.__bodyTag = "body";
+    if(xoSystem.isWebkit()) _this.__bodyTag = "body";
 
     $(_this.__leftTarget).find("[data-target]").click(function() {
       _this.__cutoverEvent = "click";

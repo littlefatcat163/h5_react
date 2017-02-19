@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
 import BaseComponent from './BaseComponent'
-import { Tab } from '../components'
+import { Tabs } from '../components'
 
 export default class Layout extends BaseComponent {
 
@@ -46,15 +46,35 @@ export default class Layout extends BaseComponent {
                 <h1>Grid 栅格</h1>
                 <p>12栅格系统</p>
                 <h2>容器</h2>
-                <Tab>
-                  <Tab.TabPane key='content'>
-                    <div className="x-layout x-border-light-gray" style={{padding: 20}}>
-                      <div className="x-col-lg-6 x-border-primary">x-col-lg-6</div>
-                      <div className="x-col-lg-6 x-border-success" style={{height: 100}}>x-col-lg-6</div>
-                      x-layout
+                <Tabs>
+                  <Tabs.TabPane id='content' text='效果'>
+                    <div style={{padding: 20}}>
+                      <div className="x-layout x-border-light-gray" style={{padding: 20}}>
+                        <div className="x-col-lg-6 x-border-primary">x-col-lg-6</div>
+                        <div className="x-col-lg-6 x-border-success" style={{height: 100}}>x-col-lg-6</div>
+                        x-layout
+                        <button onClick={() => console.log('...')}>test</button>
+                      </div>
                     </div>
-                  </Tab.TabPane>
-                </Tab>
+                  </Tabs.TabPane>
+                  <Tabs.TabPane id='content-dm' text='代码'>
+                    <div style={{padding: 20}}>
+                      demo...
+                    </div>
+                  </Tabs.TabPane>
+                </Tabs>
+                <div style={{height: 20}}></div>
+                <Tabs>
+                  <Tabs.TabPane text="asd">
+                    <div>asd</div>
+                  </Tabs.TabPane>
+                  <Tabs.TabPane text="123">
+                    <div>123</div>
+                  </Tabs.TabPane>
+                  <Tabs.TabPane text="456">
+                    <div>456</div>
+                  </Tabs.TabPane>
+                </Tabs>
               </div>
             )
           }
