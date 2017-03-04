@@ -1,43 +1,43 @@
 /*  颜色  */
 //亮黑色
 $light-black: #222;
-.x-bg-light-black { background-color: $light-black; }
-.x-font-light-black { color: $light-black; }
-.x-border-light-black { border: 1px solid $light-black; }
+.xo-bg-light-black { background-color: $light-black; }
+.xo-font-light-black { color: $light-black; }
+.xo-border-light-black { border: 1px solid $light-black; }
 
 //亮灰色
 $light-gray: #e2e2e2;
-.x-border-light-gray { border: 1px solid $light-gray; }
+.xo-border-light-gray { border: 1px solid $light-gray; }
 //深灰色
 $deep-gray: #5f5f5f;
 
 //灰色
 $gray: #929292;
-.x-bg-gray { background-color: $gray; }
-.x-font-gray { color: $gray; }
-.x-border-gray { border: 1px solid $gray; }
+.xo-bg-gray { background-color: $gray; }
+.xo-font-gray { color: $gray; }
+.xo-border-gray { border: 1px solid $gray; }
 
 //黑色
 $black: #000;
-.x-bg-black { background-color: $black; }
-.x-font-black { color: $black; }
-.x-border-black { border: 1px solid $black; }
+.xo-bg-black { background-color: $black; }
+.xo-font-black { color: $black; }
+.xo-border-black { border: 1px solid $black; }
 
 //白色
 $white: #fff;
-.x-bg-white { background-color: $white; }
-.x-font-white { color: $white; }
-.x-border-white { border: 1px solid $white; }
+.xo-bg-white { background-color: $white; }
+.xo-font-white { color: $white; }
+.xo-border-white { border: 1px solid $white; }
 
 //玫红
 $rose-red: #c7254e;
 
 //主要颜色
 $primary : #428bca;
-.x-font-primary { color: $primary; }
-.x-border-primary { border: 1px solid $primary; }
+.xo-font-primary { color: $primary; }
+.xo-border-primary { border: 1px solid $primary; }
 $success : #5cb85c;
-.x-border-success { border: 1px solid $success; }
+.xo-border-success { border: 1px solid $success; }
 $info    : #5bc0de;
 $warn    : #f0ad4e;
 $danger  : #d9534f;

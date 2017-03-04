@@ -2,26 +2,26 @@
 @import "constant";
 @import "color";
 
-.x-navbar {
+.xo-navbar {
   min-height: .5rem;
   @media (min-width: $md-width) { min-height: .4rem; }
 
-  &.x-navbar-fixed-top, &.x-navbar-fixed-bottom {
+  &.xo-navbar-fixed-top, &.xo-navbar-fixed-bottom {
     z-index: $nav-index;
     position: fixed;
     left: 0;
     right: 0;
 
-    &.x-navbar-fixed-top {
+    &.xo-navbar-fixed-top {
       top: 0;
     }
 
-    &.x-navbar-fixed-bottom {
+    &.xo-navbar-fixed-bottom {
         bottom: 0;
     }
   }
 
-  .x-navbar-header {
+  .xo-navbar-header {
     @media (min-width: $md-width) { float: left; margin: 0; }
     @media (max-width: $md-width) { border-bottom-width: .01rem; border-bottom-style: solid; }
     display: block;
@@ -30,7 +30,7 @@
     margin-right: -.15rem;
   }
 
-  .x-navbar-toggle {
+  .xo-navbar-toggle {
     @media (min-width: $md-width) { display: none; }
     float: right;
     font-size: .18rem;
@@ -43,10 +43,10 @@
     background-color: transparent;
   }
 
-  .x-navbar-nav {
+  .xo-navbar-nav {
     @media (min-width: $md-width) {
       float: left;
-      &.x-navbar-right {
+      &.xo-navbar-right {
         float: right;
       }
     }
@@ -55,12 +55,12 @@
     margin: 0;
     padding: 0;
 
-    &.x-navbar-right {
+    &.xo-navbar-right {
       display: block;
     }
   }
 
-  .x-navbar-brand {
+  .xo-navbar-brand {
     display: block;
     float: left;
     padding: .15rem;
@@ -85,10 +85,10 @@
 
   }
 
-  .x-navbar-collapse {
+  .xo-navbar-collapse {
     @media (min-width: $md-width) { display: block; }
     display: none;
-    &.x-collapsing {
+    &.xo-collapsing {
       height: 0;
       position: relative;
       overflow: hidden;
@@ -97,13 +97,13 @@
       transition-property: height;
       display: block;
     }
-    &.x-in {
+    &.xo-in {
       display: block;
     }
   }
 }
 
-.x-nav {
+.xo-nav {
   list-style: none;
   margin: 0;
   &>li {
@@ -118,19 +118,19 @@
   }
 }
 
-.x-navbar, .x-navbar-header, .x-navbar-collapse, .x-nav, .x-nav-ul, .x-nav-ul-fluid {
+.xo-navbar, .xo-navbar-header, .xo-navbar-collapse, .xo-nav, .xo-nav-ul, .xo-nav-ul-fluid {
   &::before { content: " "; display: table; }
   &::after { content: " ";  clear: both; display: table; }
 }
 
-.x-navbar-toggle, .x-navbar-brand>span, .x-nav>li {
+.xo-navbar-toggle, .xo-navbar-brand>span, .xo-nav>li {
   opacity: .6;
   &:hover {
     opacity: 1;
   }
 }
 
-.x-nav-progress {
+.xo-nav-progress {
 
   position: fixed;
   width: 100%;
@@ -147,7 +147,7 @@
 
 }
 
-.x-nav-index {
+.xo-nav-index {
   position: fixed;
   left: 0;
   right: 0;
@@ -157,16 +157,16 @@
   z-index: $nav-index - 1;
 }
 
-.x-nav-ul, .x-nav-ul-fluid {
+.xo-nav-ul, .xo-nav-ul-fluid {
   background-color: inherit;
   list-style: none;
   margin: 0;
   padding: 0;
-  &.x-nav-ul {
+  &.xo-nav-ul {
     overflow: hidden;
     max-height: .43rem;
     margin: 0 auto;
-    &.x-nav-ul {
+    &.xo-nav-ul {
       @media (min-width: $lg-width) { display: table; }
     }
     &>li {
@@ -176,7 +176,7 @@
       }
     }
   }
-  &.x-nav-ul-fluid {
+  &.xo-nav-ul-fluid {
     &>li>a {
       color: $deep-gray;
       &:hover {
@@ -194,28 +194,28 @@
       padding: .1rem .15rem;
     }
   }
-  &.x-nav-ul-fluid>li>a { margin: 0.08rem 0;}
+  &.xo-nav-ul-fluid>li>a { margin: 0.08rem 0;}
 }
 
-.x-nav-container {
+.xo-nav-container {
   position: relative;
   color: $deep-gray;
   padding: 0 .1rem;
   background-color: inherit;
   &:hover {
     color: $primary;
-    .x-nav-ream {
+    .xo-nav-ream {
       display: block;
     }
-    .x-nav-bar {
+    .xo-nav-bar {
       width: 100%;
     }
   }
-  .x-nav-ream-parent {
+  .xo-nav-ream-parent {
     position: fixed;
     z-index: 1;
   }
-  .x-nav-ream {
+  .xo-nav-ream {
     display: none;
     position: fixed;
     left: 0;
@@ -224,7 +224,7 @@
     padding: .15rem 0;
     box-shadow: 0 1px 3px $deep-gray;
   }
-  .x-nav-bar {
+  .xo-nav-bar {
     display: block;
     width: 0;
     height: 3px;
@@ -236,16 +236,16 @@
     background-color: $primary;
     transition: width .35s ease;
   }
-  .x-nav-split {
+  .xo-nav-split {
     display: block;
     position: absolute;
     top:0;
     bottom: 0;
     right: 0;
-    .x-nav-split-hor {
+    .xo-nav-split-hor {
       display: table;
       height: 100%;
-      .x-nav-split-ver {
+      .xo-nav-split-ver {
         display: table-cell;
         vertical-align: middle;
         &::before {

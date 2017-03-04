@@ -25,12 +25,12 @@ export default class APIComponent extends React.Component {
 
   render() {
     return (
-      <div className="x-container x-font-xs" ref={(thisDom) => this.__thisDom = thisDom}>
-        <div className="x-col-lg-12">
-          <div className="x-row">
-            <div className="x-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>
+      <div className="xo-container xo-font-xs" ref={(thisDom) => this.__thisDom = thisDom}>
+        <div className="xo-col-lg-12">
+          <div className="xo-row">
+            <div className="xo-api-left" ref={(leftTarget) => this.__leftTarget = leftTarget}>
             </div>
-            <div className="x-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>
+            <div className="xo-api-right" ref={(rightToggle) => this.__rightToggle = rightToggle}>
             </div>
           </div>
         </div>
@@ -41,10 +41,10 @@ export default class APIComponent extends React.Component {
   renderNavHead() {
     if(this.props.routeParams.id) {
       return (
-        <div className="x-col-lg-12">
-          <a className="x-link" href="#/home">首页</a>
-          <a className="x-text-default x-split-left-tilt"></a>
-          <a className="x-text-default">{this.props.routeParams.name}</a>
+        <div className="xo-col-lg-12">
+          <a className="xo-link" href="#/home">首页</a>
+          <a className="xo-text-default xo-split-left-tilt"></a>
+          <a className="xo-text-default">{this.props.routeParams.name}</a>
         </div>
       )
     }
@@ -54,7 +54,7 @@ export default class APIComponent extends React.Component {
     console.error(`Please rewrite the renderLeftDOM function -> \n` +
                   `   renderLeftDOM() { \n` +
                   `     return (\n`+
-                  `       <div className='x-api-left-list'>\n` +
+                  `       <div className='xo-api-left-list'>\n` +
                   `         <h3>test</h3>\n` +
                   `         <ul>\n` +
                   `           <li data-target="_target">toTargetToggle</li>\n` +
@@ -70,8 +70,8 @@ export default class APIComponent extends React.Component {
                   `   renderRightDOM() { \n` +
                   `     return (\n` +
                   `       <div>\n` +
-                  `         <div className="x-row x-margin-bottom-md" data-toggle="_target">\n` +
-                  `           <div className="x-col-lg-12 x-api-right-toggle">\n` +
+                  `         <div className="xo-row xo-margin-bottom-md" data-toggle="_target">\n` +
+                  `           <div className="xo-col-lg-12 xo-api-right-toggle">\n` +
                   `             <h1>test</h1>\n` +
                   `           </div>\n` +
                   `         </div>\n` +

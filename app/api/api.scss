@@ -1,7 +1,8 @@
 @import "../style/color";
 @import "../style/constant";
+@import "../components/table/table.scss";
 
-.x-api-left {
+.xo-api-left {
   position: fixed;
   top: .95rem;
   width: 2.35rem;
@@ -17,12 +18,12 @@
 
 }
 
-.x-api-right {
+.xo-api-right {
   margin-left: 2.6rem;
   display: block;
   @media (max-width: $lg-width) { margin-left: 0; }
 
-  .x-api-right-toggle {
+  .xo-api-right-toggle {
     background-color: $white;
     border: 1px solid $light-gray;
     &.active {
@@ -31,7 +32,7 @@
   }
 }
 
-.x-api-left-list {
+.xo-api-left-list {
   ul {
     display: block;
     margin: 0;
@@ -58,7 +59,7 @@
 
     }
 
-    &.x-api-left-ul {
+    &.xo-api-left-ul {
       padding: 0;
       li {
         border-width: 0;
@@ -98,7 +99,7 @@
             color: #777;
             &:last-child { border-width: 0;}
             &:hover { background-color: transparent; }
-            &.x-active {
+            &.xo-active {
               color: $primary;
               border-width: 1px 0px;
               border-style: solid;
@@ -115,7 +116,7 @@
             }
           }
         }
-        &.x-active {
+        &.xo-active {
           //ul { display: none; }
           & div:first-child::before { transform: rotate(0deg); }
         }
@@ -125,12 +126,12 @@
   }
 }
 
-.x-base-api {
+.xo-base-api {
   background-color: $white;
   border-radius: 5px;
   //padding: .15rem .05rem;
 
-  .x-base-api-row {
+  .xo-base-api-row {
     padding: .05rem;
   }
 
@@ -139,11 +140,11 @@
       display: table;
     }
 
-    .x-base-api-row {
+    .xo-base-api-row {
       display: table-row;
     }
 
-    .x-base-api-left,.x-base-api-right {
+    .xo-base-api-left,.xo-base-api-right {
       display: table-cell;
       float: none;
       vertical-align: top;
@@ -153,11 +154,11 @@
 
   }
 
-  .x-base-api-left {
+  .xo-base-api-left {
     border-right: 1px solid #e5e5e5;
   }
 
-  .x-base-api-right {
+  .xo-base-api-right {
 
     p {
       margin: 1em 0;
@@ -165,6 +166,23 @@
       font-size: .15rem;
     }
 
+  }
+
+}
+
+.xo-demo-block {
+
+  [class*=xo-col-],* {
+    padding: 10px;
+    text-align: center;
+    color: $white;
+    margin-bottom: 15px;
+    &:nth-child(odd) {
+      background-color: rgb(0, 162, 236);
+    }
+    &:nth-child(even) {
+      background-color: rgba(0, 162, 236, .8);
+    }
   }
 
 }

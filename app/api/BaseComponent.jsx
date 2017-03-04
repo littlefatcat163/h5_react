@@ -8,6 +8,8 @@ const __verifyDOM = Symbol(`__verifyDOM`)
 const __renderLeftTargetDOM = Symbol(`__renderLeftTargetDOM`)
 const __pLiClick = Symbol(`__pLiClick`)
 const __liClick = Symbol(`__liClick`)
+const __noticeRenderRate = Symbol(`__noticeRenderRate`)
+const __rate = Symbol(`__rate`)
 
 export default class BaseComponent extends React.Component {
 
@@ -16,6 +18,7 @@ export default class BaseComponent extends React.Component {
   __thisDOM = null;
   __leftTargetList = null;
   __rightToggleList = null;
+  [__rate] = 0;
 
   constructor(props) {
     super(props);
@@ -23,14 +26,14 @@ export default class BaseComponent extends React.Component {
 
   render() {
     return (
-      <div className="x-container x-font-xs" ref={(thisDOM) => this.__thisDOM = thisDOM}>
-        <div className="x-col-lg-12 x-base-api">
-          <div className="x-row x-base-api-row">
-            <div className="x-col-lg-2 x-base-api-left">
-              <div className='x-row' ref={(leftTargetDOM) => this.__leftTargetDOM = leftTargetDOM}></div>
+      <div className="xo-container xo-font-xs" ref={(thisDOM) => this.__thisDOM = thisDOM}>
+        <div className="xo-col-lg-12 xo-base-api">
+          <div className="xo-row xo-base-api-row">
+            <div className="xo-col-lg-2 xo-base-api-left">
+              <div className='xo-row' ref={(leftTargetDOM) => this.__leftTargetDOM = leftTargetDOM}></div>
             </div>
-            <div className="x-col-lg-10 x-base-api-right">
-              <div className='x-row' ref={(rightToggleDOM) => this.__rightToggleDOM = rightToggleDOM}></div>
+            <div className="xo-col-lg-10 xo-base-api-right">
+              <div className='xo-row' ref={(rightToggleDOM) => this.__rightToggleDOM = rightToggleDOM}></div>
             </div>
           </div>
         </div>
@@ -39,10 +42,7 @@ export default class BaseComponent extends React.Component {
   }
 
   componentDidMount() {
-    ReactDOM.render(this.renderLeftDOM(), this.__leftTargetDOM);
-    $(this.__leftTargetDOM).children().children().children('li').children('div:first-child').bind('click', this[__pLiClick]);
-    $(this.__leftTargetDOM).children().children().children('li').children('ul').children('li').bind('click', this[__liClick]);
-    $(this.__leftTargetDOM).children().children().children('li').children('ul').children('li').first().click();
+    this.init();
   }
 
   componentWillUnmount() {
@@ -54,7 +54,7 @@ export default class BaseComponent extends React.Component {
                   `   renderLeftDOM() { \n` +
                   `     return (\n`+
                   `       <div>\n` +
-                  `         <ul className="x-ul">\n` +
+                  `         <ul className="xo-ul">\n` +
                   `           <h3>test</h3>\n` +
                   `           <li data-target="_target">toTargetToggle</li>\n` +
                   `         </u>\n` +
@@ -68,34 +68,62 @@ export default class BaseComponent extends React.Component {
 
   }
 
+  init() {
+    this[__noticeRenderRate](1);
+    setTimeout(() => {
+      ReactDOM.render(this.renderLeftDOM(), this.__leftTargetDOM);
+      this[__noticeRenderRate](29);
+
+      setTimeout(() => {
+        $(this.__leftTargetDOM).children().children().children('li').children('div:first-child').bind('click', this[__pLiClick]);
+        $(this.__leftTargetDOM).children().children().children('li').children('ul').children('li').bind('click', this[__liClick]);
+        this[__noticeRenderRate](10);
+
+        setTimeout(() => {
+          $(this.__leftTargetDOM).children().children().children('li').children('ul').children('li').first().click();
+        }, 100);
+
+      }, 100);
+
+    }, 100);
+  }
+
   //父级li点击事件
   [__pLiClick] = (e) => {
     let $pli = $(e.target).parent();
-    if($pli.hasClass(`x-active`)){
+    if($pli.hasClass(`xo-active`)){
       $pli.find('ul').slideDown(300);
-      $pli.removeClass(`x-active`);
+      $pli.removeClass(`xo-active`);
     } else {
       $pli.find('ul').slideUp(300);
-      $pli.addClass(`x-active`);
+      $pli.addClass(`xo-active`);
     }
   }
 
   //li点击事件
   [__liClick] = (e) => {
     let $li = $(e.target);
-    if($li.hasClass(`x-active`)) {
+    if($li.hasClass(`xo-active`)) {
       return;
     } else {
-      $(this.__leftTargetDOM).children().children().children('li').children('ul').children('li').removeClass(`x-active`);
+      this[__rate] = 40;
+
+      $(this.__leftTargetDOM).children().children().children('li').children('ul').children('li').removeClass(`xo-active`);
       ReactDOM.render(<div></div>, this.__rightToggleDOM);
-      let rightDOMList = this.getRightDOMList();
-      for(let rightDOM of rightDOMList) {
-        if(rightDOM['data-toggle'] == $li.attr('data-target')) {
-          ReactDOM.render(rightDOM.render(), this.__rightToggleDOM);
-          break;
+      this[__noticeRenderRate](10);
+
+      setTimeout(() => {
+        let rightDOMList = this.getRightDOMList();
+        for(let rightDOM of rightDOMList) {
+          if(rightDOM['data-toggle'] == $li.attr('data-target')) {
+            ReactDOM.render(rightDOM.render(), this.__rightToggleDOM);
+            break;
+          }
         }
-      }
-      $li.addClass(`x-active`);
+        $li.addClass(`xo-active`);
+        this[__noticeRenderRate](50);
+      }, 100);
+
     }
   }
 
@@ -138,5 +166,24 @@ export default class BaseComponent extends React.Component {
       }
     });
   }
+
+  [__noticeRenderRate](rate = 0) {
+    if(this[__rate] > 100) return;
+    this[__rate] += rate;
+    if(this.props.renderRate && this.props.renderRate instanceof Function) this.props.renderRate(this[__rate]);
+  }
+
+}
+
+
+BaseComponent.propTypes = {
+
+  renderRate: React.PropTypes.func
+
+}
+
+BaseComponent.defaultProps = {
+
+  renderRate: null
 
 }

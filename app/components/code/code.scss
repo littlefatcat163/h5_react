@@ -1,0 +1,35 @@
+.xo-code
+{
+
+  &::before { content: " "; display: table; }
+  &::after { content: " "; clear: both; display: table; }
+
+  table.xo-code-table
+  {
+    width: 100%;
+    padding: .1rem 0;
+
+    tbody tr td
+    {
+      color: #4a4a4a;
+      line-height: 1.5;
+      font-size: .14rem;
+      &.xo-code-num
+      {
+        width: 1%;
+        min-width: .5rem;
+        padding: 0 .1rem;
+        cursor: pointer;
+        color: #9e9e9e;
+        &:hover { color: #4a4a4a; }
+        &::before { content: attr(data-line-number); }
+      }
+      &.xo-code-content
+      {
+        span { white-space: pre; }
+      }
+    }
+
+  }
+
+}
