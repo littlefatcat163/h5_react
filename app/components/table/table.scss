@@ -2,6 +2,19 @@
 table.xo-table, .xo-table
 {
   display: table;
+  width: 100%;
+
+  .xo-table-row
+  {
+    display: table-row;
+
+    .xo-table-cell
+    {
+      display: table-cell;
+      float: none;
+      vertical-align: top;
+    }
+  }
 
   thead
   {

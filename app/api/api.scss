@@ -164,6 +164,7 @@
       margin: 1em 0;
       color: #5d5d5d;
       font-size: .15rem;
+      white-space: pre;
     }
 
   }
@@ -172,11 +173,13 @@
 
 .xo-demo-block {
 
+  margin-bottom: 15px;
+
   [class*=xo-col-],* {
     padding: 10px;
     text-align: center;
     color: $white;
-    margin-bottom: 15px;
+
     &:nth-child(odd) {
       background-color: rgb(0, 162, 236);
     }

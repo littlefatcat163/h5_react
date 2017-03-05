@@ -54,7 +54,11 @@ export default class Tabs extends React.Component {
                                     .css({ transform: `translateX(${e.target.offsetLeft}px)` });
     $(ReactDOM.findDOMNode(this)).find('.xo-tabs-pane').removeClass('xo-active');
     $(ReactDOM.findDOMNode(this)).find(`.xo-tabs-pane[data-index=${$target.attr('data-index')}]`).addClass('xo-active');
-    if(xoSystem.getBrowser().ie && xoSystem.getBrowser().version <= 9) return;
+    if(xoSystem.getBrowser().ie && xoSystem.getBrowser().version <= 9) {
+      $(ReactDOM.findDOMNode(this)).find('.xo-tabs-pane').hide();
+      $(ReactDOM.findDOMNode(this)).find(`.xo-tabs-pane[data-index=${$target.attr('data-index')}]`).show();
+      return;
+    }
     $(ReactDOM.findDOMNode(this)).find('.xo-tabs-content-scroll').css({ left: -parseInt($target.attr('data-index')) * 100 + '%' });
   }
 

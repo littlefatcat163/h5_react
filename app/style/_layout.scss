@@ -14,6 +14,7 @@
 
 .xo-container, .xo-row, .xo-layout {
   display: block;
+  position: relative;
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
 }
@@ -967,15 +968,34 @@
 .xo-horizontal {
   margin: 0 auto;
   display: table;
-  &.xo-horizontal-v {
+  &.xo-hvr {
     height: 100%;
   }
   .xo-vertical {
     display: table-cell;
     vertical-align: middle;
+    position: relative;
+    margin: inherit;
+    top: auto;
+    bottom: auto;
   }
 }
 
+//居中容器
+.xo-center-container {
+  display: table;
+  width: 100%;
+
+  .xo-vertical {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    margin: inherit;
+    top: auto;
+    bottom: auto;
+  }
+
+}
 //垂直居中
 .xo-vertical {
   display: block;
