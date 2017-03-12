@@ -68,6 +68,7 @@
     .xo-tabs-tab {
       cursor: pointer;
       color: $gray;
+      border: 0;
 
       &.xo-active {
         color: $primary;

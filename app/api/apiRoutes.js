@@ -28,4 +28,13 @@ export const routes = [
       }, `api/Layout`)
     }
   }
+  ,
+  {
+    path : `Button${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./ButtonAPI.jsx`).default)
+      }, `api/ButtonAPI`)
+    }
+  }
 ]

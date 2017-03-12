@@ -1,4 +1,5 @@
 //表格
+
 table.xo-table, .xo-table
 {
   display: table;
@@ -26,13 +27,25 @@ table.xo-table, .xo-table
     padding: 15px 10px;
     word-wrap: break-word;
     word-break: break-all;
-    white-space: pre;
+    //white-space: pre;
     text-align: left;
     font-style: normal;
     border: 0;
   }
 
   th { font-weight: bold; font-size: 15px; line-height:  1.5; }
-  td { font-size: 14px; line-height: 1.4; border-bottom: 1px solid #e6e6e6; }
+  td {
+    font-size: 14px;
+    line-height: 1.4;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  &.xo-table-line
+  {
+    border-top: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+
+    th, td { border-right: 1px solid #e6e6e6; }
+  }
 
 }

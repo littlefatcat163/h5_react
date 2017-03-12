@@ -1,0 +1,34 @@
+$xo-logo-size: 24px;
+
+@mixin xo-logo($sn) {
+
+  .xo-logo-#{$sn}
+  {
+    background-image: url('../images/#{$sn}.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+
+    width: $xo-logo-size;
+    height: $xo-logo-size;
+    background-size: $xo-logo-size;
+  }
+
+  @for $i from 2 through 3
+  {
+    .xo-logo-#{$i}x-#{$sn}
+    {
+      background-image: url('../images/#{$sn}.png');
+      background-repeat: no-repeat;
+      display: inline-block;
+
+      width: $xo-logo-size * $i;
+      height: $xo-logo-size * $i;
+      background-size: $xo-logo-size * $i;
+    }
+  }
+
+}
+
+@each $browser in chrome, safari, firefox, opera, ie {
+  @include xo-logo($browser);
+}

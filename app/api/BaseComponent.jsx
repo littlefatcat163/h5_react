@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom'
 import $ from 'jquery'
 import './api.scss'
 import { isEmpty } from '../tool/_XTool'
+import { Code } from '../components'
 
-const __verifyDOM = Symbol(`__verifyDOM`)
-const __renderLeftTargetDOM = Symbol(`__renderLeftTargetDOM`)
 const __pLiClick = Symbol(`__pLiClick`)
 const __liClick = Symbol(`__liClick`)
 const __noticeRenderRate = Symbol(`__noticeRenderRate`)
@@ -50,22 +49,110 @@ export default class BaseComponent extends React.Component {
   }
 
   renderLeftDOM() {
-    console.error(`Please rewrite the renderLeftDOM function -> \n` +
-                  `   renderLeftDOM() { \n` +
-                  `     return (\n`+
-                  `       <div>\n` +
-                  `         <ul className="xo-ul">\n` +
-                  `           <h3>test</h3>\n` +
-                  `           <li data-target="_target">toTargetToggle</li>\n` +
-                  `         </u>\n` +
-                  `       </div>\n` +
-                  `     )\n` +
-                  `   }`
-                );
+    let leftDOMList = this.getLeftDOMList();
+    let lis = <li>
+                <div>demo</div>
+                <ul>
+                  <li data-target='demo'>样例</li>
+                </ul>
+              </li>;
+    if(leftDOMList && leftDOMList.length > 0) {
+      lis = [];
+      leftDOMList.forEach(function(o, oi) {
+        let ilis = null;
+        if(o.list && o.list.length > 0) {
+          ilis = [];
+          o.list.forEach(function(i, ii) {
+            ilis.push(<li key={`xo-api-left-ili-${ii}`} data-target={i['data-target']}> {i.name} </li>);
+          });
+        }
+
+        lis.push(<li key={`xo-api-left-oli-${oi}`}><div>{ o.name }</div><ul>{ ilis }</ul></li>);
+      });
+    }
+
+    return (
+      <div className='xo-api-left-list'>
+        <ul className='xo-api-left-ul'>
+          <h3>{this.props.routeParams.name}</h3>
+          { lis }
+        </ul>
+      </div>
+    )
+  }
+
+  getLeftDOMList() {
+    return (
+      [
+        {
+          name: 'demo',
+          list: [
+            { 'data-target': 'demo', name: '例子' }
+          ]
+        }
+      ]
+    )
   }
 
   getRightDOMList() {
-
+    return (
+      [
+        {
+          'data-toggle': 'demo',
+          render: function() {
+            return (
+              <div className='xo-col-xs-12'>
+                <p>
+                  请重写以下两个方法，参考例子
+                </p>
+                <p>1、<b className='xo-font-primary'>getLeftDOMList</b> 返回左边列表的json格式</p>
+                <Code>
+                  {
+                    `getLeftDOMList() {\n` +
+                      `\treturn(\n` +
+                        `\t\t[\n` +
+                          `\t\t\t{\n` +
+                            `\t\t\t\tname: 'demo',\n` +
+                            `\t\t\t\tlist: [\n` +
+                              `\t\t\t\t\t{ 'data-target': 'demo', name: '例子' }\n` +
+                            `\t\t\t\t]\n` +
+                          `\t\t\t}\n` +
+                        `\t\t]\n` +
+                      `\t)\n` +
+                    `}`
+                  }
+                </Code>
+                <br/>
+                <p>
+                  2、<b className='xo-font-primary'>getRightDOMList</b>
+                  返回右边对应左边列表data-target的显示内容
+                </p>
+                <Code>
+                  {
+                    `getRightDOMList() {\n` +
+                      `\treturn(\n` +
+                        `\t\t[\n` +
+                          `\t\t\t{\n` +
+                            `\t\t\t\tdata-toggle: 'demo',\n` +
+                            `\t\t\t\trender: function() {\n` +
+                              `\t\t\t\t\treturn (<div></div>)\n` +
+                            `\t\t\t\t}\n` +
+                          `\t\t\t}\n` +
+                        `\t\t]\n` +
+                      `\t)\n` +
+                    `}`
+                  }
+                </Code>
+                <p>
+                  <b>注意：</b>
+                  data-toggle与data-target相呼应，显示内容有render决定
+                </p>
+              </div>
+            )
+          }
+        }
+      ]
+    )
   }
 
   init() {
@@ -125,46 +212,6 @@ export default class BaseComponent extends React.Component {
       }, 100);
 
     }
-  }
-
-  //验证DOM
-  [__verifyDOM]() {
-
-    // let errorMsg = null;
-    //
-    // if(!this.__leftTargetList || this.__leftTargetList.length == 0) {
-    //   errorMsg = `Please assignment the variable ~ __leftTargetList -> \n` +
-    //              `this.__leftTargetList = [ \n` +
-    //              `  { id: '自身id，必须提供', name: '名称，必须提供', target: '呼应__rightToggleList中的toogle', pid: ‘对应父级菜单id’, render: '渲染方式，__leftTargetList暂不提供'}\n` +
-    //              `]`;
-    // } else if(!this.__rightToggleList || this.__rightToggleList.length == 0) {
-    //   errorMsg = `Please assignment the variable ~ __rightToggleList -> \n` +
-    //            = `this.__rightToggleList = [ \n` +
-    //            = `  { toggle: '响应__leftTargetList中的target, 必须提供', render: function() { return ( /* 提供DOM的渲染方式, 必须提供 */ ) } } \n` +
-    //            = `]`;
-    // }
-    //
-    // if(errorMsg) {
-    //   console.error(errorMsg);
-    //   return false;
-    // }
-    //
-    // return true;
-
-  }
-
-  //渲染左边菜单栏
-  [__renderLeftTargetDOM]() {
-    let leftTargetDOMList = [];
-    let idMap = {};
-    let slipList = [];
-    this.__leftTargetList.forEach(function(__leftTarget, index) {
-      if(isEmpty(__leftTarget.pid)) {
-        leftTargetDOMList.push(<li>{__leftTarget.name}</li>);
-      } else {
-        slipList.push(__leftTarget);
-      }
-    });
   }
 
   [__noticeRenderRate](rate = 0) {

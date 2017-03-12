@@ -965,13 +965,13 @@
 }
 
 //水平居中
-.xo-horizontal {
+.xo-h-c {
   margin: 0 auto;
   display: table;
   &.xo-hvr {
     height: 100%;
   }
-  .xo-vertical {
+  .xo-v-c {
     display: table-cell;
     vertical-align: middle;
     position: relative;
@@ -986,7 +986,7 @@
   display: table;
   width: 100%;
 
-  .xo-vertical {
+  .xo-v-c {
     display: table-cell;
     vertical-align: middle;
     position: relative;
@@ -997,7 +997,7 @@
 
 }
 //垂直居中
-.xo-vertical {
+.xo-v-c {
   display: block;
   position: absolute;
   margin: auto;
@@ -1017,4 +1017,46 @@
 
 .xo-pos-relative {
   position: relative;
+}
+
+//flex布局
+.xo-flex { display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; align-items: stretch; }
+.xo-inline-flex { display: inline-flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; align-items: stretch; }
+
+[class*=xo-flex], [class*=xo-inline-flex] {
+
+  &.xo-row { flex-direction: row; margin-left: 0; margin-right: 0; }
+  &.xo-row-reverse { flex-direction: row-reverse; }
+  &.xo-column { flex-direction: column; }
+  &.xo-column-reverse { flex-direction: column-reverse; }
+
+  &.xo-nowrap { flex-wrap: nowrap; }
+  &.xo-wrap { flex-wrap: wrap; }
+  &.xo-wrap-reverse { flex-wrap: wrap-reverse; }
+
+  &.xo-h-start { justify-content: flex-start; }
+  &.xo-h-end { justify-content: flex-end; }
+  &.xo-h-center { justify-content: center; }
+  &.xo-h-space-between { justify-content: space-between; }
+  &.xo-h-space-around { justify-content: space-around; }
+
+  &.xo-v-start { align-items: flex-start; }
+  &.xo-v-end { align-items: flex-end; }
+  &.xo-v-center { align-items: center; }
+  &.xo-v-baseline { align-items: baseline; }
+  &.xo-v-stretch { align-items: stretch; }
+
+  &.xo-vw-start { align-content: flex-start; }
+  &.xo-vw-end { align-content: flex-end; }
+  &.xo-vw-center { align-content: center; }
+  &.xo-vw-space-between { align-content: space-between; }
+  &.xo-vw-space-around { align-content: space-around; }
+  &.xo-vw-stretch { align-content: stretch; }
+
+  .xo-item { align-self: auto; }
+  .xo-item-start { align-self: flex-start; }
+  .xo-item-end { align-self: flex-end; }
+  .xo-item-center { align-self: center; }
+  .xo-item-baseline { align-self: baseline; }
+  .xo-item-stretch { align-self: stretch; }
 }

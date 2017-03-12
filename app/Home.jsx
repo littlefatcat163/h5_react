@@ -230,7 +230,7 @@ export default class Home extends React.Component {
             key : "nav_input_btn",
             name : "按钮",
             iconClass : "fa fa-hand-o-down",
-            link : "#/home/btn/按钮"
+            link : "#/home/Button/按钮"
           },
           {
             key : "nav_input_input",

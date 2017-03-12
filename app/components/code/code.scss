@@ -3,6 +3,7 @@
 
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
+  overflow: auto;
 
   table.xo-code-table
   {
@@ -27,6 +28,7 @@
       }
       &.xo-code-content
       {
+        max-width: 600px;
         span { white-space: pre; }
       }
     }
