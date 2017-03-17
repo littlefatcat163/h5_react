@@ -206,8 +206,8 @@ export default class Layout extends BaseComponent {
                 <p>
                   1、栅格布局支持撑起父容器高度，但是无法让相邻栅格高度自行匹配(除了自行设置其高度一致外)
                 </p>
-                <p>{`     如下所示：`}</p>
-                <p>{`     审核该DOM，看见xo-row与xo-layout跟随右边的300高度的变化，而左边的却还是自适应，没什么变化`}</p>
+                <div className='xo-margin-left-lm'><p>{`     如下所示：`}</p></div>
+                <div className='xo-margin-left-lm'><p>{`     审核该DOM，看见xo-row与xo-layout跟随右边的300高度的变化，而左边的却还是自适应，没什么变化`}</p></div>
                 <Tabs>
                   <Tabs.TabPane text="效果">
                     <div style={{padding: 20}}>
@@ -235,12 +235,12 @@ export default class Layout extends BaseComponent {
                 <p className="xo-margin-left-xs">
                   2、如果这时候需要使用到相邻元素能在栅格布局下，且能影响到高度自适应变化
                 </p>
-                <p>{`     如下所示：`}</p>
-                <p>{`     融合表格，父级容器自适应高度，栅格相邻元素匹配高度`}</p>
+                <div className='xo-margin-left-lm'><p>{`     如下所示：`}</p></div>
+                <div className='xo-margin-left-lm'><p>{`     融合表格，父级容器自适应高度，栅格相邻元素匹配高度`}</p></div>
                 <Tabs>
                   <Tabs.TabPane text="效果">
                     <div style={{padding: 20}}>
-                      <div className="xo-layout xo-table">
+                      <div className="xo-layout xo-table xo-table-block">
                         <div className="xo-table-row xo-demo-block">
                           <div className="xo-col-xs-6 xo-table-cell">height=auto=100</div>
                           <div className="xo-col-xs-6 xo-table-cell" style={{height: 100}}>height=100</div>
@@ -251,7 +251,7 @@ export default class Layout extends BaseComponent {
                   <Tabs.TabPane text="代码">
                     <Code>
                       {
-                        `<div className="xo-layout xo-table">\n` +
+                        `<div className="xo-layout xo-table xo-table-block">\n` +
                           `\t<div className="xo-table-row xo-demo-block">\n` +
                             `\t\t<div className="xo-col-xs-6 xo-table-cell">height=auto=100</div>\n` +
                             `\t\t<div className="xo-col-xs-6 xo-table-cell" style={{height: 100}}>height=100</div>\n` +

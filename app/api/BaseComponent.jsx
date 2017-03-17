@@ -48,6 +48,11 @@ export default class BaseComponent extends React.Component {
 
   }
 
+  componentWillUnmount() {
+    ReactDOM.unmountComponentAtNode(this.__leftTargetDOM);
+    ReactDOM.unmountComponentAtNode(this.__rightToggleDOM);
+  }
+
   renderLeftDOM() {
     let leftDOMList = this.getLeftDOMList();
     let lis = <li>

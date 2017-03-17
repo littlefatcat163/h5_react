@@ -1,9 +1,29 @@
 //表格
 
+.xo-table-container
+{
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: inherit;
+  overflow: hidden;
+
+  .xo-table-container-thead
+  {
+    overflow: hidden;
+  }
+
+}
+
 table.xo-table, .xo-table
 {
   display: table;
-  width: 100%;
+  width: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  &.xo-table-block { width: 100%; }
 
   .xo-table-row
   {
@@ -17,7 +37,7 @@ table.xo-table, .xo-table
     }
   }
 
-  thead
+  thead, .xo-table-thead
   {
     background-color: #efefef;
   }

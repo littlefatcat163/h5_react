@@ -1,0 +1,233 @@
+@import "../../style/color";
+
+.xo-btn {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid #d4d4d4;
+  padding: .05rem .1rem;
+  font-size: .14rem;
+  background-color: #fff;
+  color: #656565;
+  border-radius: 0.05rem;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+
+}
+
+.xo-btn-xs {
+  padding: .05rem .1rem;
+  font-size: .14rem;
+}
+.xo-btn-sm {
+  padding: .04rem .07rem;
+  font-size: .12rem;
+}
+.xo-btn-md {
+  padding: .06rem .12rem;
+  font-size: .16rem;
+}
+.xo-btn-lg {
+  padding: .08rem .15rem;
+  font-size: .18rem;
+}
+.xo-btn-xl {
+  padding: .1rem .18rem;
+  font-size: .20rem;
+}
+
+
+.xo-btn:focus, .xo-btn:hover {
+  text-decoration: none;
+}
+
+.xo-btn.focus {
+  text-decoration: none;
+}
+
+.xo-btn:active, .xo-btn.active {
+  background-image: none;
+  outline: 0;
+}
+
+.xo-btn.disabled, .xo-btn:disabled {
+  cursor: not-allowed;
+  opacity: .65;
+  border-color: #d4d4d4;
+  color: #656565;
+}
+
+a.xo-btn.disabled,
+fieldset[disabled] a.xo-btn {
+  pointer-events: none;
+}
+
+.xo-btn-link {
+
+  &:disabled,
+  &:disabled:focus,
+  &:disabled:active,
+  &:disabled:hover,
+  &:disabled:active:focus,
+  &:disabled:active:hover {
+    color: $primary;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  color: $primary;
+  background-color: transparent;
+  border-color: transparent;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    text-decoration: underline;
+  }
+
+}
+
+.xo-btn-primary {
+
+  &:disabled,
+  &:disabled:focus,
+  &:disabled:active,
+  &:disabled:hover,
+  &:disabled:active:focus,
+  &:disabled:active:hover {
+    color: $white;
+    background-color: $primary;
+    border-color: $primary;
+  }
+
+  color: $white;
+  background-color: $primary;
+  border-color: $primary;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    background-color: #025aa5;
+    border-color: #01549b;
+    color: $white;
+  }
+
+}
+
+.xo-btn-success {
+
+  &:disabled,
+  &:disabled:focus,
+  &:disabled:active,
+  &:disabled:hover,
+  &:disabled:active:focus,
+  &:disabled:active:hover {
+    color: $white;
+    background-color: $success;
+    border-color: $success;
+  }
+
+  color: $white;
+  background-color: $success;
+  border-color: $success;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    background-color: #449d44;
+    border-color: #419641;
+    color: $white;
+  }
+
+}
+
+.xo-btn-info {
+
+  &:disabled,
+  &:disabled:focus,
+  &:disabled:active,
+  &:disabled:hover,
+  &:disabled:active:focus,
+  &:disabled:active:hover {
+    color: $white;
+    background-color: $info;
+    border-color: $info;
+  }
+
+  color: $white;
+  background-color: $info;
+  border-color: $info;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    background-color: #31b0d5;
+    border-color: #2aabd2;
+    color: $white;
+  }
+
+}
+
+.xo-btn-warn {
+
+  &:disabled,
+  &:disabled:focus,
+  &:disabled:active,
+  &:disabled:hover,
+  &:disabled:active:focus,
+  &:disabled:active:hover {
+    color: $white;
+    background-color: $warn;
+    border-color: $warn;
+  }
+
+  color: $white;
+  background-color: $warn;
+  border-color: $warn;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    background-color: #ec971f;
+    border-color: #eb9316;
+    color: $white;
+  }
+
+}
+
+.xo-btn-danger {
+
+  &:disabled,
+  &:disabled:focus,
+  &:disabled:active,
+  &:disabled:hover,
+  &:disabled:active:focus,
+  &:disabled:active:hover {
+    color: $white;
+    background-color: $danger;
+    border-color: $danger;
+  }
+
+  color: $white;
+  background-color: $danger;
+  border-color: $danger;
+
+  &:focus, &:active, &:hover, &:active:focus, &:active:hover {
+    background-color: #c9302c;
+    border-color: #c12e2a;
+    color: $white;
+  }
+
+}
+
+.xo-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.xo-btn-block + .xo-btn-block {
+  margin-top: 0.05rem;
+}
+
+input[type="submit"].xo-btn-block,
+input[type="reset"].xo-btn-block,
+input[type="button"].xo-btn-block {
+  width: 100%;
+}
