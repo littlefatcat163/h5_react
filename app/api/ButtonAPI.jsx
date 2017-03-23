@@ -198,10 +198,10 @@ export default class ButtonAPI extends BaseComponent {
                 <Table
                   columns={
                     [
-                      {title: 'name', field: 'name'},
-                      {title: 'type', field: 'type'},
-                      {title: 'default', field: 'default'},
-                      {title: 'desc', field: 'desc', width: 250}
+                      {title: 'name', field: 'name', width: 100},
+                      {title: 'type', field: 'type', width: 100},
+                      {title: 'default', field: 'default', width: 200},
+                      {title: 'desc', field: 'desc'}
                     ]
                   }
                   data={

@@ -6,12 +6,53 @@
   display: block;
   width: 100%;
   height: 100%;
-  position: inherit;
+  position: relative;
   overflow: hidden;
+  border: 1px solid #d2d2d2;
 
   .xo-table-container-thead
   {
     overflow: hidden;
+    position: relative;
+    left: 0;
+    top: 0;
+    background-color: #efefef;
+    border-bottom: 1px solid #d2d2d2;
+
+    .xo-table
+    {
+      border: 0;
+      th:nth-last-child(1) { border-right: 0; }
+    }
+
+  }
+
+  .xo-table-container-col-resize-pointer,
+  .xo-table-container-col-resize-pointer-before
+  {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 100%;
+    width: 1px;
+    background-color: #b1b1b1;
+    display: none;
+    cursor: col-resize;
+  }
+
+  .xo-table-container-tbody
+  {
+    overflow: auto;
+
+    .xo-table
+    {
+      border: 0;
+      td:nth-last-child(1) { border-right: 0; }
+    }
+
   }
 
 }
@@ -44,28 +85,52 @@ table.xo-table, .xo-table
 
   th, td
   {
+    position: relative;
     padding: 15px 10px;
     word-wrap: break-word;
     word-break: break-all;
-    //white-space: pre;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     text-align: left;
     font-style: normal;
     border: 0;
+
+    &>div
+    {
+      position: relative;
+      overflow: hidden;
+      word-wrap: break-word;
+      word-break: break-all;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .xo-col-resize
+    {
+      position: absolute;
+      right: -2px;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      cursor: col-resize;
+      z-index: 1;
+    }
+
   }
 
   th { font-weight: bold; font-size: 15px; line-height:  1.5; }
   td {
     font-size: 14px;
     line-height: 1.4;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid #d2d2d2;
   }
 
   &.xo-table-line
   {
-    border-top: 1px solid #e6e6e6;
-    border-left: 1px solid #e6e6e6;
+    border-top: 1px solid #d2d2d2;
+    border-left: 1px solid #d2d2d2;
 
-    th, td { border-right: 1px solid #e6e6e6; }
+    th, td { border-right: 1px solid #d2d2d2; }
   }
 
 }

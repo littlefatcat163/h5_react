@@ -37,4 +37,13 @@ export const routes = [
       }, `api/ButtonAPI`)
     }
   }
+  ,
+  {
+    path : `Table${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./TableAPI.jsx`).default)
+      }, `api/TableAPI`)
+    }
+  }
 ]

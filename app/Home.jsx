@@ -322,7 +322,7 @@ export default class Home extends React.Component {
             key : "nav_chart_table",
             name : "表格",
             iconClass : "fa fa-table",
-            link : "#/home/table/表格"
+            link : "#/home/Table/表格"
           },
           {
             key : "nav_chart_table_tree",
