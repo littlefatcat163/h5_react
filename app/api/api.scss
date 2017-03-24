@@ -33,6 +33,9 @@
 }
 
 .xo-api-left-list {
+
+  padding: 0 10px;
+
   ul {
     display: block;
     margin: 0;
@@ -129,7 +132,8 @@
 .xo-base-api {
   background-color: $white;
   border-radius: 5px;
-  //padding: .15rem .05rem;
+  box-sizing: content-box;
+  padding: 0;
 
   .xo-base-api-row {
     padding: .05rem;
@@ -159,14 +163,12 @@
   }
 
   .xo-base-api-right {
-
     p {
       margin: 1em 0;
       color: #5d5d5d;
       font-size: .15rem;
       //white-space: pre;
     }
-
   }
 
 }

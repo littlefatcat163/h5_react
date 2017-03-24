@@ -15,6 +15,7 @@
 .xo-container, .xo-row, .xo-layout {
   display: block;
   position: relative;
+  box-sizing: border-box;
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
 }
@@ -23,6 +24,8 @@
   margin-right: -15px;
   margin-left: -15px;
 }
+
+[class*=xo-col-] { box-sizing: border-box; }
 
 .xo-col-xs,
 .xo-col-xs-1,

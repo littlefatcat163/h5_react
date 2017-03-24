@@ -38,6 +38,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
 import BaseComponent from '../BaseComponent'
+import xoSystem from '../../tool/_xoSystem'
 import './table.scss'
 
 const _map = Symbol('_map')

@@ -28,6 +28,7 @@
     padding: 0;
     margin-left: -.15rem;
     margin-right: -.15rem;
+    * { box-sizing: border-box; }
   }
 
   .xo-navbar-toggle {
@@ -223,6 +224,7 @@
     background-color: $white;
     padding: .15rem 0;
     box-shadow: 0 1px 3px $deep-gray;
+    * { box-sizing: border-box; }
   }
   .xo-nav-bar {
     display: block;
