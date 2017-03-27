@@ -102,4 +102,68 @@ export default class xoSystem {
     return xoSystem[__browser];
   }
 
+  /**
+    @desc 排序
+    @param
+      array 需要排列的数组
+      sortOrder 排列方向, 默认null,即放回当前数组的倒叙
+      fieldMap 对比的字段
+  */
+  static sort(array, sortOrder, fields) {
+    if(!array || array.length <= 1) return array;
+    if(!sortOrder) return array.reverse();
+    return _sortObj.sort(array, sortOrder, fields);
+  }
+
 }
+
+//排序
+const _sortObj = (function() {
+
+  function sort(array, sortOrder, fields, left, right) {
+    let len = array.length,
+        partitionIndex;
+        left = typeof left != 'number' && !left ? 0 : left;
+        right = typeof right != 'number' && !right ? len - 1 : right;
+    if(left < right) {
+      partitionIndex = partition(array, sortOrder, fields, left, right);
+      sort(array, sortOrder, fields, left, partitionIndex - 1);
+      sort(array, sortOrder, fields, partitionIndex + 1, right);
+    }
+    return array;
+  }
+
+  function partition(array, sortOrder, fields, left, right) {
+    let pivot = left,
+        index = pivot + 1;
+    for(let i = index; i <= right; i++) {
+      let pass = true;
+      if(!fields || Object.keys(fields).length == 0) {
+        if(sortOrder == 'asc' && array[i] >= array[pivot]) pass = false;
+        else if(sortOrder == 'desc' && array[i] <= array[pivot]) pass = false;
+      } else {
+        for(let key of fields) {
+          if(sortOrder == 'asc' && array[i][key] >= array[pivot][key]) pass = false;
+          else if(sortOrder == 'desc' && array[i][key] <= array[pivot][key]) pass = false;
+        }
+      }
+
+      if(pass) {
+        swap(array, i, index);
+        index++;
+      }
+    }
+    swap(array, pivot, index - 1);
+    return index - 1;
+  }
+
+  function swap(array, i, j) {
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return {
+    sort: sort
+  }
+})()

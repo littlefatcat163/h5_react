@@ -26,7 +26,7 @@ export default class BaseComponent extends React.Component {
   render() {
     return (
       <div className="xo-container xo-font-xs" ref={(thisDOM) => this.__thisDOM = thisDOM}>
-        <div className="xo-col-lg-12 xo-base-api">
+        <div className="xo-base-api">
           <div className="xo-row xo-base-api-row">
             <div className="xo-col-lg-2 xo-base-api-left">
               <div className='xo-row' ref={(leftTargetDOM) => this.__leftTargetDOM = leftTargetDOM}></div>

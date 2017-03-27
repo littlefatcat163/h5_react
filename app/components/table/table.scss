@@ -102,6 +102,11 @@ table.xo-table, .xo-table
       word-break: break-all;
       white-space: nowrap;
       text-overflow: ellipsis;
+      &>a>.fa {
+        position: relative;
+        left: 5px;
+        bottom: 1px;
+      }
     }
 
     .xo-col-resize

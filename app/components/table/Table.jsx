@@ -9,7 +9,7 @@
         key<string>: '相应react-dom的key', （如果不提供，则默认以field为key）
         width<number>: 列宽, （一般有限制的提供对应的宽度即可，其他的默认自适应auto）
         type<string>: 类型, 与排序有关,（默认string）, number, indexColumn, checkboxColumn
-        sortOrder<string>: 排序方向, （默认null）, asc, desc
+        sortOrder<string>: 排序方向, （默认null）, asc<正序>, desc<倒序>
         allowResize<bool>: 允许支持拉伸, （默认true）, false
         className<string>: 其他的class标识,作用于th
         render<function>: 返回对应渲染th内容 => function(indexData) {}
@@ -59,6 +59,9 @@ const _curTh = Symbol('_allowResize')
 
 //表格内容滚动事件
 const _tbodyScroll = Symbol('_tbodyScroll')
+
+//排序
+const _sort = Symbol('_sort')
 
 export default class Table extends BaseComponent {
 
@@ -169,10 +172,10 @@ export default class Table extends BaseComponent {
   }
 
   windowResize() {
+    this.$dom.width(100);
+    let width = this.$dom.parent().outerWidth();
+    this.$dom.width(width);
     if(this[_config].width == '100%') {
-      this.$dom.width(100);
-      let width = this.$dom.parent().outerWidth();
-      this.$dom.width(width);
       $(this.ref_theadContainer).find('table').width(width);
       $(this.ref_tbodyContainer).find('table').width(width);
     }
@@ -192,14 +195,22 @@ export default class Table extends BaseComponent {
                           column._index = index;
                           if(column.width == 'auto' && typeof this[_config].width == 'string') this[_config].width = '100%';
                           let _th = <th style={{width: column.width, maxWidth: column.width}} className={column.className} key={`xo-table-thead-th-${column.field}`}>
-                                      <div>
-                                        {
-                                          ((__column) => {
-                                            if(__column.render && typeof __column.render == 'function') return __column.render()
-                                            else return __column.title
-                                          })(column)
-                                        }
-                                      </div>
+                                      {
+                                        ((__column) => {
+                                          let $column = null;
+                                          if(__column.render && typeof __column.render == 'function') $column = __column.render();
+                                          else {
+                                            $column = __column.title;
+                                            if(__column.sortOrder) {
+                                              let sortClassName = 'caret-up';
+                                              if(__column.sortOrder == 'desc') sortClassName = 'caret-down';
+                                              $column = <a onClick={(e) => this[_sort](e)}>{$column}<span className={`fa fa-${sortClassName}`}></span></a>;
+                                            }
+                                          }
+                                          return <div>{$column}</div>
+                                        })(column)
+                                      }
+
                                       {
                                         ((__column, __index, __columns) => {
                                           if(__index < __columns.length - 1 && __column.allowResize) {
@@ -303,6 +314,23 @@ export default class Table extends BaseComponent {
   //表格内容滚动事件
   [_tbodyScroll](e) {
     $(this.ref_theadContainer).css({left: -e.target.scrollLeft});
+  }
+
+  //排序
+  [_sort](e) {
+    let $span = $(e.target);
+    let key = e._targetInst._hostParent._hostParent._hostParent._currentElement;
+    if(!$span.is('span.fa')) {
+      key = e._targetInst._hostParent._hostParent._currentElement;
+      $span = $span.find('span.fa');
+    }
+    let value = this[_map].get(key);
+    xoSystem.sort(this[_data], value.sortOrder, [value.field]);
+    let sortClassName = 'caret-up';
+    if(value.sortOrder == 'asc') value.sortOrder = 'desc';
+    else { value.sortOrder = 'asc'; sortClassName = 'caret-down'; }
+    $span.removeClass().addClass(`fa fa-${sortClassName}`);
+    this[_renderTbody]();
   }
 
 }

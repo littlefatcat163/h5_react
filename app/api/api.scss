@@ -133,7 +133,8 @@
   background-color: $white;
   border-radius: 5px;
   box-sizing: content-box;
-  padding: 0;
+  //padding: 0;
+  width: 100%;
 
   .xo-base-api-row {
     padding: .05rem;

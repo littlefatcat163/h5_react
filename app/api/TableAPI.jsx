@@ -31,9 +31,9 @@ export default class TableAPI extends BaseComponent {
                   columns={
                     [
                       {title: '字段一', field: 'field1', width: 100},
-                      {title: '字段二', field: 'field2', width: 200},
-                      {title: '字段三', field: 'field3', width: 300},
-                      {title: '字段四', field: 'field4', width: 400},
+                      {title: '字段二', field: 'field2', width: 200, sortOrder: 'desc'},
+                      {title: '字段三', field: 'field3', width: 300, sortOrder: 'asc'},
+                      {title: '字段四', field: 'field4', width: 400, sortOrder: 'desc'},
                       {title: '字段五', field: 'field5', width: 500}
                     ]
                   }
@@ -46,7 +46,7 @@ export default class TableAPI extends BaseComponent {
                       { field1: '很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容', field2: 'eee', field3: '五五五', field4: 555 }
                     ]
                   }/>
-                </div>
+              </div>
             </div>
           )
         }
