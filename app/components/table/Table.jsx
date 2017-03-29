@@ -55,13 +55,15 @@ const _ref_colResizePointer = Symbol('_ref_colResizePointer')
 const _ref_colResizePointerBefore = Symbol('_ref_colResizePointerBefore')
 const _colResize = Symbol('_colResize')
 const _curTh = Symbol('_allowResize')
-//const _setColsWidth = Symbol('_setColsWidth')//设置列宽
 
 //表格内容滚动事件
 const _tbodyScroll = Symbol('_tbodyScroll')
+//表格行点击事件
+const _tbodyTrOnClick = Symbol('_tbodyTrOnClick')
 
 //排序
 const _sort = Symbol('_sort')
+
 
 export default class Table extends BaseComponent {
 
@@ -242,7 +244,11 @@ export default class Table extends BaseComponent {
                         let tds = [];
                         for(let column of this[_map].values()) {
                           if(column._theadMark) {
-                            let _td = <td data-index={column._index} style={{width: column.width, maxWidth: column.width}} key={`xo-table-tbody-td-${index}-${column.field}`}>
+                            let _td = <td
+                                        data-index={column._index}
+                                        style={{width: column.width, maxWidth: column.width}}
+                                        key={`xo-table-tbody-td-${index}-${column.field}`}
+                                        onClick={(e) => console.log('td')}>
                                         <div>
                                           {
                                             ((__this, __data, __column) => {
@@ -258,7 +264,7 @@ export default class Table extends BaseComponent {
                             tds.push(_td);
                           }
                         }
-                        let _tr = <tr key={`xo-table-tbody-tr-${index}`}>{tds}</tr>;
+                        let _tr = <tr onClick={(e) => this[_tbodyTrOnClick](e)} key={`xo-table-tbody-tr-${index}`}>{tds}</tr>;
                         this[_map].set(_tr, _data);
                         return _tr;
                       })
@@ -314,6 +320,13 @@ export default class Table extends BaseComponent {
   //表格内容滚动事件
   [_tbodyScroll](e) {
     $(this.ref_theadContainer).css({left: -e.target.scrollLeft});
+  }
+
+  //表格行点击事件
+  [_tbodyTrOnClick](e) {
+    let $target = $(e.currentTarget);
+    $target.siblings().removeClass('xo-selected');
+    $target.addClass('xo-selected');
   }
 
   //排序

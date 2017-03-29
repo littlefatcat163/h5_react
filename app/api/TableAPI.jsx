@@ -26,6 +26,11 @@ export default class TableAPI extends BaseComponent {
           return (
             <div className='xo-col-xs-12'>
               <h2>表格</h2>
+              <div className='xo-margin-left-xs'>
+                <p>
+                  轻量级表格，支持拉伸，排序
+                </p>
+              </div>
               <div style={{width: '100%', height: 200}}>
                 <Table
                   columns={
