@@ -29,8 +29,8 @@
       url<string>: 请求地址
       dataResolve<function>: 数据解析 => function(asynData) { return asynData; //默认return 请求回来的数据，可以自行处理数据格式或其他逻辑 }
       onCellRender<function>: 用于td渲染前的操作 => function(sender) { return sender.value }
-      onRowClick<function>: 行点击 => function(sender) {}
-      onCellClick<function>: 表格点击 => function(sender) {}
+      onRowClick<function>: 行点击 => function(e, sender) {}
+      onCellClick<function>: 表格点击 => function(e, sender) {}
     }
 */
 
@@ -60,6 +60,8 @@ const _curTh = Symbol('_allowResize')
 const _tbodyScroll = Symbol('_tbodyScroll')
 //表格行点击事件
 const _tbodyTrOnClick = Symbol('_tbodyTrOnClick')
+//表格点击事件
+const _tbodyTdOnClick = Symbol('_tbodyTdOnClick')
 
 //排序
 const _sort = Symbol('_sort')
@@ -100,55 +102,10 @@ export default class Table extends BaseComponent {
     return (
       <div className='xo-table-container'>
         <div className='xo-table-container-thead' ref={(_theadContainer) => this.ref_theadContainer = _theadContainer}>
-          {/* <table className='xo-table xo-table-line'>
-            <tbody className='xo-table-thead'>
-              <tr>
-                <td width='100'>调试1</td>
-                <td width='100'>调试2</td>
-                <td width='100'>调试3</td>
-                <td width='100'>调试4</td>
-                <td width='100'>调试5</td>
-                <td width='100'>调试6</td>
-                <td width='100'>调试7</td>
-                <td width='100'>调试8</td>
-                <td width='100'>调试9</td>
-                <td width='100'>调试10</td>
-                <td width='100'>调试11</td>
-                <td width='100'>调试12</td>
-              </tr>
-            </tbody>
-          </table> */}
         </div>
         <div className='xo-table-container-col-resize-pointer' ref={(_colResizePointer) => this[_ref_colResizePointer] = _colResizePointer}></div>
         <div className='xo-table-container-col-resize-pointer-before' ref={(_colResizePointerBefore) => this[_ref_colResizePointerBefore] = _colResizePointerBefore}></div>
         <div className='xo-table-container-tbody' ref={(_tbodyContainer) => this.ref_tbodyContainer = _tbodyContainer} onScroll={(e) => this[_tbodyScroll](e)}></div>
-        {/* <table className='xo-table' cellSpacing='0' cellPadding='0'>
-          <thead>
-            <tr>
-              {
-                this.props.columns.map((column, index) => {
-                  let _th = <th key={`xo-table-thead-th-${column.field}`}>{column.title}</th>;
-                  this[_map].set(column, _th);
-                  return _th;
-                })
-              }
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.props.data.map((_data, index) => {
-                let tds = [];
-                for(let key of this[_map].keys()) {
-                  let _td = <td key={`xo-table-tbody-td-${index}-${key.field}`}>{_data[key.field]}</td>;
-                  tds.push(_td);
-                }
-                let _tr = <tr key={`xo-table-tbody-tr-${index}`}>{tds}</tr>;
-                this[_map].set(_data, _tr);
-                return _tr;
-              })
-            }
-          </tbody>
-        </table> */}
       </div>
     )
   }
@@ -180,6 +137,9 @@ export default class Table extends BaseComponent {
     if(this[_config].width == '100%') {
       $(this.ref_theadContainer).find('table').width(width);
       $(this.ref_tbodyContainer).find('table').width(width);
+      $.each($(this.ref_theadContainer).find('table th'), ((index, th) => {
+        if(th.getAttribute('style').indexOf('width: auto') > -1) $(this.ref_tbodyContainer).find(`table td[data-index='${index}']`).css({width: th.offsetWidth, maxWidth: th.offsetWidth});
+      }));
     }
     if(this[_config].height == '100%') {
       let height = this.$dom.parent().outerHeight() - this.ref_theadContainer.offsetHeight;
@@ -196,7 +156,10 @@ export default class Table extends BaseComponent {
                           column = Object.assign({}, this[_column], column);
                           column._index = index;
                           if(column.width == 'auto' && typeof this[_config].width == 'string') this[_config].width = '100%';
-                          let _th = <th style={{width: column.width, maxWidth: column.width}} className={column.className} key={`xo-table-thead-th-${column.field}`}>
+                          let _th = <th style={{width: column.width, maxWidth: column.width}}
+                                        className={column.className}
+                                        key={`xo-table-thead-th-${column.field}`}
+                                        data-index={index}>
                                       {
                                         ((__column) => {
                                           let $column = null;
@@ -247,8 +210,8 @@ export default class Table extends BaseComponent {
                             let _td = <td
                                         data-index={column._index}
                                         style={{width: column.width, maxWidth: column.width}}
-                                        key={`xo-table-tbody-td-${index}-${column.field}`}
-                                        onClick={(e) => console.log('td')}>
+                                        key={`xo-table-tbody-td-${index} ${column.field}`}
+                                        onClick={(e) => this[_tbodyTdOnClick](e)}>
                                         <div>
                                           {
                                             ((__this, __data, __column) => {
@@ -310,6 +273,12 @@ export default class Table extends BaseComponent {
         let tableWidth = this[_renderGetTableWidth]();
         $(this.ref_theadContainer).find('table').outerWidth(tableWidth);
         $(this.ref_tbodyContainer).find('table').outerWidth($(this.ref_theadContainer).find('table').outerWidth());
+        let ths = $(th).nextAll();
+        $.each(ths, (index, _th) => {
+          if(_th.getAttribute('style').indexOf('width: auto') > -1) {
+            $(this.ref_tbodyContainer).find(`table td[data-index='${$(_th).attr('data-index')}']`).css({width: _th.offsetWidth, maxWidth: _th.offsetWidth});
+          }
+        });
         $(this[_ref_colResizePointer]).hide();
         $(this[_ref_colResizePointerBefore]).hide();
         document.body.onselectstart = () => { return true }
@@ -327,6 +296,24 @@ export default class Table extends BaseComponent {
     let $target = $(e.currentTarget);
     $target.siblings().removeClass('xo-selected');
     $target.addClass('xo-selected');
+    let tr = super.findReactDOMNode(e);
+    let sender = { row: this[_map].get(tr) }
+
+    if(this[_config].onRowClick && typeof this[_config].onRowClick == 'function') this[_config].onRowClick(e, sender);
+  }
+
+  //表格点击事件
+  [_tbodyTdOnClick](e) {
+    let td = super.findReactDOMNode(e);
+    let tr = super.findReactDOMNode(e);
+    let field = td.key.split(' ')[1];
+    let row = this[_map].get(tr);
+    let sender = {
+      field: field,
+      value: row[field],
+      row: row
+    }
+    if(this[_config].onCellClick && typeof this[_config].onCellClick == 'function') this[_config].onCellClick(e, sender);
   }
 
   //排序

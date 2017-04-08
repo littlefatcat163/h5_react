@@ -231,3 +231,106 @@ input[type="reset"].xo-btn-block,
 input[type="button"].xo-btn-block {
   width: 100%;
 }
+
+//按钮组
+.xo-btn-group
+{
+  display: inline-block;
+  >.xo-btn {
+    border-radius: 0;
+    &:first-child { border-radius: .05rem 0 0 .05rem; }
+    &:last-child { border-radius: 0 .05rem .05rem 0; }
+    &:first-child:last-child { border-radius: .05rem; }
+    &:nth-last-child(n+2) { border-right-width: 0; }
+    &:hover{ border-width: 1px; }
+  }
+  &.xo-btn-ver>.xo-btn{
+    display: block;
+    border-width: 1px;
+    width: 100%;
+    &:first-child { border-radius: .05rem .05rem 0 0; }
+    &:last-child { border-radius: 0 0 .05rem .05rem; }
+    &:first-child:last-child { border-radius: .05rem; }
+    &:nth-last-child(n+2) { border-bottom-width: 0; }
+    &:hover{ border-width: 1px; }
+  }
+}
+
+//下拉按钮组
+.xo-btn-drop-group
+{
+
+  position: relative;
+  display: inline-block;
+
+  div:first-child
+  {
+    position: relative;
+    display: inline-block;
+
+    .xo-btn
+    {
+      display: block;
+      width: 100%;
+    }
+
+    .xo-btn-drop
+    {
+      position: relative;
+      float: left;
+
+      >div { display: inline-block; width: 100%; }
+      >div>.xo-btn { border-radius: 0; }
+      &:first-child >div>.xo-btn { border-radius: .05rem 0 0 .05rem; }
+      &:last-child >div>.xo-btn { border-radius: 0 .05rem .05rem 0; }
+      &:first-child:last-child >div>.xo-btn { border-radius: .05rem; }
+      &:nth-last-child(n+2) >div>.xo-btn { border-right-width: 0; }
+
+      .xo-btn-drop-child
+      {
+        display: none;
+        position: relative;
+        width: 100%;
+        >.xo-btn { border-radius: 0; border-width: 0; }
+      }
+      &:hover .xo-btn-drop-child { display: block; }
+
+      &.xo-btn-drop-ver
+      {
+        float: none;
+        width: 100%;
+        &:first-child >div>.xo-btn { border-radius: .05rem .05rem 0 0; }
+        &:last-child >div>.xo-btn { border-radius: 0 0 .05rem .05rem; }
+        &:first-child:last-child >div>.xo-btn { border-radius: .05rem; }
+        &:nth-last-child(n+2) >div>.xo-btn { border-bottom-width: 0; border-right-width: 1px; }
+        .xo-btn-drop-child { position: absolute; left: 100%; top: 0; }
+      }
+
+    }
+
+    .xo-btn-drop-more
+    {
+      position: relative;
+      width: 100%;
+
+      >div { display: inline-block; width: 100%; }
+      >div>.xo-btn { border-radius: 0; }
+      &:first-child >div>.xo-btn { border-radius: .05rem .05rem 0 0; }
+      &:last-child >div>.xo-btn { border-radius: 0 0 .05rem .05rem; }
+      &:first-child:last-child >div>.xo-btn { border-radius: .05rem; }
+      &:nth-last-child(n+2) >div>.xo-btn { border-bottom-width: 0; }
+
+      >.xo-btn-drop-more-child
+      {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 100%;
+      }
+      &:hover >.xo-btn-drop-more-child{ display: block; }
+
+    }
+
+  }
+
+}

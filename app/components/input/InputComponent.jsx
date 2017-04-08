@@ -4,7 +4,7 @@ import BaseComponent from '../BaseComponent'
 
 export default class InputComponent extends BaseComponent {
 
-  refInput = null;
+  refInput = null
 
   constructor(props) {
     super(props);
@@ -41,9 +41,12 @@ export default class InputComponent extends BaseComponent {
 }
 
 InputComponent.propTypes = {
-  disabled: React.PropTypes.bool
+  disabled: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  style: React.PropTypes.object
 }
 
 InputComponent.defaultProps = {
-  disabled: false
+  disabled: false,
+  className: ''
 }

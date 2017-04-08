@@ -50,6 +50,12 @@ export default class TableAPI extends BaseComponent {
                       { field1: '很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容', field2: 'ddd', field3: '四四四', field4: 444 },
                       { field1: '很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容很长的内容', field2: 'eee', field3: '五五五', field4: 555 }
                     ]
+                  }
+                  config={
+                    {
+                      onCellClick: (e, sender) => { console.log(e.target); console.log(sender); },
+                      onRowClick: (e, sender) => { console.log(e); console.log(sender); }
+                    }
                   }/>
               </div>
             </div>

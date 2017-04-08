@@ -9,6 +9,7 @@ export default class BaseComponent extends React.Component {
 
   $dom = null;
   [_enableEvent] = false;
+  data = null;
 
   constructor(props) {
     super(props);
@@ -42,12 +43,35 @@ export default class BaseComponent extends React.Component {
     console.info('请重写BaseComponent中的windowResize事件，检测浏览器窗口变化');
   }
 
+  /**
+    根据操作的react节点获取相应的跟节点
+    @param e<操作的reactComponent>, domName<string>
+    @return ReactDOMComponent
+  */
+  findReactDOMNode(e, _component) {
+    if(e) {
+      if(!_component) _component = e._targetInst;
+      else _component = _component._hostParent;
+      if(_component._tag != e.currentTarget.nodeName.toLowerCase()) _component = this.findReactDOMNode(e, _component);
+      else _component = _component._currentElement;
+    }
+    return _component;
+  }
+
   hide() {
     if(this.$dom) this.$dom.hide();
   }
 
   show() {
     if(this.$dom) this.$dom.show();
+  }
+
+  getData() {
+    return this.data;
+  }
+
+  setData(data) {
+    this.data = data;
   }
 
 }
