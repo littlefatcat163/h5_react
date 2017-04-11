@@ -108,11 +108,21 @@ export default class xoSystem {
       array 需要排列的数组
       sortOrder 排列方向, 默认null,即放回当前数组的倒叙
       fieldMap 对比的字段
+    @return array
   */
   static sort(array, sortOrder, fields) {
     if(!array || array.length <= 1) return array;
     if(!sortOrder) return array.reverse();
     return _sortObj.sort(array, sortOrder, fields);
+  }
+
+  /**
+    @desc 为空
+    @return bool
+  */
+  static isEmpty(value = null) {
+    if (value == 0) return false;
+    else return !value;
   }
 
 }

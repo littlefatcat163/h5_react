@@ -34,7 +34,7 @@
 
 .xo-api-left-list {
 
-  padding: 0 10px;
+  padding: 0 15px;
 
   ul {
     display: block;
@@ -142,16 +142,16 @@
 
   @media (min-width: $lg-width) {
     & {
-      display: table;
+      //display: table;
     }
 
     .xo-base-api-row {
-      display: table-row;
+      //display: table-row;
     }
 
     .xo-base-api-left,.xo-base-api-right {
-      display: table-cell;
-      float: none;
+      //display: table-cell;
+      //float: none;
       vertical-align: top;
       padding-top: .1rem;
       padding-bottom: .1rem;
@@ -160,10 +160,11 @@
   }
 
   .xo-base-api-left {
-    border-right: 1px solid #e5e5e5;
+    //border-right: 1px solid #e5e5e5;
   }
 
   .xo-base-api-right {
+    border-left: 1px solid #e5e5e5;
     p {
       margin: 1em 0;
       color: #5d5d5d;

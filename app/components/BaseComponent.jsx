@@ -48,11 +48,12 @@ export default class BaseComponent extends React.Component {
     @param e<操作的reactComponent>, domName<string>
     @return ReactDOMComponent
   */
-  findReactDOMNode(e, _component) {
-    if(e) {
+  findReactDOMNode(e, domName, _component) {
+    if(!domName) domName = e.currentTarget.nodeName;
+    if(e && domName) {
       if(!_component) _component = e._targetInst;
       else _component = _component._hostParent;
-      if(_component._tag != e.currentTarget.nodeName.toLowerCase()) _component = this.findReactDOMNode(e, _component);
+      if(_component._tag != domName.toLowerCase()) _component = this.findReactDOMNode(e, domName, _component);
       else _component = _component._currentElement;
     }
     return _component;

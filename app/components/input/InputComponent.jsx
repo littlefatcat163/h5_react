@@ -43,7 +43,10 @@ export default class InputComponent extends BaseComponent {
 InputComponent.propTypes = {
   disabled: React.PropTypes.bool,
   className: React.PropTypes.string,
-  style: React.PropTypes.object
+  style: React.PropTypes.object,
+  onClick: React.PropTypes.func,
+  onCheckedChanged: React.PropTypes.func,
+  onValueChanged: React.PropTypes.func
 }
 
 InputComponent.defaultProps = {

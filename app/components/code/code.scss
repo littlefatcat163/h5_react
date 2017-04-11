@@ -28,8 +28,14 @@
       }
       &.xo-code-content
       {
-        max-width: 100px;
+        max-width: 1px;
         span { white-space: pre; }
+        overflow: visible;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        font-size: 12px;
+        color: #24292e;
+        word-wrap: normal;
+        white-space: pre;
       }
     }
 

@@ -45,10 +45,6 @@ export default class BaseComponent extends React.Component {
   }
 
   componentWillUnmount() {
-
-  }
-
-  componentWillUnmount() {
     ReactDOM.unmountComponentAtNode(this.__leftTargetDOM);
     ReactDOM.unmountComponentAtNode(this.__rightToggleDOM);
   }

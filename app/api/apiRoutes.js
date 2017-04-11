@@ -46,4 +46,13 @@ export const routes = [
       }, `api/TableAPI`)
     }
   }
+  ,
+  {
+    path : `Checkbox${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./CheckboxAPI.jsx`).default)
+      }, `api/CheckboxAPI`)
+    }
+  }
 ]

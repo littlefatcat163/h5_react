@@ -236,7 +236,7 @@ export default class Home extends React.Component {
             key : "nav_input_input",
             name : "输入框",
             iconClass : "fa fa-keyboard-o",
-            link : "#/home/input/输入框"
+            link : "#/home/Checkbox/输入框"
           },
           {
             key : "nav_input_select",
@@ -249,12 +249,6 @@ export default class Home extends React.Component {
             name : "勾选框",
             iconClass : "fa fa-check-square",
             link : "#/home/checkbox/勾选框"
-          },
-          {
-            key : "nav_input_radio",
-            name : "单选框",
-            iconClass : "fa fa-dot-circle-o",
-            link : "#/home/radio/单选框"
           },
           {
             key : "nav_input_date",

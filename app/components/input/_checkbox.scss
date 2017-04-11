@@ -1,0 +1,223 @@
+@import "../../style/color";
+
+.xo-checkbox-container
+{
+
+  position: relative;
+  display: inline-block;
+
+  $size: 14px;
+
+  .xo-checkbox
+  {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: text-bottom;
+
+    &+span { margin-left: 5px; }
+
+    input[type=checkbox]
+    {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      cursor: pointer;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+
+      &:disabled
+      {
+        cursor: not-allowed;
+        &+span
+        {
+          cursor: not-allowed;
+          opacity: .55;
+          border-color: #d4d4d4;
+          color: #656565;
+          &:after { opacity: 0; }
+        }
+      }
+
+      &+span
+      {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        width: $size;
+        height: $size;
+        border: 1px solid #c1c1c1;
+        border-radius: 2px;
+        background-color: transparent;
+
+        &::after
+        {
+          content: '';
+          position: absolute;
+          width: 60%;
+          height: 35%;
+          background: transparent;
+          border: 2px solid $deep-gray;
+          border-top: none;
+          border-right: none;
+          top: 13%;
+          left: 13%;
+          transform: rotate(-45deg);
+          opacity: 0;
+        }
+
+      }
+
+      &:checked+span
+      {
+        &::after { opacity: 1; }
+      }
+
+    }
+
+    &.xo-checkbox-xs input[type=checkbox]+span { width: $size; height: $size; }
+    &.xo-checkbox-sm input[type=checkbox]+span { width: $size + 2; height: $size + 2; }
+    &.xo-checkbox-md input[type=checkbox]+span { width: $size + 4; height: $size + 4; }
+    &.xo-checkbox-lg input[type=checkbox]+span { width: $size + 6; height: $size + 6; }
+    &.xo-checkbox-xl input[type=checkbox]+span { width: $size + 8; height: $size + 8; }
+
+    &.xo-checkbox-primary input[type=checkbox] {
+      &:hover+span{ border-color: $primary; } &:checked+span { border-color: $primary; background-color: $primary; &:after{ border-color: #fff; } }
+    }
+    &.xo-checkbox-info input[type=checkbox] {
+      &:hover+span{ border-color: $info; } &:checked+span { border-color: $info; background-color: $info; &:after{ border-color: #fff; } }
+    }
+    &.xo-checkbox-success input[type=checkbox] {
+      &:hover+span{ border-color: $success; } &:checked+span { border-color: $success; background-color: $success; &:after{ border-color: #fff; } }
+    }
+    &.xo-checkbox-warn input[type=checkbox] {
+      &:hover+span{ border-color: $warn; } &:checked+span { border-color: $warn; background-color: $warn; &:after{ border-color: #fff; } }
+    }
+    &.xo-checkbox-danger input[type=checkbox] {
+      &:hover+span{ border-color: $danger; } &:checked+span { border-color: $danger; background-color: $danger; &:after{ border-color: #fff; } }
+    }
+
+  }
+
+}
+
+//模式一
+.xo-checkbox-container
+{
+
+  $size: 36px;
+
+  .xo-checkbox.xo-checkbox-format-1
+  {
+
+    input[type=checkbox]
+    {
+      &+span {
+        width: $size;
+        height: $size / 2;
+        border-radius: 15px;
+        border-width: 1px;
+        &:after {
+          width: 55%;
+          height: 100%;
+          top: -1px;
+          left: -1px;
+          background-color: $white;
+          border-radius: 100%;
+          border: 1px solid #d0d0d0;
+          transform: rotate(0deg);
+          opacity: 1;
+          transition: left .15s ease;
+        }
+        transition: background-color .15s ease;
+      }
+      &:checked+span {
+        background-color: #bdbdbd;
+        &:after { left: 43%; }
+      }
+    }
+
+    &.xo-checkbox-xs input[type=checkbox]+span { width: $size; height: $size / 2; }
+    &.xo-checkbox-sm input[type=checkbox]+span { width: $size + 2; height: ($size + 2) / 2; }
+    &.xo-checkbox-md input[type=checkbox]+span { width: $size + 4; height: ($size + 4) / 2; }
+    &.xo-checkbox-lg input[type=checkbox]+span { width: $size + 6; height: ($size + 6) / 2; }
+    &.xo-checkbox-xl input[type=checkbox]+span { width: $size + 8; height: ($size + 8) / 2; }
+
+    &.xo-checkbox-primary input[type=checkbox] {
+      &:hover+span{ border-color: $primary; &:after { border-color: $primary; } } &:checked+span { border-color: $primary; background-color: $primary; &:after{ border-color: $primary; } }
+    }
+    &.xo-checkbox-info input[type=checkbox] {
+      &:hover+span{ border-color: $info; &:after { border-color: $info; } } &:checked+span { border-color: $info; background-color: $info; &:after{ border-color: $info; } }
+    }
+    &.xo-checkbox-success input[type=checkbox] {
+      &:hover+span{ border-color: $success; &:after { border-color: $success; } } &:checked+span { border-color: $success; background-color: $success; &:after{ border-color: $success; } }
+    }
+    &.xo-checkbox-warn input[type=checkbox] {
+      &:hover+span{ border-color: $warn; &:after { border-color: $warn; } } &:checked+span { border-color: $warn; background-color: $warn; &:after{ border-color: $warn; } }
+    }
+    &.xo-checkbox-danger input[type=checkbox] {
+      &:hover+span{ border-color: $danger; &:after { border-color: $danger; } } &:checked+span { border-color: $danger; background-color: $danger; &:after{ border-color: $danger; } }
+    }
+
+  }
+
+}
+
+//模式二
+.xo-checkbox-container
+{
+
+  .xo-checkbox.xo-checkbox-format-2
+  {
+
+    input[type=checkbox]
+    {
+
+      &+span
+      {
+         background-color: $white;
+         border-radius: 100%;
+         &::after
+         {
+           border: none;
+           width: 65%;
+           height: 65%;
+           border-radius: 100%;
+           background-color: $deep-gray;
+           margin: auto;
+           left: .008rem;
+           right: 0;
+           top: 0;
+           bottom: 0;
+         }
+      }
+
+    }
+
+    &.xo-checkbox-primary input[type=checkbox] {
+      &:hover+span{ border-color: $primary; } &:checked+span { border-color: $primary; background-color: $white; &:after{ background-color: $primary; } }
+    }
+    &.xo-checkbox-info input[type=checkbox] {
+      &:hover+span{ border-color: $info; } &:checked+span { border-color: $info; background-color: $white; &:after{ background-color: $info; } }
+    }
+    &.xo-checkbox-success input[type=checkbox] {
+      &:hover+span{ border-color: $success; } &:checked+span { border-color: $success; background-color: $white; &:after{ background-color: $success; } }
+    }
+    &.xo-checkbox-warn input[type=checkbox] {
+      &:hover+span{ border-color: $warn; } &:checked+span { border-color: $warn; background-color: $white; &:after{ background-color: $warn; } }
+    }
+    &.xo-checkbox-danger input[type=checkbox] {
+      &:hover+span{ border-color: $danger; } &:checked+span { border-color: $danger; background-color: $white; &:after{ background-color: $danger; } }
+    }
+
+  }
+
+}

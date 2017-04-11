@@ -29,7 +29,7 @@ export default class Code extends React.Component {
           trs.push(
             <tr key={'data-line-number'+index}>
             { ltd }
-            <td className='xo-code-content'>{ spans }</td>
+            <td className='xo-code-content'><div>{ spans }</div></td>
             </tr>
           );
         });

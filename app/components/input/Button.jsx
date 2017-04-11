@@ -13,7 +13,7 @@ const __onClick = Symbol(`__onClick`)
   @prop
     type<enum>: 类型，对应Button.TYPE，默认Button.TYPE.DEFAULT
     size<enum>: 大小，对应Button.SIZE，默认Button.SIZE.XS
-    onClick<func>: 点击事件，function() { Button, e }
+    onClick<func>: 点击事件，(btn, e) => { ... }
     disabled<bool>: 禁用，默认false
     className<string>
     style<object>
@@ -69,8 +69,8 @@ Button.TYPE = {
 }
 
 Button.propTypes = Object.assign({}, InputComponent.propTypes);
-Button.propTypes.size = React.PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', 'block']);
-Button.propTypes.type = React.PropTypes.oneOf(['primary', 'info', 'warn', 'success', 'danger', 'default']);
+Button.propTypes.size = React.PropTypes.oneOf(Object.values(Button.SIZE));
+Button.propTypes.type = React.PropTypes.oneOf(Object.values(Button.TYPE));
 Button.propTypes.onClick = React.PropTypes.func;
 
 Button.defaultProps = Object.assign({}, InputComponent.defaultProps);
@@ -113,7 +113,7 @@ BtnGroup.TYPE = {
   HOR: 'hor'//水平
 }
 BtnGroup.propTypes = Object.assign({}, InputComponent.propTypes);
-BtnGroup.propTypes.type = React.PropTypes.oneOf(['ver', 'hor']);
+BtnGroup.propTypes.type = React.PropTypes.oneOf(Object.values(BtnGroup.TYPE));
 
 BtnGroup.defaultProps = Object.assign({}, InputComponent.defaultProps);
 BtnGroup.defaultProps.type = BtnGroup.TYPE.HOR;
@@ -207,7 +207,7 @@ BtnDrop.TYPE = {
   HOR: 'hor'//水平
 }
 BtnDrop.propTypes = Object.assign({}, InputComponent.propTypes);
-BtnDrop.propTypes.type = React.PropTypes.oneOf(['ver', 'hor']);
+BtnDrop.propTypes.type = React.PropTypes.oneOf(Object.values(BtnDrop.TYPE));
 BtnDrop.propTypes.config = React.PropTypes.object;
 
 BtnDrop.defaultProps = Object.assign({}, InputComponent.defaultProps);

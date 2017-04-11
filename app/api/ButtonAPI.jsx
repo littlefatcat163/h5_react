@@ -1,7 +1,7 @@
 import React from 'react'
 
 import BaseComponent from './BaseComponent'
-import { Button, Tabs, Code, Table, Icon } from '../components'
+import { Button, Tabs, Code, Table, Icon, xoSystem } from '../components'
 import { createStore } from 'redux'
 import { Provider, connect } from 'react-redux'
 
@@ -210,23 +210,34 @@ export default class ButtonAPI extends BaseComponent {
                   data={
                     [
                       {name: 'size', type: 'enum', default: 'Button.SIZE.XS', desc: '按钮大小\nButton.SIZE.XS  //默认尺寸\nButton.SIZE.SM  //小\nButton.SIZE.MD  //中\nButton.SIZE.LG  //偏大\nButton.SIZE.XL  //大\nButton.SIZE.BLOCK  //宽度占满父级'},
-                      {name: 'type', type: 'enum', default: 'Button.TYPE.DEFAULT', desc: '按钮样式\nButton.TYPE.DEFAULT\nButton.TYPE.PRIMARY\nButton.TYPE.INFO\nButton.TYPE.WARN\nButton.TYPE.SUCCESS\nButton.TYPE.DANGER'}
+                      {name: 'type', type: 'enum', default: 'Button.TYPE.DEFAULT', desc: '按钮样式\nButton.TYPE.DEFAULT\nButton.TYPE.PRIMARY\nButton.TYPE.INFO\nButton.TYPE.WARN\nButton.TYPE.SUCCESS\nButton.TYPE.DANGER'},
+                      {name: 'disabled', type: 'bool', default: 'false', desc: '禁用'},
+                      {name: 'onClick', type: 'func', desc: '(btn, e) => {...}'},
+                      {name: 'className', type: 'string'},
+                      {name: 'style', type: 'object'}
                     ]
                   }
                   config={
-                    {
-                      onCellRender: function(sender) {
-                        if(sender.column.field == 'desc') {
-                          let descList = sender.data.desc.split('\n');
-                          return(
-                            descList.map((desc, index) => {
-                              return <p key={index}>{desc}</p>
-                            })
-                          )
-                        }
-                      }
+                    {onCellRender: cellRender}
+                  }
+                  />
+                  <p>method</p>
+                  <Table
+                    columns={methodColumns}
+                    data={
+                      [
+                        {name: 'hide( )', desc: '隐藏'},
+                        {name: 'show( )', desc: '显示'},
+                        {name: 'enable( )', desc: '启用'},
+                        {name: 'disable( )', desc: '禁用'},
+                        {name: 'isDisable( )', desc: '是否禁用', return: 'bool'},
+                        {name: 'setText( text )', param: 'text: string', desc: '设置显示的文本'}
+                      ]
                     }
-                  }/>
+                    config={
+                      {onCellRender: methodCellRender}
+                    }
+                    />
               </div>
             )
           }
@@ -271,7 +282,7 @@ export default class ButtonAPI extends BaseComponent {
                   data={
                     [
                       { name: 'className', type: 'string', desc: '对应样式class' },
-                      { name: 'type', type: 'enum', default: 'Icon.left', desc: '位置类型' },
+                      { name: 'type', type: 'enum', default: 'Icon.LEFT', desc: '位置类型' },
                       { name: 'style', type: 'object', desc: '内嵌样式' }
                     ]
                   }/>
@@ -339,6 +350,7 @@ export default class ButtonAPI extends BaseComponent {
                   </Tabs.TabPane>
                 </Tabs>
                 <h2>API</h2>
+                <p>prop</p>
                 <Table
                   columns={
                     [
@@ -369,6 +381,19 @@ export default class ButtonAPI extends BaseComponent {
                       }
                     }
                   }/>
+                  <p>method</p>
+                  <Table
+                    columns={methodColumns}
+                    data={
+                      [
+                        {name: 'hide( )', desc: '隐藏'},
+                        {name: 'show( )', desc: '显示'}
+                      ]
+                    }
+                    config={
+                      {onCellRender: methodCellRender}
+                    }
+                    />
               </div>
             )
           }
@@ -500,6 +525,7 @@ export default class ButtonAPI extends BaseComponent {
                   </Tabs.TabPane>
                 </Tabs>
                 <h2>API</h2>
+                <p>prop</p>
                 <Table
                   columns={
                     [
@@ -521,6 +547,19 @@ export default class ButtonAPI extends BaseComponent {
                       onCellRender: cellRender
                     }
                   }/>
+                  <p>method</p>
+                  <Table
+                    columns={methodColumns}
+                    data={
+                      [
+                        {name: 'hide( )', desc: '隐藏'},
+                        {name: 'show( )', desc: '显示'}
+                      ]
+                    }
+                    config={
+                      {onCellRender: methodCellRender}
+                    }
+                    />
               </div>
             )
           }
@@ -583,8 +622,29 @@ const BtnEvent = () => {
 
 //表格渲染描述
 const cellRender = (sender) => {
-  if(sender.column.field == 'desc') {
+  if(sender.column.field == 'desc' && !xoSystem.isEmpty(sender.data.desc)) {
     let descList = sender.data.desc.split('\n');
+    return(
+      descList.map((desc, index) => {
+        return <p key={index}>{desc}</p>
+      })
+    )
+  }
+}
+
+const methodColumns = [
+  {title: 'name', field: 'name', width: 200},
+  {title: 'param', field: 'param', width: 200},
+  {title: 'desc', field: 'desc'},
+  {title: 'return', field: 'return', width: 100}
+]
+
+const methodCellRender = (sender) => {
+  let fieldName = null;
+  if(sender.column.field == 'param') fieldName = 'param';
+  if(sender.column.field == 'desc') fieldName = 'desc';
+  if(!xoSystem.isEmpty(sender.data[fieldName])) {
+    let descList = sender.data[fieldName].split('\n');
     return(
       descList.map((desc, index) => {
         return <p key={index}>{desc}</p>
