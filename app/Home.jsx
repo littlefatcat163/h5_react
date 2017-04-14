@@ -242,7 +242,7 @@ export default class Home extends React.Component {
             key : "nav_input_select",
             name : "下拉框",
             iconClass : "fa fa-angle-down",
-            link : "#/home/select/下拉框"
+            link : "#/home/Select/下拉框"
           },
           {
             key : "nav_input_checkbox",

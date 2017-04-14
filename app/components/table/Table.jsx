@@ -118,7 +118,7 @@ export default class Table extends BaseComponent {
   componentDidMount() {
     //this.enableEvent = true;
     super.componentDidMount();
-    super.addEventListener();
+    super.addResizeEventListener();
     Object.assign(this[_config], this.props.config);
     //if(this[_config].width == 'auto') {
       this.$dom.width(this.$dom.parent().width());

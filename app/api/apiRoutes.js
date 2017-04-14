@@ -55,4 +55,13 @@ export const routes = [
       }, `api/CheckboxAPI`)
     }
   }
+  ,
+  {
+    path : `Select${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./SelectAPI.jsx`).default)
+      }, `api/SelectAPI`)
+    }
+  }
 ]

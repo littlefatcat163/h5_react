@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom'
 import $ from 'jquery'
 
 const _windowResize = Symbol('__windowResize')
-const _enableEvent = Symbol('_enableEvent')
+const _resizeEvent = Symbol('_resizeEvent')
+const _windowClick = Symbol('_windowClick')
+const _windowClickEvent = Symbol('_domClickEvent')
 
 export default class BaseComponent extends React.Component {
 
   $dom = null;
-  [_enableEvent] = false;
+  [_resizeEvent] = false;
+  [_windowClickEvent] = false;
   data = null;
 
   constructor(props) {
@@ -23,24 +26,41 @@ export default class BaseComponent extends React.Component {
     this.removeEventListener();
   }
 
-  addEventListener() {
-    if(!this[_enableEvent]) {
+  addResizeEventListener() {
+    if(!this[_resizeEvent]) {
       $(window).bind("resize", this[_windowResize]);
-      this[_enableEvent] = true;
+      this[_resizeEvent] = true;
+    }
+  }
+
+  addWindowClick() {
+    if(!this[_windowClickEvent]) {
+      $(window).bind("click", this[_windowClick]);
+      this[_windowClickEvent] = true;
     }
   }
 
   removeEventListener() {
-    if(this[_enableEvent]) {
+    if(this[_resizeEvent]) {
       $(window).unbind("resize", this[_windowResize]);
-      this[_enableEvent] = false;
+      this[_resizeEvent] = false;
+    }
+    if(this[_windowClickEvent]) {
+      $(window).unbind("click", this[_windowClick]);
+      this[_windowClickEvent] = false;
     }
   }
 
-  [_windowResize] = () => this.windowResize()
+  [_windowResize] = () => this.windowResize();
+
+  [_windowClick] = (e) => this.windowClick(e);
 
   windowResize() {
     console.info('请重写BaseComponent中的windowResize事件，检测浏览器窗口变化');
+  }
+
+  windowClick(e) {
+    console.info('请重写BaseComponent中的documentClick事件，检测document点击事件');
   }
 
   /**
