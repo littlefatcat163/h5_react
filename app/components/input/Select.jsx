@@ -9,6 +9,8 @@ const _selectOnClick = Symbol(`_selectOnClick`)
 const _config = Symbol(`_config`)
 const _valueChanged = Symbol(`_valueChanged`)
 const _selectedMap = Symbol(`_selectedMap`)
+const _liKeyIndex = Symbol(`_liKeyIndex`)
+const _groupKeyIndex = Symbol(`_groupKeyIndex`)
 
 /**
   @desc 下拉框
@@ -31,6 +33,9 @@ export default class Select extends InputComponent {
     valueField: 'value',//值对应的字段名
     textField: 'name'//显示对应的字段名
   };
+
+  [_liKeyIndex] = 0;
+  [_groupKeyIndex] = 0;
 
   ref_selection = null;
 
@@ -119,15 +124,18 @@ export default class Select extends InputComponent {
   windowClick(e) {
     if(this[_config].selected) {
       this.$dom.find('.xo-select').removeClass('xo-active');
+      $(this.refInput).siblings().show();
+      $(this.refInput).hide();
       $(this.ref_selection).fadeOut(130);
     }
   }
 
   setData(data) {
-    super.setData(data);
-    let _optGroups = null;
+    this.data = data;
     if(data && data.length) {
-      _optGroups = [];
+      this[_liKeyIndex] += $(this.ref_selection).find('.xo-option-li').length;
+      this[_groupKeyIndex] += $(this.ref_selection).find('.xo-option-group').length;
+      let _optGroups = [];
       data.forEach((_data, _index) => {
         let opts = null;
         let name = null;
@@ -135,17 +143,17 @@ export default class Select extends InputComponent {
           opts = [];
           name = _data[this[_config].textField];
           _data.children.forEach((child, __index) => {
-            opts.push(<Option key={__index} data={child} valueChanged={(option) => this[_valueChanged](option)}>{child[this[_config].textField]}</Option>);
+            opts.push(<Option key={this[_liKeyIndex]++} data={child} valueChanged={(option) => this[_valueChanged](option)}>{child[this[_config].textField]}</Option>);
           });
         } else {
-          opts = <Option data={_data} valueChanged={(option) => this[_valueChanged](option)}>{_data[this[_config].textField]}</Option>
+          opts = <Option key={this[_liKeyIndex]++} data={_data} valueChanged={(option) => this[_valueChanged](option)}>{_data[this[_config].textField]}</Option>
         }
-        _optGroups.push(<OptionGroup key={_index} name={name}>{opts}</OptionGroup>);
+        _optGroups.push(<OptionGroup key={this[_groupKeyIndex]++} name={name}>{opts}</OptionGroup>);
       });
-    }
+      ReactDOM.render(<div>{_optGroups}</div>, this.ref_selection);
+    } else ReactDOM.render(<div></div>, this.ref_selection);
     $(this.refInput).val('');
     $(this.refInput).siblings().text('');
-    ReactDOM.render(<div>{_optGroups}</div>, this.ref_selection);
   }
 
   setValue(value) {
