@@ -44,6 +44,7 @@ export default class Select extends InputComponent {
             {/*this.props.children*/}
           </div>
           <div className='xo-select-result'>
+            <div></div>
             <input type='text' ref={(refInput) => this.refInput = refInput} />
           </div>
           <span className='xo-select-arrow'></span>
@@ -61,22 +62,22 @@ export default class Select extends InputComponent {
     let _opts = React.Children.map(this.props.children, (child, index) => {
                   let _child = child;
                   if(child && typeof child == 'object') {
-                    if(child.type.name == 'OptionGroup') {
+                    if(child.type.displayName == 'OptionGroup') {
                       let _data = { name: child.props.name, children: [] };
                       let optGroupChild = React.Children.map(child.props.children, (opt, optIndex) => {
                                             let _opt = opt;
-                                            if(opt && opt.type.name == 'Option') {
+                                            if(opt && opt.type.displayName == 'Option') {
                                               let optData = {};
                                               optData[this[_config].valueField] = opt.props[this[_config].valueField];
                                               optData[this[_config].textField] = opt.props.children;
                                               _data.children.push(optData);
-                                              _opt = React.cloneElement(opt, {...opt.children, data: optData, valueChanged: (option) => this[_valueChanged](option)});
+                                              _opt = React.cloneElement(opt, { ...opt.props, data: optData, valueChanged: (option) => this[_valueChanged](option) });
                                             }
                                             return _opt;
                                           });
                       data.push(_data);
                       _child = React.cloneElement(child, {...child.props, children: optGroupChild});
-                    } else if(child.type.name == 'Option') {
+                    } else if(child.type.displayName == 'Option') {
                       let _data = { };
                       _data[this[_config].valueField] = child.props[this[_config].valueField];
                       _data[this[_config].textField] = child.props.children;
@@ -100,12 +101,16 @@ export default class Select extends InputComponent {
     if(this[_config].selected) {
       $(this.$dom.find('.xo-select')).removeClass('xo-active');
       $(this.ref_selection).fadeOut(130);
+      $(this.refInput).hide();
+      $(this.refInput).siblings().show();
     } else {
       $(this.ref_selection).parent().removeClass('xo-select-top').removeClass('xo-select-bottom');
       if(this.$dom.offset().top + $(this.ref_selection).outerHeight() > this.$dom.parent().height() + this.$dom.parent().scrollTop()) $(this.ref_selection).parent().addClass('xo-select-bottom');
       else $(this.ref_selection).parent().addClass('xo-select-top');
       $(this.$dom.find('.xo-select')).addClass('xo-active');
       $(this.ref_selection).fadeIn(130);
+      if(this[_config].allowInput) $(this.refInput).show().val($(this.refInput).siblings().text()).focus();
+      $(this.refInput).siblings().hide();
     }
     this[_config].selected = !this[_config].selected;
   }
@@ -139,6 +144,7 @@ export default class Select extends InputComponent {
       });
     }
     $(this.refInput).val('');
+    $(this.refInput).siblings().text('');
     ReactDOM.render(<div>{_optGroups}</div>, this.ref_selection);
   }
 
@@ -231,7 +237,7 @@ export default class Select extends InputComponent {
     if(!this[_selectedMap] || !this[_selectedMap].get(li)) this[_selectedMap] = new Map([[li, selData]]);
     else isChanged = false;
     if(isChanged && this[_config].valueChanged && typeof this[_config].valueChanged == 'function') this[_config].valueChanged(this);
-    $(this.refInput).val(selData[this[_config].textField]);
+    $(this.refInput).siblings().text(selData[this[_config].textField]);
     $(this.ref_selection).find('.xo-option-li').removeClass('xo-active');
     $(li).addClass('xo-active');
   }
@@ -278,7 +284,7 @@ export default class Select extends InputComponent {
     if(!this[_selectedMap] || !this[_selectedMap].get(ReactDOM.findDOMNode(option))) this[_selectedMap] = new Map([[ReactDOM.findDOMNode(option), option.getData()]]);
     else isChanged = false;
     if(isChanged && this[_config].valueChanged && typeof this[_config].valueChanged == 'function') this[_config].valueChanged(this);
-    $(this.refInput).val(option.getData()[this[_config].textField]);
+    $(this.refInput).siblings().text(option.getData()[this[_config].textField]);
     $(this.ref_selection).find('.xo-option-li').removeClass('xo-active');
     $(option.$dom).addClass('xo-active');
   }
@@ -318,6 +324,7 @@ class OptionGroup extends InputComponent {
 
 }
 
+OptionGroup.displayName = 'OptionGroup';
 Select.OptionGroup = OptionGroup;
 
 /**
@@ -330,7 +337,7 @@ class Option extends InputComponent {
 
   render() {
     return (
-      <li className='xo-option-li' onClick={(e) => this.props.valueChanged(this)}>{this.props.children}</li>
+      <li className='xo-option-li' onClick={(e) => this.props.valueChanged(this) }>{this.props.children}</li>
     )
   }
 
@@ -341,4 +348,5 @@ class Option extends InputComponent {
 
 }
 
+Option.displayName = 'Option';
 Select.Option = Option;
