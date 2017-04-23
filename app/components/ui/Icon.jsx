@@ -22,3 +22,5 @@ export default class Icon extends BaseComponent {
   }
 
 }
+
+Icon.displayName = 'Icon';

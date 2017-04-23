@@ -64,4 +64,13 @@ export const routes = [
       }, `api/SelectAPI`)
     }
   }
+  ,
+  {
+    path : `Input${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./InputAPI.jsx`).default)
+      }, `api/InputAPI`)
+    }
+  }
 ]

@@ -1,0 +1,109 @@
+@import "../../style/color";
+
+.xo-input-container
+{
+  display: table;
+  cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  input[type=text]
+  {
+    width: 160px;
+    height: 26px;
+    padding: 3px;
+    border: 1px solid #c7c7c7;
+    //border-radius: 3px;
+    outline: none;
+    //&:hover, &:focus { border-color: $primary; }
+    &:first-child { border-radius: 3px 0 0 3px; }
+    &:last-child { border-radius: 0 3px 3px 0; }
+    &:first-child:last-child { border-radius: 3px; }
+    &:nth-last-child(n+2) { border-right-width: 0; }
+  }
+
+  .xo-input-addon
+  {
+    vertical-align: middle;
+    font-size: .14rem;
+    padding: 4px;
+    border: 1px solid #c7c7c7;
+    position: relative;
+    bottom: 1px;
+    background-color: #efefef;
+    &:first-child { border-radius: 3px 0 0 3px; }
+    &:last-child { border-radius: 0 3px 3px 0; }
+    &:nth-last-child(n+2) { border-right-width: 0; }
+  }
+
+}
+
+.xo-input-group { display: inline-block; }
+
+.xo-input-group .xo-input-container
+{
+  display: inline-block;
+  &:first-child {
+    .xo-input-addon {
+      &:first-child { border-radius: 3px 0 0 3px; }
+      &:last-child { border-radius: 0; border-right-width: 0; }
+      &:nth-last-child(n+2) { border-right-width: 0; }
+    }
+    input[type=text] {
+      &:first-child { border-radius: 3px 0 0 3px; }
+      &:nth-last-child(n+2) { border-right-width: 0; }
+    }
+  }
+  &:last-child {
+    .xo-input-addon {
+      &:first-child { border-radius: 0; }
+      &:last-child { border-radius: 0 3px 3px 0; }
+      &:nth-last-child(n+2) { border-right-width: 0; border-radius: 0; }
+    }
+    input[type=text] {
+      &:first-child { border-radius: 0; }
+      &:last-child { border-radius: 0 3px 3px 0; }
+      &:nth-last-child(n+2) { border-right-width: 0; border-radius: 0; }
+    }
+  }
+  &:first-child:last-child {
+    .xo-input-addon {
+      &:first-child { border-radius: 3px 0 0 3px; }
+      &:last-child { border-radius: 0 3px 3px 0; }
+      &:nth-last-child(n+2) { border-right-width: 0; }
+    }
+    input[type=text] {
+      &:first-child { border-radius: 3px 0 0 3px; }
+      &:last-child { border-radius: 0 3px 3px 0; }
+      &:first-child:last-child { border-radius: 3px; }
+      &:nth-last-child(n+2) { border-right-width: 0; }
+    }
+  }
+  &:nth-last-child(n+2) {
+    input[type=text] { border-right-width: 0; border-radius: 0; }
+    .xo-input-addon
+    {
+      border-radius: 0;
+      border-right-width: 0;
+    }
+  }
+}
+
+/*.xo-input-group.xo-input-ver .xo-input-container
+{
+  display: block;
+  input[type=text] { border-radius: 0; }
+  &:first-child {
+    input[type=text] { border-radius: 3px 3px 0 0; }
+  }
+  &:last-child {
+    input[type=text] { border-radius: 0 0 3px 3px; }
+  }
+  &:first-child, &:last-child {
+     input[type=text] { border-width: 1px; border-radius: 3px; }
+  }
+  &:nth-last-child(n+2) {
+    input[type=text] { border-bottom-width: 0; border-right-width: 1px; }
+  }
+}*/

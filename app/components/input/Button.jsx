@@ -30,7 +30,7 @@ export default class Button extends InputComponent {
               {
                 React.Children.map(this.props.children, (child, index) => {
                   if(child && typeof child == 'object') {
-                    if(child.type.name == 'Icon') {
+                    if(child.type.displayName == 'Icon') {
                       let style = null;
                       if(index != 0) style = { marginLeft: 5 };
                       else style = { marginRight: 5 };
