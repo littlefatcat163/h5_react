@@ -30,12 +30,12 @@ export default class InputComponent extends BaseComponent {
 
   }
 
-  setValue() {
-
+  setValue(value) {
+    $(this.refInput).val(value);
   }
 
   getValue() {
-
+    return $(this.refInput).val();
   }
 
 }

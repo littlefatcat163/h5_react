@@ -2,7 +2,7 @@
 
 .xo-input-container
 {
-  display: table;
+  display: inline-block;
   cursor: pointer;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -14,9 +14,8 @@
     height: 26px;
     padding: 3px;
     border: 1px solid #c7c7c7;
-    //border-radius: 3px;
     outline: none;
-    //&:hover, &:focus { border-color: $primary; }
+    &:disabled { opacity: .65; }
     &:first-child { border-radius: 3px 0 0 3px; }
     &:last-child { border-radius: 0 3px 3px 0; }
     &:first-child:last-child { border-radius: 3px; }
@@ -35,6 +34,7 @@
     &:first-child { border-radius: 3px 0 0 3px; }
     &:last-child { border-radius: 0 3px 3px 0; }
     &:nth-last-child(n+2) { border-right-width: 0; }
+
   }
 
 }

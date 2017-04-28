@@ -68,6 +68,8 @@ Button.TYPE = {
   DEFAULT: 'default'
 }
 
+Button.displayName = 'button';
+
 Button.propTypes = Object.assign({}, InputComponent.propTypes);
 Button.propTypes.size = React.PropTypes.oneOf(Object.values(Button.SIZE));
 Button.propTypes.type = React.PropTypes.oneOf(Object.values(Button.TYPE));
