@@ -135,11 +135,13 @@ class NoticeBox extends BaseComponent {
   closeTimer = null;
 
   render() {
+    let closeBtn = null;
+    if(this.props.showCloseBtn) closeBtn = <div className={`xo-notice-header-btn`}>
+                                            <span className={`xo-icon-close`} onClick={() => this.destroy()}></span>
+                                          </div>;
     return (
       <div className={`xo-notice`}>
-        <div className={`xo-notice-header-btn`}>
-          <span className={`xo-icon-close`} onClick={() => this.destroy()}></span>
-        </div>
+        {closeBtn}
         <div className={`xo-notice-body`}>
           {this.props.body}
         </div>
@@ -154,9 +156,11 @@ class NoticeBox extends BaseComponent {
       $(prev).css({bottom: bottom});
       bottom += $(prev).height();
     });
-    this.closeTimer = setTimeout(() => {
-      this.destroy();
-    }, this.props.duration);
+    if(this.props.duration) {
+      this.closeTimer = setTimeout(() => {
+        this.destroy();
+      }, this.props.duration);
+    }
   }
 
   componentWillUnmount() {
@@ -275,39 +279,53 @@ class Modal {
     )
   }
 
-  static info(body = null, duration = 2000) {
+  static info(body = null, duration = 2000, showCloseBtn = true) {
 
     Notice.newInstance().notice(
       <NoticeBox
         body={<div className='xo-notice-info'><span className='xo-notice-icon fa fa-info-circle'></span><div>{body}</div></div>}
-        duration={duration}/>
+        duration={duration}
+        showCloseBtn={showCloseBtn}/>
       );
   }
 
-  static success(body = null, duration = 2000) {
+  static success(body = null, duration = 2000, showCloseBtn = true) {
 
     Notice.newInstance().notice(
       <NoticeBox
         body={<div className='xo-notice-success'><span className='xo-notice-icon fa fa-check-circle'></span><div>{body}</div></div>}
-        duration={duration}/>
+        duration={duration}
+        showCloseBtn={showCloseBtn}/>
       );
   }
 
-  static warn(body = null, duration = 2000) {
+  static warn(body = null, duration = 2000, showCloseBtn = true) {
 
     Notice.newInstance().notice(
       <NoticeBox
         body={<div className='xo-notice-warn'><span className='xo-notice-icon fa fa-exclamation-circle'></span><div>{body}</div></div>}
-        duration={duration}/>
+        duration={duration}
+        showCloseBtn={showCloseBtn}/>
       );
   }
 
-  static danger(body = null, duration = 2000) {
+  static danger(body = null, duration = 2000, showCloseBtn = true) {
 
     Notice.newInstance().notice(
       <NoticeBox
         body={<div className='xo-notice-danger'><span className='xo-notice-icon fa fa-times-circle'></span><div>{body}</div></div>}
-        duration={duration}/>
+        duration={duration}
+        showCloseBtn={showCloseBtn}/>
+      );
+  }
+
+  static loading(body = null, duration = 2000, showCloseBtn = true) {
+
+    Notice.newInstance().notice(
+      <NoticeBox
+        body={<div className='xo-notice-loading'><span className='xo-notice-icon fa fa-spinner fa-pulse'></span><div>{body}</div></div>}
+        duration={duration}
+        showCloseBtn={showCloseBtn}/>
       );
   }
 

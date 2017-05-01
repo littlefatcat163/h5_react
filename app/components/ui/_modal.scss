@@ -58,7 +58,8 @@
       .xo-notice-info,
       .xo-notice-success,
       .xo-notice-warn,
-      .xo-notice-danger
+      .xo-notice-danger,
+      .xo-notice-loading
       {
 
         display: block;
@@ -79,6 +80,7 @@
         &.xo-notice-success .xo-notice-icon { color: $success; }
         &.xo-notice-warn .xo-notice-icon { color: $warn; }
         &.xo-notice-danger .xo-notice-icon { color: $danger; }
+        &.xo-notice-loading .xo-notice-icon { color: $primary; }
 
       }
 

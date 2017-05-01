@@ -26,7 +26,7 @@ export default class ModalAPI extends BaseComponent {
           render: () => {
             return (
               <div className='xo-padding-xs'>
-                <h2>模态框</h2>
+                <h2>模态框、提示框</h2>
                 <Tabs>
                   <Tabs.TabPane text='效果'>
                     <div className='xo-padding-xs'>
@@ -57,6 +57,11 @@ export default class ModalAPI extends BaseComponent {
                         className='xo-margin-right-xs'
                         onClick={() => { Modal.danger('danger test', 2500) }}>
                         danger
+                      </Button>
+                      <Button
+                        className='xo-margin-right-xs'
+                        onClick={() => { Modal.loading('loading', null, false) }}>
+                        loading
                       </Button>
                       <Button
                         className='xo-margin-right-xs'
@@ -100,6 +105,11 @@ export default class ModalAPI extends BaseComponent {
                         `</Button>\n` +
                         `<Button\n` +
                           `\tclassName='xo-margin-right-xs'\n` +
+                          `\tonClick={() => { Modal.loading('loading', null, false) }}>\n` +
+                          `\tloading\n` +
+                        `</Button>\n` +
+                        `<Button\n` +
+                          `\tclassName='xo-margin-right-xs'\n` +
                           `\tonClick={() => { Modal.destroy() }}>\n` +
                           `\tdestroyNotice\n` +
                         `</Button>\n`
@@ -119,20 +129,24 @@ export default class ModalAPI extends BaseComponent {
                         desc: '对话框\n\{ \ntitle: 标题, \nbody: 内容, \nclose: (result) => {...} 关闭回调,确定按钮返回true,关闭按钮返回false,\nallowDrag: 允许拖拽,\nallowResize: 允许拉伸,\nokText: 确定按钮显示文本,\ncancelText: 取消按钮显示文本\n \}'
                       },
                       {
-                        name: 'warn( body, duration )',
-                        param: 'body<element>,\n duration<number>',
-                        desc: '警告框,\n body:内容,\n duration:存在时间，单位毫秒, 默认2000'
+                        name: 'warn( body, duration, showCloseBtn )',
+                        param: 'body<element>,\n duration<number>,\n showCloseBtn<bool>',
+                        desc: '警告框,\n body:内容,\n duration:存在时间，单位毫秒, 默认2000, 赋予null时永久存在,\n showCloseBtn:显示关闭按钮'
                       },
                       {
-                        name: 'info( body, duration )',
+                        name: 'info( )',
                         desc: '同上'
                       },
                       {
-                        name: 'success( body, duration )',
+                        name: 'success( )',
                         desc: '同上'
                       },
                       {
-                        name: 'danger( body, duration )',
+                        name: 'danger( )',
+                        desc: '同上'
+                      },
+                      {
+                        name: 'loading( )',
                         desc: '同上'
                       },
                       {
