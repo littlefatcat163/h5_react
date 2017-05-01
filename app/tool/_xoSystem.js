@@ -125,6 +125,15 @@ export default class xoSystem {
     else return !value;
   }
 
+  /**
+    @desc 为方法
+    @return bool
+  */
+  static isFunc(func) {
+    if(!this.isEmpty(func)) return typeof func == 'function';
+    else return false;
+  }
+
 }
 
 //排序

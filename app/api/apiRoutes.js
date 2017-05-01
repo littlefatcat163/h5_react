@@ -73,4 +73,13 @@ export const routes = [
       }, `api/InputAPI`)
     }
   }
+  ,
+  {
+    path : `Modal${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./ModalAPI.jsx`).default)
+      }, `api/ModalAPI`)
+    }
+  }
 ]

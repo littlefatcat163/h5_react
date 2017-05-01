@@ -1,0 +1,175 @@
+@import "../../style/constant";
+@import "../../style/color";
+
+@keyframes modalAnimation
+{
+  from { opacity: 0; top: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes noticeAnimation
+{
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.xo-notice-container
+{
+
+  position: fixed;
+  z-index: $modal-index + 1;
+
+  .xo-notice
+  {
+
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-clip: padding-box;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    animation: noticeAnimation .3s ease;
+    animation-fill-mode: backwards;
+    transition: bottom .15s ease-in;
+
+    .xo-notice-header-btn
+    {
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 19px;
+      font-weight: 400;
+      font-size: 26px;
+      border: 0;
+      cursor: pointer;
+      color: #8c8c8c;
+      &:hover { color: #424242; }
+    }
+
+    .xo-notice-body
+    {
+
+      padding: 20px;
+      min-height: 70px;
+      width: 300px;
+      word-wrap: break-word;
+      word-break: break-all;
+
+      .xo-notice-info,
+      .xo-notice-success,
+      .xo-notice-warn,
+      .xo-notice-danger
+      {
+
+        display: block;
+
+        .xo-notice-icon
+        {
+          position: absolute;
+          height: 36px;
+          width: 36px;
+          font-size: 36px;
+          & + div
+          {
+            margin-left: 45px;
+          }
+        }
+
+        &.xo-notice-info .xo-notice-icon { color: $info; }
+        &.xo-notice-success .xo-notice-icon { color: $success; }
+        &.xo-notice-warn .xo-notice-icon { color: $warn; }
+        &.xo-notice-danger .xo-notice-icon { color: $danger; }
+
+      }
+
+    }
+
+  }
+
+}
+
+.xo-modal-container
+{
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: $modal-index;
+  background-color: rgba(0, 0, 0, .1);
+
+  .xo-modal
+  {
+
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    top: 0;
+    border-radius: 4px;
+    background-clip: padding-box;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    animation: modalAnimation .3s ease;
+    animation-fill-mode: forwards;
+
+    .xo-modal-header
+    {
+
+      height: 48px;
+      border-bottom: 1px solid #e9e9e9;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 26px;
+      color: #424242;
+      cursor: move;
+
+    }
+
+    .xo-modal-header-btn
+    {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      line-height: 41px;
+      font-weight: 400;
+      font-size: 26px;
+      border: 0;
+      cursor: pointer;
+      color: #8c8c8c;
+      &:hover { color: #424242; }
+    }
+
+    .xo-modal-body
+    {
+
+      min-height: 50px;
+      padding: 20px;
+      overflow: auto;
+
+    }
+
+    .xo-modal-footer
+    {
+
+      text-align: right;
+      border-top: 1px solid #e9e9e9;
+      padding: 10px;
+
+    }
+
+    .xo-modal-ext
+    {
+      content: '';
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      cursor: se-resize;
+    }
+
+  }
+
+}

@@ -193,7 +193,7 @@ export default class Home extends React.Component {
             key : "nav_ui_modial",
             name : "模态框",
             iconClass : "fa fa-window-restore",
-            link : "#/home/modial/模态框"
+            link : "#/home/Modal/模态框"
           },
           {
             key : "nav_ui_tip",

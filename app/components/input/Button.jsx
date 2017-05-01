@@ -32,8 +32,10 @@ export default class Button extends InputComponent {
                   if(child && typeof child == 'object') {
                     if(child.type.displayName == 'Icon') {
                       let style = null;
-                      if(index != 0) style = { marginLeft: 5 };
-                      else style = { marginRight: 5 };
+                      if(this.props.children.length > 0) {
+                        if(index != 0) style = { marginLeft: 5 };
+                        else style = { marginRight: 5 };
+                      }
                       return React.cloneElement(child, {...child.props, style: style});
                     }
                   }
