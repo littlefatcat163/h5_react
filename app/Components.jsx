@@ -1,6 +1,9 @@
 import xoTabs from './components/ui/Tabs'
 import xoIcon from './components/ui/Icon'
 import xoModal from './components/ui/Modal'
+import xoLoading from './components/ui/Loading'
+import xoTag from './components/ui/Tag'
+import xoTimeline from './components/ui/Timeline'
 import xoCode from './components/code/Code'
 import xoButton from './components/input/Button'
 import xoCheckbox from './components/input/Checkbox'
@@ -14,6 +17,9 @@ export const Tabs = xoTabs
 export const Icon = xoIcon
 export const Code = xoCode
 export const Modal = xoModal
+export const Loading = xoLoading
+export const Tag = xoTag
+export const Timeline = xoTimeline
 
 export const Button = xoButton
 export const Checkbox = xoCheckbox

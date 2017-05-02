@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import $ from 'jquery'
-import { createStore } from 'redux'
-import { Provider, connect } from "react-redux"
 import BaseComponent from '../BaseComponent'
 import Button from '../input/Button'
 import xoSystem from '../../tool/_xoSystem'
+import Loading from './Loading'
 import './_modal.scss'
 
 const _move = Symbol(`_move`)
@@ -320,10 +319,10 @@ class Modal {
   }
 
   static loading(body = null, duration = 2000, showCloseBtn = true) {
-
+    //<span className='xo-notice-icon fa fa-spinner fa-pulse'></span>
     Notice.newInstance().notice(
       <NoticeBox
-        body={<div className='xo-notice-loading'><span className='xo-notice-icon fa fa-spinner fa-pulse'></span><div>{body}</div></div>}
+        body={<div className='xo-notice-loading'><span className='xo-notice-icon'><Loading size={36}/></span><div>{body}</div></div>}
         duration={duration}
         showCloseBtn={showCloseBtn}/>
       );

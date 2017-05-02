@@ -199,19 +199,19 @@ export default class Home extends React.Component {
             key : "nav_ui_loading",
             name : "加载框",
             iconClass : "fa fa-spinner fa-pulse",
-            link : "#/home/loading/加载框"
+            link : "#/home/Loading/加载框"
           },
           {
             key : "nav_ui_label",
             name : "标签",
             iconClass : "fa fa-bookmark",
-            link : "#/home/label/标签"
+            link : "#/home/Tag/标签"
           },
           {
             key : "nav_ui_timer_link",
             name : "时间轴",
             iconClass : "fa fa-clock-o",
-            link : "#/home/timer-link/时间轴"
+            link : "#/home/Timeline/时间轴"
           }
         ]
       },

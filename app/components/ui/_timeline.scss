@@ -1,0 +1,44 @@
+@import "../../style/color";
+.xo-timeline
+{
+
+  list-style: none;
+  padding: 0;
+
+  .xo-timeline-item
+  {
+
+    position: relative;
+    padding-bottom: 15px;
+
+    .xo-timeline-item-line
+    {
+      position: absolute;
+      height: 100%;
+      border-left: 2px solid #dcdcdc;
+      left: 20px;
+      top: 5px;
+    }
+
+    &:last-child .xo-timeline-item-line { display: none; }
+
+    .xo-timeline-item-icon
+    {
+      position: absolute;
+      left: 10px;
+      width: 24px;
+      height: 24px;
+      background-color: $white;
+      color: $primary;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .xo-timeline-item-content
+    {
+      margin-left: 40px;
+    }
+
+  }
+
+}

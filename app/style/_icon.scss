@@ -1,4 +1,11 @@
+@import "color";
 .xo-icon-close
 {
   &::before { content: '+'; transform: rotate(45deg); display: inline-block; }
 }
+
+.xo-icon-primary { color: $primary; }
+.xo-icon-info { color: $info; }
+.xo-icon-success { color: $success; }
+.xo-icon-warn { color: $warn; }
+.xo-icon-danger { color: $danger; }

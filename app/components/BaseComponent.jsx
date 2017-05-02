@@ -13,6 +13,7 @@ export default class BaseComponent extends React.Component {
   [_resizeEvent] = false;
   [_windowClickEvent] = false;
   data = null;
+  'data-key' = null;
 
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ export default class BaseComponent extends React.Component {
 
   componentDidMount() {
     this.$dom = $(ReactDOM.findDOMNode(this));
+    this['data-key'] = this.props['data-key'];
   }
 
   componentWillUnmount() {

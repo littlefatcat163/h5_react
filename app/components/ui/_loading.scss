@@ -1,0 +1,110 @@
+@import "../../style/color";
+.xo-loading-container
+{
+
+  height: 100%;
+  display: table;
+  margin: 0 auto;
+
+  .xo-loading
+  {
+
+    position: relative;
+    display: table-cell;
+    margin: 0 auto;
+    vertical-align: middle;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-align: center;
+
+    .xo-loading-type
+    {
+      font-size: 24px;
+      color: $primary;
+    }
+
+  }
+
+  .xo-loading-mask
+  {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, .1);
+  }
+
+  .xo-loading-t1
+  {
+    width: 24px;
+    height: 24px;
+    animation: loadingT0 ease-in-out 2s infinite;
+    transform: rotate(0deg);
+    position: relative;
+
+    :nth-child(n)
+    {
+      width: 40%;
+      height: 40%;
+      background-color: $primary;
+      position: absolute;
+      opacity: 0.6;
+    }
+    :nth-child(1)
+    {
+      top: 0;
+      left: 0;
+      animation: loadingT0-1 ease-in-out 2s infinite;
+      opacity: 0.5;
+    }
+    :nth-child(2)
+    {
+      top: 0;
+      right: 0;
+      animation: loadingT0-2 ease-in-out 2s infinite;
+      opacity: 0.6;
+    }
+    :nth-child(3)
+    {
+      bottom: 0;
+      left: 0;
+      animation: loadingT0-3 ease-in-out 2s infinite;
+      opacity: 0.7;
+    }
+    :nth-child(4)
+    {
+      bottom: 0;
+      right: 0;
+      animation: loadingT0-4 ease-in-out 2s infinite;
+      opacity: 0.8;
+    }
+
+  }
+
+}
+//background-color: rgba(66, 139, 202, 0);
+@keyframes loadingT0
+{
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg);  }
+  100% { transform: rotate(360deg); }
+  //form { transform: rotate(0deg);  }
+  //to { transition: rotate(360deg); background-color: rgba(66, 139, 202, 1); }
+}
+@keyframes loadingT0-1
+{
+  50% { width: 50%; height: 50%; border-top-left-radius: 100%; opacity: .9; }
+}
+@keyframes loadingT0-2
+{
+  50% { width: 50%; height: 50%; border-top-right-radius: 100%; opacity: .9; }
+}
+@keyframes loadingT0-3
+{
+  50% { width: 50%; height: 50%; border-bottom-left-radius: 100%; opacity: .9; }
+}
+@keyframes loadingT0-4
+{
+  50% { width: 50%; height: 50%; border-bottom-right-radius: 100%; opacity: .9; }
+}

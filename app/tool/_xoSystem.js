@@ -134,6 +134,15 @@ export default class xoSystem {
     else return false;
   }
 
+  /**
+    @desc 为对象
+    @return bool
+  */
+  static isObject(obj) {
+    if(!this.isEmpty(obj)) return typeof obj == 'object';
+    else return false;
+  }
+
 }
 
 //排序

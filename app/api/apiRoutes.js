@@ -82,4 +82,31 @@ export const routes = [
       }, `api/ModalAPI`)
     }
   }
+  ,
+  {
+    path : `Loading${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./LoadingAPI.jsx`).default)
+      }, `api/LoadingAPI`)
+    }
+  }
+  ,
+  {
+    path : `Tag${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./TagAPI.jsx`).default)
+      }, `api/TagAPI`)
+    }
+  }
+  ,
+  {
+    path : `Timeline${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./TimelineAPI.jsx`).default)
+      }, `api/TimelineAPI`)
+    }
+  }
 ]

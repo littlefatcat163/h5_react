@@ -1,0 +1,26 @@
+.xo-tag
+{
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid #d4d4d4;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  span
+  {
+     color: #505050;
+     &:hover { color: #7d7d7d; }
+  }
+  &.xo-disabled { opacity: .65; }
+  .xo-icon-close
+  {
+    font-size: 18px;
+    margin-left: 5px;
+    color: #7d7d7d;
+    &:hover { color: #505050; }
+  }
+}
