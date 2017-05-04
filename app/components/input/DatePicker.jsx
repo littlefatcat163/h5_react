@@ -14,11 +14,12 @@ export default class DatePicker extends InputComponent {
   container = null;
   format = null;
   value = null;
+  disabled = false;
 
   render() {
     return(
-      <div className={`xo-date-picker`}>
-        <input ref={(refInput) => this.refInput = refInput} readOnly type='text' onClick={(e) => this[_onClick](e)}/>
+      <div className={`xo-date-picker`} onClick={(e) => this[_onClick](e)}>
+        <input ref={(refInput) => this.refInput = refInput} disabled={true} type='text' />
         <span className='xo-icon fa fa-calendar'></span>
       </div>
     )
@@ -64,7 +65,7 @@ export default class DatePicker extends InputComponent {
   [_onClick](e) {
     e.stopPropagation();
     e.preventDefault();
-    if($(e.currentTarget).is(':disabled')) return;
+    if(this.disabled) return;
     if(!this.$div) {
       this.$div = $('<div style="position: absolute; top: 0; left: 0;"></div>');
       $(document.body).append(this.$div);
@@ -92,6 +93,16 @@ export default class DatePicker extends InputComponent {
 
   getValue() {
     return this.value;
+  }
+
+  disable() {
+    this.disabled = true;
+    this.$dom.find('input').addClass('xo-disabled');
+  }
+
+  enable() {
+    this.disabled = false;
+    this.$dom.find('input').removeClass('xo-disabled');
   }
 
   hide() {

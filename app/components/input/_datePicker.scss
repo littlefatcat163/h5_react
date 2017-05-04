@@ -4,7 +4,7 @@
 
   display: inline-block;
   position: relative;
-  input[type=text]
+  input[type=text], input[type=text]:disabled
   {
     width: 160px;
     height: 26px;
@@ -13,10 +13,10 @@
     border: 1px solid #c7c7c7;
     outline: none;
     border-radius: 3px;
-    &:disabled, &:disabled+.xo-icon { opacity: .65; }
+    &.xo-disabled, &.xo-disabled+.xo-icon { opacity: .65; }
     &:hover {
       border-color: $primary;
-      &:disabled { border-color: #c7c7c7; }
+      &.xo-disabled { border-color: #c7c7c7; }
     }
   }
 
