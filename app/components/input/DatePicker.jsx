@@ -18,8 +18,14 @@ export default class DatePicker extends InputComponent {
 
   render() {
     return(
-      <div className={`xo-date-picker`} onClick={(e) => this[_onClick](e)}>
-        <input ref={(refInput) => this.refInput = refInput} disabled={true} type='text' />
+      <div className={`xo-date-picker`} >
+        <input
+          ref={(refInput) => this.refInput = refInput}
+          readOnly='readonly'
+          unselectable='on'
+          type='text'
+          onClick={(e) => this[_onClick](e)}
+          />
         <span className='xo-icon fa fa-calendar'></span>
       </div>
     )
