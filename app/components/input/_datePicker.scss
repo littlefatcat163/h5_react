@@ -1,0 +1,138 @@
+@import "../../style/color";
+.xo-date-picker
+{
+
+  display: inline-block;
+  position: relative;
+  input[type=text]
+  {
+    width: 160px;
+    height: 26px;
+    padding: 3px;
+    padding-right: 20px;
+    border: 1px solid #c7c7c7;
+    outline: none;
+    border-radius: 3px;
+    &:disabled, &:disabled+.xo-icon { opacity: .65; }
+    &:hover {
+      border-color: $primary;
+      &:disabled { border-color: #c7c7c7; }
+    }
+  }
+
+  .xo-icon
+  {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 14px;
+    color: #585858;
+  }
+
+}
+
+.xo-date-picker-container
+{
+
+  position: absolute;
+  background-color: $white;
+  width: 280px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+  border: 1px solid $white;
+  color: #505050;
+
+  .xo-date-picker-header
+  {
+    font-size: 14px;
+    padding: 8px 10px;
+    position: relative;
+    text-align: center;
+    span { cursor: pointer; &:hover { color: $primary; } }
+    border-bottom: 1px solid #ddd;
+    .xo-icon
+    {
+      position: absolute;
+      font-size: 15px;
+      color: #a0a0a0;
+      cursor: pointer;
+      top: 10px;
+      &:hover { color: $primary; }
+    }
+    :nth-child(1) { left: 10px; }
+    :nth-child(2) { left: 25px; }
+    :nth-last-child(2) { right: 25px; }
+    :nth-last-child(1) { right: 10px; }
+  }
+
+  .xo-date-picker-body
+  {
+    table
+    {
+
+      width: 100%;
+      text-align: center;
+      th { font-weight: 100; }
+      td
+      {
+        a
+        {
+          &.xo-active, &.xo-active:hover { background-color: $blue; color: $white; }
+          &.xo-other, &.xo-other:hover { color: #ababab; }
+          &:hover { background-color: #e1f2ff; }
+        }
+      }
+
+    }
+    border-bottom: 1px solid #ddd;
+  }
+
+  .xo-date .xo-date-picker-body
+  {
+    td
+    {
+      padding: 5px;
+      a
+      {
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        line-height: 26px;
+      }
+    }
+  }
+
+  .xo-month .xo-date-picker-body
+  {
+    td
+    {
+      padding: 15px;
+      a
+      {
+        padding: 10px;
+      }
+    }
+  }
+
+  .xo-year .xo-date-picker-body
+  {
+    td
+    {
+      padding: 10px;
+      a
+      {
+        padding: 8px;
+      }
+    }
+  }
+
+  .xo-date-picker-footer
+  {
+    padding: 8px 10px;
+    text-align: center;
+    a {
+      color: $primary;
+      &:hover { color: $blue; }
+    }
+  }
+
+}

@@ -248,14 +248,15 @@ export default class Home extends React.Component {
             key : "nav_input_date",
             name : "日期时间",
             iconClass : "fa fa-clock-o",
-            link : "#/home/date/日期时间"
-          },
-          {
-            key : "nav_input_upload",
-            name : "上传",
-            iconClass : "fa fa-upload",
-            link : "#/home/upload/上传"
+            link : "#/home/Date/日期时间"
           }
+          // ,
+          // {
+          //   key : "nav_input_upload",
+          //   name : "上传",
+          //   iconClass : "fa fa-upload",
+          //   link : "#/home/upload/上传"
+          // }
         ]
       },
       {
@@ -280,13 +281,14 @@ export default class Home extends React.Component {
             name : "Tab",
             iconClass : "fa fa-tags",
             link : "#/home/tab/Tab"
-          },
-          {
-            key : "nav_media_audio",
-            name : "音频",
-            iconClass : "fa fa-film",
-            link : "#/home/audio/音频"
           }
+          // ,
+          // {
+          //   key : "nav_media_audio",
+          //   name : "音频",
+          //   iconClass : "fa fa-film",
+          //   link : "#/home/audio/音频"
+          // }
         ]
       },
       {
@@ -294,30 +296,31 @@ export default class Home extends React.Component {
         name : "图表",
         iconClass : "fa fa-bar-chart",
         reamList : [
-          {
-            key : "nav_chart_map",
-            name : "地图",
-            iconClass : "fa fa-map-marker",
-            link : "#/home/map/图表"
-          },
-          {
-            key : "nav_chart_chart",
-            name : "统计图表",
-            iconClass : "fa fa-pie-chart",
-            link : "#/home/chart/统计图表"
-          },
+          // {
+          //   key : "nav_chart_map",
+          //   name : "地图",
+          //   iconClass : "fa fa-map-marker",
+          //   link : "#/home/map/图表"
+          // },
+          // {
+          //   key : "nav_chart_chart",
+          //   name : "统计图表",
+          //   iconClass : "fa fa-pie-chart",
+          //   link : "#/home/chart/统计图表"
+          // },
           {
             key : "nav_chart_table",
             name : "表格",
             iconClass : "fa fa-table",
             link : "#/home/Table/表格"
-          },
-          {
-            key : "nav_chart_table_tree",
-            name : "表格树",
-            iconClass : "fa fa-th-list",
-            link : "#/home/table-tree/表格树"
           }
+          // ,
+          // {
+          //   key : "nav_chart_table_tree",
+          //   name : "表格树",
+          //   iconClass : "fa fa-th-list",
+          //   link : "#/home/table-tree/表格树"
+          // }
         ]
       },
       {

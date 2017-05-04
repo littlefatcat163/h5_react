@@ -10,6 +10,7 @@ import xoCheckbox from './components/input/Checkbox'
 import xoRadio from './components/input/Radio'
 import xoSelect from './components/input/Select'
 import xoInput from './components/input/Input'
+import xoDatePicker from './components/input/DatePicker'
 import xoTable from './components/table/Table'
 import system from './tool/_xoSystem'
 
@@ -26,6 +27,7 @@ export const Checkbox = xoCheckbox
 export const Radio = xoRadio
 export const Select = xoSelect
 export const Input = xoInput
+export const DatePicker = xoDatePicker
 
 export const Table = xoTable
 

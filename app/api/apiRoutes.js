@@ -109,4 +109,13 @@ export const routes = [
       }, `api/TimelineAPI`)
     }
   }
+  ,
+  {
+    path : `Date${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./DateAPI.jsx`).default)
+      }, `api/DateAPI`)
+    }
+  }
 ]
