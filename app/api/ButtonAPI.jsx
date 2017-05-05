@@ -11,7 +11,7 @@ export default class ButtonAPI extends BaseComponent {
     return (
       [
         {
-          name: 'button',
+          name: 'Button',
           list: [
             { 'data-target': 'btn', name: '按钮' },
             { 'data-target': 'icon-btn', name: '图标按钮' },

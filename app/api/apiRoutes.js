@@ -118,4 +118,13 @@ export const routes = [
       }, `api/DateAPI`)
     }
   }
+  ,
+  {
+    path : `Tabs${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./TabsAPI.jsx`).default)
+      }, `api/TabsAPI`)
+    }
+  }
 ]

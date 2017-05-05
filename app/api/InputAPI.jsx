@@ -9,7 +9,7 @@ export default class InputAPI extends BaseComponent {
     return (
       [
         {
-          name: 'input',
+          name: 'Input',
           list: [
             { 'data-target': 'input', name: '输入框' }
           ]

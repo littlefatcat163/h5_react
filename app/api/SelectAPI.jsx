@@ -9,7 +9,7 @@ export default class SelectAPI extends BaseComponent {
     return (
       [
         {
-          name: 'select',
+          name: 'Select',
           list: [
             { 'data-target': 'select', name: '下拉框' }
           ]

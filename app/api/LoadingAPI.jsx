@@ -9,7 +9,7 @@ export default class LoadingAPI extends BaseComponent {
     return (
       [
         {
-          'name': 'loading',
+          'name': 'Loading',
           list: [
             {
               'data-target': 'loading',

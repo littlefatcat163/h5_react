@@ -9,7 +9,7 @@ export default class ModalAPI extends BaseComponent {
     return (
       [
         {
-          name: 'modal',
+          name: 'Modal',
           list: [
             { 'data-target': 'modal', name: '模态框' }
           ]

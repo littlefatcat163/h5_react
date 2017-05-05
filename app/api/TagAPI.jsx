@@ -9,7 +9,7 @@ export default class TagAPI extends BaseComponent {
     return (
       [
         {
-          'name': 'tag',
+          'name': 'Tag',
           list: [
             {
               'data-target': 'tag',

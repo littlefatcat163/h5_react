@@ -278,9 +278,9 @@ export default class Home extends React.Component {
           },
           {
             key : "nav_media_tab",
-            name : "Tab",
+            name : "标签页",
             iconClass : "fa fa-tags",
-            link : "#/home/tab/Tab"
+            link : "#/home/Tabs/标签页"
           }
           // ,
           // {

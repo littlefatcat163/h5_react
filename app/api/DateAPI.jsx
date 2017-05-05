@@ -9,7 +9,7 @@ export default class LoadingAPI extends BaseComponent {
     return (
       [
         {
-          'name': 'date',
+          'name': 'Date',
           list: [
             {
               'data-target': 'datePicker',

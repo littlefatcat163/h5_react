@@ -8,7 +8,7 @@ export default class CheckboxAPI extends BaseComponent {
   getLeftDOMList() {
     return [
       {
-        name: 'checkbox',
+        name: 'Checkbox',
         list: [
           { 'data-target': 'checkbox', name: '勾选框' },
           { 'data-target': 'radio', name: '单选框' }

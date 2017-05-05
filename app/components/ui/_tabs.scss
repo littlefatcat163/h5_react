@@ -66,12 +66,35 @@
     }
 
     .xo-tabs-tab {
+      position: relative;
       cursor: pointer;
       color: $gray;
       border: 0;
 
       &.xo-active {
         color: $primary;
+      }
+
+      .xo-icon-close
+      {
+        position: absolute;
+        right: -5px;
+        font-size: 20px;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        line-height: 20px;
+        text-align: center;
+        font-weight: 200;
+        color: #b9b9b9;
+        opacity: 0;
+        transition: opacity .15s ease;
+        &:hover { color: #252525; }
+      }
+
+      &:hover .xo-icon-close
+      {
+        opacity: 1;
       }
 
     }
@@ -87,6 +110,7 @@
     .xo-tabs-pane {
 
       position: relative;
+      padding: 10px;
 
       .xo-tabs-pane-modal {
         width: 100%;
@@ -104,6 +128,24 @@
 
     }
 
+  }
+
+  .xo-tabs-add
+  {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 13px;
+    border-radius: 3px;
+    color: #a2a2a2;
+    font-weight: 100;
+    cursor: pointer;
+    &:hover { color: $primary; border-color: $primary; }
   }
 
 }

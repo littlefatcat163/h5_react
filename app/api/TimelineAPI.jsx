@@ -9,7 +9,7 @@ export default class TimelineAPI extends BaseComponent {
     return (
       [
         {
-          'name': 'timeline',
+          'name': 'Timeline',
           list: [
             {
               'data-target': 'timeline',

@@ -9,7 +9,7 @@ export default class TableAPI extends BaseComponent {
     return (
       [
         {
-          name: 'table',
+          name: 'Table',
           list: [
             { 'data-target': 'table', name: '表格' }
           ]
