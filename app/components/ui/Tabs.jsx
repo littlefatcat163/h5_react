@@ -107,12 +107,12 @@ export default class Tabs extends BaseComponent {
       if( tw > nw ) {
         $(this.refNav).css({left: -(tw - $(this.refNav).parent().width())})
       } else {
-        let last = $(this.refNav).find('.xo-tabs-tab');
-        last = last[last.length - 1];
-        tw = last.offsetLeft + last.offsetWidth;
-        if(tw < nw) {
-          $(this.refNav).css({left: this.refNav.offsetLeft + (nw - tw)})
-        }
+        // let last = $(this.refNav).find('.xo-tabs-tab');
+        // last = last[last.length - 1];
+        // tw = last.offsetLeft + last.offsetWidth;
+        // if(tw < nw) {
+        //   $(this.refNav).css({left: this.refNav.offsetLeft + (nw - tw)})
+        // }
       }
     }
 
@@ -239,6 +239,14 @@ export default class Tabs extends BaseComponent {
           $(this.refNav).css({left: this.refNav.offsetLeft - 25});
           $(this.refNav).parent().width(this.refRight.offsetLeft - parseInt($(this.refNav).parent().css('marginLeft')));
         }
+      }
+      let last = $(this.refNav).find('.xo-tabs-tab');
+      last = last[last.length - 1];
+      let tw = last.offsetLeft + last.offsetWidth;
+      let nw = $(this.refNav).parent().width();
+      if(this.refNav.offsetLeft < 0) nw -= this.refNav.offsetLeft;
+      if(tw < nw) {
+        $(this.refNav).css({left: this.refNav.offsetLeft + (nw - tw)})
       }
     } else {
       $(this.refRight).hide();

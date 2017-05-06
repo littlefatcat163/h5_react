@@ -34,7 +34,7 @@ export default class SelectAPI extends BaseComponent {
                     </div>
                     <div className='xo-margin-bottom-xs'>
                       <Button className='xo-margin-right-xs' onClick={() => this.refTabs.add(<Tabs.TabPane key='test tabs key' allowEdit={true} text='test add'><p>add Tabs.TabPane</p></Tabs.TabPane>)}>add( {"<Tabs.TabPane key='test tabs key' allowEdit=\{true\} />"} )</Button>
-                      <Button className='xo-margin-right-xs' onClick={() => this.refTabs.remove(2, 'index')}>remove('test tabs key')</Button>
+                      <Button className='xo-margin-right-xs' onClick={() => this.refTabs.remove('test tabs key')}>remove('test tabs key')</Button>
                     </div>
                   </Tabs.TabPane>
                   <Tabs.TabPane text='代码'>
@@ -48,7 +48,7 @@ export default class SelectAPI extends BaseComponent {
                             `\t\t</div>\n` +
                             `\t\t<div className='xo-margin-bottom-xs'>\n` +
                               `\t\t\t<Button className='xo-margin-right-xs' onClick={() => this.refTabs.add(<Tabs.TabPane key='test tabs key' allowEdit={true} text='test add'><p>add Tabs.TabPane</p></Tabs.TabPane>)}>add( {"<Tabs.TabPane key='test tabs key' allowEdit=\{true\} />"} )</Button>\n` +
-                              `\t\t\t<Button className='xo-margin-right-xs' onClick={() => this.refTabs.remove(2, 'index')}>remove('test tabs key')</Button>\n` +
+                              `\t\t\t<Button className='xo-margin-right-xs' onClick={() => this.refTabs.remove('test tabs key')}>remove('test tabs key')</Button>\n` +
                             `\t\t</div>\n` +
                           `\t</Tabs.TabPane>\n` +
                           `\t<Tabs.TabPane text='代码'>\n` +
