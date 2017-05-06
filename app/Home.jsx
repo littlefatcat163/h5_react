@@ -268,7 +268,7 @@ export default class Home extends React.Component {
             key : "nav_media_carousel",
             name : "轮播",
             iconClass : "fa fa-file-movie-o",
-            link : "#/home/carousel/轮播"
+            link : "#/home/Carousel/轮播"
           },
           {
             key : "nav_media_image",

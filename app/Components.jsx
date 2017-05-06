@@ -1,4 +1,5 @@
-import xoTabs from './components/ui/Tabs'
+import xoTabs from './components/media/Tabs'
+import xoCarcousel from './components/media/Carousel'
 import xoIcon from './components/ui/Icon'
 import xoModal from './components/ui/Modal'
 import xoLoading from './components/ui/Loading'
@@ -15,6 +16,8 @@ import xoTable from './components/table/Table'
 import system from './tool/_xoSystem'
 
 export const Tabs = xoTabs
+export const Carousel = xoCarcousel
+
 export const Icon = xoIcon
 export const Code = xoCode
 export const Modal = xoModal

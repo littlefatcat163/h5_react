@@ -127,4 +127,13 @@ export const routes = [
       }, `api/TabsAPI`)
     }
   }
+  ,
+  {
+    path : `Carousel${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./CarouselAPI.jsx`).default)
+      }, `api/CarouselAPI`)
+    }
+  }
 ]
