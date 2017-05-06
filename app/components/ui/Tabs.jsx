@@ -17,6 +17,8 @@ export default class Tabs extends BaseComponent {
 
   refNav = null;
   refNavContent = null;
+  refLeft = null;
+  refRight = null;
 
   [_navs] = [];
   [_navContents] = [];
@@ -28,18 +30,20 @@ export default class Tabs extends BaseComponent {
 
   render() {
     let add = null;
-    if(this.props.allowEdit) add = <div className='xo-tabs-add' onClick={(e) => this[_addOnClick](e)}>+</div>;
+    if(this.props.allowEdit) add = <div unselectable='unselectable' className='xo-tabs-add' onClick={(e) => this[_addOnClick](e)}></div>;
     return (
       <div className='xo-tabs'>
-        <div className='xo-tabs-list xo-tabs-list-top' ref={(refNav) => this.refNav = refNav}>
-          {/*<div className='xo-tabs-list-nav'>
-            <div className='xo-tabs-bar'></div>
-            {
-              React.Children.map(this.props.children, (children, index) => {
-                return (<div onClick={(e) => this[__tabOnClick](e)} className='xo-tabs-tab' data-index={index}>{children.props.text}</div>);
-              })
-            }
-          </div>*/}
+        <div className='xo-tabs-header'>
+          <div className='xo-tabs-list xo-tabs-list-top' ref={(refNav) => this.refNav = refNav}>
+            {/*<div className='xo-tabs-list-nav'>
+              <div className='xo-tabs-bar'></div>
+              {
+                React.Children.map(this.props.children, (children, index) => {
+                  return (<div onClick={(e) => this[__tabOnClick](e)} className='xo-tabs-tab' data-index={index}>{children.props.text}</div>);
+                })
+              }
+            </div>*/}
+          </div>
         </div>
         <div className='xo-tabs-content' ref={(refNavContent) => this.refNavContent = refNavContent}>
           {/*<div className='xo-tabs-content-scroll'>
@@ -50,13 +54,18 @@ export default class Tabs extends BaseComponent {
           }
           </div>*/}
         </div>
+        <span className='xo-tabs-left fa fa-angle-left' ref={(refLeft) => this.refLeft = refLeft} onClick={(e) => this.headerMove(1)}></span>
         { add }
+        <span className='xo-tabs-right fa fa-angle-right' ref={(refRight) => this.refRight = refRight} onClick={(e) => this.headerMove(-1)}></span>
       </div>
     )
   }
 
   componentDidMount() {
     super.componentDidMount();
+    super.addResizeEventListener();
+    $(this.refLeft).hide();
+    $(this.refRight).hide();
     React.Children.map(this.props.children, (children, index) => {
       if(xoSystem.isObject(children) && children.type.displayName == Tabs.TabPane.displayName) {
         let close = null;
@@ -71,6 +80,14 @@ export default class Tabs extends BaseComponent {
     this.refesh(() => $(this.refNav).find('.xo-tabs-tab').first().click());
   }
 
+  componentWillUnmount() {
+    super.componentWillUnmount();
+  }
+
+  windowResize() {
+    this.resize();
+  }
+
   [__tabOnClick](e) {
 
     let $target = $(e.target);
@@ -81,6 +98,24 @@ export default class Tabs extends BaseComponent {
                   .css({ transform: `translate3d(${e.target.offsetLeft}px, 0px, 0px)`});
 
     $(this.refNavContent).find('.xo-tabs-pane').removeClass('xo-active');
+
+    if($(this.refNav).find('.xo-tabs-list-nav').width() > this.$dom.width()) {
+      let tw = e.target.offsetLeft + e.target.offsetWidth;
+      let nw = $(this.refNav).parent().width();
+      if(this.refNav.offsetLeft < 0) nw -= this.refNav.offsetLeft;
+      else nw += this.refNav.offsetLeft;
+      if( tw > nw ) {
+        $(this.refNav).css({left: -(tw - $(this.refNav).parent().width())})
+      } else {
+        let last = $(this.refNav).find('.xo-tabs-tab');
+        last = last[last.length - 1];
+        tw = last.offsetLeft + last.offsetWidth;
+        if(tw < nw) {
+          $(this.refNav).css({left: this.refNav.offsetLeft + (nw - tw)})
+        }
+      }
+    }
+
     let key = super.findReactDOMNode(e).key;
     let index = -1;
     for(let i in this[_navContents]) {
@@ -114,7 +149,7 @@ export default class Tabs extends BaseComponent {
 
   refesh(callback) {
     ReactDOM.render(<div className='xo-tabs-list-nav'><div className='xo-tabs-bar'></div>{this[_navs]}</div>, this.refNav);
-    ReactDOM.render(<div className='xo-tabs-content-scroll'>{this[_navContents]}</div>, this.refNavContent, () => { if(xoSystem.isFunc(callback)) callback(); });
+    ReactDOM.render(<div className='xo-tabs-content-scroll'>{this[_navContents]}</div>, this.refNavContent, () => { this.resize(); if(xoSystem.isFunc(callback)) callback(); });
   }
 
   add(nav, isToggle = true) {
@@ -189,6 +224,43 @@ export default class Tabs extends BaseComponent {
         $(this.refNav).find('.xo-tabs-tab.xo-active').click();
       }
     });
+  }
+
+  resize() {
+    let addWidth = 0;
+    if(this.props.allowEdit) addWidth = 25;
+    if($(this.refNav).find('.xo-tabs-list-nav').width() > this.$dom.width() - addWidth) {
+      $(this.refRight).show();
+      $(this.refNav).parent().width(this.refRight.offsetLeft - parseInt($(this.refNav).parent().css('marginLeft')));
+      if(this.refNav.offsetLeft < 0) {
+        if(!parseInt($(this.refNav).parent().css('marginLeft'))) {
+          $(this.refLeft).show();
+          $(this.refNav).parent().css({marginLeft: 25});
+          $(this.refNav).css({left: this.refNav.offsetLeft - 25});
+          $(this.refNav).parent().width(this.refRight.offsetLeft - parseInt($(this.refNav).parent().css('marginLeft')));
+        }
+      }
+    } else {
+      $(this.refRight).hide();
+      $(this.refLeft).hide();
+      $(this.refNav).parent().width(this.$dom.width() - addWidth);
+      $(this.refNav).parent().css({marginLeft: 0});
+      $(this.refNav).css({ left: 0 });
+    }
+  }
+
+  headerMove(pix) {
+
+    let left = this.refNav.offsetLeft + pix * $(this.refNav).parent().width();
+    if(pix < 0)  {
+      let limit = - $(this.refNav).find('.xo-tabs-list-nav').width() + $(this.refNav).parent().width();
+      if(left < limit) left = limit;
+    } else {
+      if(left > 0) left = 0;
+    }
+    $(this.refNav).css({ left: left });
+    this.resize();
+
   }
 
 }

@@ -7,105 +7,107 @@
   &::before { content: " "; display: table; }
   &::after { content: " "; clear: both; display: table; }
 
-  .xo-tabs-list {
+  $topHeight: 30px;
 
-    &.xo-tabs-list-top {
+  .xo-tabs-header
+  {
+    height: $topHeight;
+    position: relative;
+    overflow: hidden;
+    .xo-tabs-list {
 
-      $topHeight: 30px;
+      &.xo-tabs-list-top {
 
-      position: absolute;
-      width: 100%;
-      height: $topHeight;
-      top: 0;
-
-      border-bottom: 1px solid $light-gray;
-
-      .xo-tabs-list-nav {
-        position: relative;
-      }
-
-      .xo-tabs-tab {
-        display: inline-block;
-        padding: 5px 10px;
-      }
-
-      .xo-tabs-bar {
         position: absolute;
-        height: 2px;
-        bottom: 0;
-        background-color: $primary;
-      }
+        height: $topHeight;
+        border-bottom: 1px solid $light-gray;
+        width: 9999px;
+        top: 0;
 
-      &+.xo-tabs-content {
-        margin-top: $topHeight;
-        overflow: hidden;
-
-        .xo-tabs-content-scroll {
-          display: flex;
+        .xo-tabs-list-nav {
           position: relative;
-          transition: left .3s ease 0s;
+          display: inline-block;
+        }
 
-          .xo-tabs-pane {
+        .xo-tabs-tab {
+          display: inline-block;
+          padding: 5px 10px;
+        }
 
-            flex-shrink: 0;
-            transition: opacity .23s ease .1s, height .1s ease .28s;
-            width: 100%;
-            height: 0;
-            opacity: 0;
-
-            &.xo-active {
-              height: auto;
-              opacity: 1;
-            }
-
-          }
+        .xo-tabs-bar {
+          position: absolute;
+          height: 2px;
+          bottom: 0;
+          background-color: $primary;
         }
 
       }
 
-    }
+      .xo-tabs-tab {
+        position: relative;
+        cursor: pointer;
+        color: $gray;
+        border: 0;
 
-    .xo-tabs-tab {
-      position: relative;
-      cursor: pointer;
-      color: $gray;
-      border: 0;
+        &.xo-active {
+          color: $primary;
+        }
 
-      &.xo-active {
-        color: $primary;
+        .xo-icon-close
+        {
+          position: absolute;
+          right: -5px;
+          font-size: 20px;
+          width: 16px;
+          height: 16px;
+          display: inline-block;
+          line-height: 20px;
+          text-align: center;
+          font-weight: 200;
+          color: #b9b9b9;
+          opacity: 0;
+          transition: opacity .15s ease;
+          &:hover { color: #252525; }
+        }
+
+        &:hover .xo-icon-close
+        {
+          opacity: 1;
+        }
+
       }
 
-      .xo-icon-close
-      {
-        position: absolute;
-        right: -5px;
-        font-size: 20px;
-        width: 16px;
-        height: 16px;
-        display: inline-block;
-        line-height: 20px;
-        text-align: center;
-        font-weight: 200;
-        color: #b9b9b9;
-        opacity: 0;
-        transition: opacity .15s ease;
-        &:hover { color: #252525; }
-      }
-
-      &:hover .xo-icon-close
-      {
-        opacity: 1;
+      .xo-tabs-bar {
+        transition: transform 0.3s ease;
       }
 
     }
-
-    .xo-tabs-bar {
-      transition: transform 0.3s ease;
-    }
-
   }
 
   .xo-tabs-content {
+
+    overflow: hidden;
+
+    .xo-tabs-content-scroll {
+      display: flex;
+      position: relative;
+      transition: left .3s ease 0s;
+
+      .xo-tabs-pane {
+
+        flex-shrink: 0;
+        transition: opacity .23s ease .1s, height .1s ease .28s;
+        width: 100%;
+        height: 0;
+        opacity: 0;
+
+        &.xo-active {
+          height: auto;
+          opacity: 1;
+        }
+
+      }
+    }
 
     .xo-tabs-pane {
 
@@ -133,19 +135,37 @@
   .xo-tabs-add
   {
     position: absolute;
-    top: 5px;
+    top: 6px;
     right: 5px;
     font-size: 18px;
     border: 1px solid #ddd;
     width: 18px;
     height: 18px;
     text-align: center;
-    line-height: 13px;
     border-radius: 3px;
     color: #a2a2a2;
     font-weight: 100;
     cursor: pointer;
-    &:hover { color: $primary; border-color: $primary; }
+    &:hover { color: #505050; border-color: #505050; }
+    &:after { content: '+'; position: relative; top: -6px; }
+    &+.xo-tabs-right { right: 25px; }
   }
+
+  .xo-tabs-left, .xo-tabs-right
+  {
+    position: absolute;
+    top: 0;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding-top: 6px;
+    cursor: pointer;
+    color: #a2a2a2;
+    &:hover { color: #505050; }
+  }
+
+  .xo-tabs-left { left: 0; }
+  .xo-tabs-right { right: 0; }
 
 }
