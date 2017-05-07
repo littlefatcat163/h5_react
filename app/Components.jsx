@@ -5,6 +5,7 @@ import xoModal from './components/ui/Modal'
 import xoLoading from './components/ui/Loading'
 import xoTag from './components/ui/Tag'
 import xoTimeline from './components/ui/Timeline'
+import xoPager from './components/navigate/Pager'
 import xoCode from './components/code/Code'
 import xoButton from './components/input/Button'
 import xoCheckbox from './components/input/Checkbox'
@@ -24,6 +25,8 @@ export const Modal = xoModal
 export const Loading = xoLoading
 export const Tag = xoTag
 export const Timeline = xoTimeline
+
+export const Pager = xoPager
 
 export const Button = xoButton
 export const Checkbox = xoCheckbox

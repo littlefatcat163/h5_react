@@ -136,4 +136,13 @@ export const routes = [
       }, `api/CarouselAPI`)
     }
   }
+  ,
+  {
+    path : `Pager${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./PagerAPI.jsx`).default)
+      }, `api/PagerAPI`)
+    }
+  }
 ]

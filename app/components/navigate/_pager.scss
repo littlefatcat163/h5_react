@@ -1,0 +1,51 @@
+@import "../../style/color";
+.xo-pager
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+
+  li
+  {
+
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 14px;
+    border: 1px solid #d4d4d4;
+    padding: 2px 7px;
+    background-color: #fff;
+    border-radius: 3px;
+    color: #717171;
+    font-weight: normal;
+    cursor: pointer;
+    user-select: none;
+    &:hover { color: $primary; border-color: $primary; }
+    &.xo-active { color: $white; background-color: $blue; border-color: $blue; }
+
+    &.xo-pager-gap
+    {
+      border-width: 0;
+      a {
+        width: 15px;
+        text-align: center;
+      }
+      :first-child { display: inline-block; }
+      :last-child { display: none; }
+      &:hover {
+        :first-child { display: none; }
+        :last-child { display: inline-block; }
+      }
+    }
+
+    &:last-child { margin-right: 0; }
+
+    &.xo-parger-input
+    {
+      padding: 0;
+      border-width: 0;
+    }
+
+  }
+
+}

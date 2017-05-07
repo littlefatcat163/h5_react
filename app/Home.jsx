@@ -271,12 +271,6 @@ export default class Home extends React.Component {
             link : "#/home/Carousel/轮播"
           },
           {
-            key : "nav_media_image",
-            name : "缩略图",
-            iconClass : "fa fa-image",
-            link : "#/home/image/缩略图"
-          },
-          {
             key : "nav_media_tab",
             name : "标签页",
             iconClass : "fa fa-tags",
@@ -338,7 +332,7 @@ export default class Home extends React.Component {
             key : "nav_nav_pager",
             name : "分页",
             iconClass : "fa fa-chevron-right",
-            link : "#/home/pager/分页"
+            link : "#/home/Pager/分页"
           },
           {
             key : "nav_nav_tree",
