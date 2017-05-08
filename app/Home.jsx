@@ -1,11 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import $ from "jquery";
+import React from "react"
+import ReactDOM from "react-dom"
+import $ from "jquery"
 import { createStore } from 'redux'
 //import { Provider, connect } from "react-redux";
-import { getTransitionEndevName } from "./tool/_xAnimation";
-
-const __renderChildRate = Symbol(`__renderChildRate`);
+import { getTransitionEndevName } from "./tool/_xAnimation"
+import { Table } from './components'
+//import Table from './component/table/Table'
+import './_home.scss'
+const __renderChildRate = Symbol(`__renderChildRate`)
 
 export default class Home extends React.Component {
 
@@ -21,6 +23,8 @@ export default class Home extends React.Component {
   $progress = null;
 
   __navUlList = null;
+
+  __bodyTag = 'html';
 
   constructor(props) {
     super(props);
@@ -54,7 +58,7 @@ export default class Home extends React.Component {
                   </a>
                 </li>
                 <li>
-                  <a target="_blank" href="http://write.blog.csdn.net/postlist?ticket=ST-351554-7GS3jGKRbiI3DdEKyfzY-passport.csdn.net">
+                  <a target="_blank" href="http://blog.csdn.net/u013224660">
                     <i className="fa fa-weibo xo-margin-right-xs"></i>
                     博客
                   </a>
@@ -147,7 +151,69 @@ export default class Home extends React.Component {
           {
             function(_this){
               if(_this.props.children) return React.cloneElement(_this.props.children, {renderRate: (rate) => _this[__renderChildRate](rate)});
-              else return <div>react <span className="fa fa-copyright"/></div>;
+              else return (
+                <div id='home-hbg'>
+                  <div id='hbg-1' className='xo-layout'>
+                    <div className='xo-col-xs-11 xo-text-center'>
+                      <h1>XO-UI ~ React<span className="fa fa-copyright"></span></h1>
+                      <p>一个用于实践的轻量化demo</p>
+                    </div>
+                  </div>
+                  <div id='hbg-4' className='xo-layout'>
+                    <div className='xo-row'>
+                      <div className='xo-col-xs-7'>
+                        <img src={require('./images/00.jpeg')}/>
+                      </div>
+                      <div className='xo-col-xs-5'>
+                        <h1>模块化</h1>
+                        <p>有效地管理和简化组件</p>
+                        <h1>最佳实践</h1>
+                        <p>数据与UI的结合案例</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id='hbg-2'>
+                    <table className='xo-table xo-table-line' cellSpacing='0' cellPadding="0">
+                      <thead>
+                        <tr>
+                          <th colSpan='2' style={{textAlign: 'center'}}>XO UI WEB</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>JS基础库</td>
+                          <td>React + jQuery</td>
+                        </tr>
+                        <tr>
+                          <td>CSS预处理</td>
+                          <td>Sass</td>
+                        </tr>
+                        <tr>
+                          <td>编译环境</td>
+                          <td>webPack</td>
+                        </tr>
+                        <tr>
+                          <td>Grid</td>
+                          <td>基于float，12列响应式</td>
+                        </tr>
+                        <tr>
+                          <td>兼容性</td>
+                          <td>主流浏览器，有限支持IE9，最佳效果请使用IE10+</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div id='hbg-3' className='xo-text-center'>
+                    <h1>参考社区资源</h1>
+                    <p>bootstrap</p>
+                    <p>ant design</p>
+                    <p>es6</p>
+                    <p>react-router</p>
+                    <p>react-redux</p>
+                  </div>
+
+                </div>
+              )
             }(this)
           }
         </div>
@@ -162,11 +228,14 @@ export default class Home extends React.Component {
     this.$navIndex.css({"top": this.$navHead.height()});
     this.$navContent.css({"top" : this.$navHead.height() + this.$navIndex.height() + 10});
     $(window).bind("resize", this.__windowResize);
+    $(window).bind("scroll", this.__windowScroll);
+    //if(xoSystem.isWebkit()) _this.__bodyTag = "body";
   }
 
   componentWillUnmount() {
     this.$collapse[0].removeEventListener(this.__transitionEndevName, this.__transitionEnd);
     $(window).unbind("resize", this.__windowResize);
+    $(window).unbind("scroll", this.__windowScroll);
   }
 
   __initData() {
@@ -473,6 +542,19 @@ export default class Home extends React.Component {
 
   [__renderChildRate](rate) {
     HomeProgress.load(rate);
+  }
+
+  __windowScroll() {
+    let $hbg = $('#hbg-4');
+    if($hbg && $hbg.length == 1) {
+      if($(window).scrollTop() + 200 > $hbg[0].offsetTop && $hbg[0].offsetTop + $hbg.height() - 150 > $(window).scrollTop()) {
+        $hbg.find('img').css({right: 0, opacity: 1});
+        $hbg.find('.xo-col-xs-5').css({opacity: 1});
+      } else {
+        $hbg.find('.xo-col-xs-5').css({opacity: 0});
+        $hbg.find('img').css({right: '10%', opacity: 0});
+      }
+    }
   }
 
 }

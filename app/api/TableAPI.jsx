@@ -38,8 +38,8 @@ export default class TableAPI extends BaseComponent {
                       ref={(table1) => this.table1 = table1}
                       columns={
                         [
-                          {title: '序列', type: 'indexColumn'},
-                          {title: '勾选', type: 'checkboxColumn'},
+                          {title: '序列', type: 'indexColumn', width: 50},
+                          {title: '勾选', type: 'checkboxColumn', width: 50},
                           {title: '字段一', field: 'field1', width: 100},
                           {title: '字段二', field: 'field2', width: 200, sortOrder: 'desc'},
                           {title: '字段三', field: 'field3', width: 300, sortOrder: 'asc'},
