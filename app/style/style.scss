@@ -141,7 +141,7 @@ h6, .h6 {
 .xo-font-ls { font-size: .18rem; }
 .xo-font-xl { font-size: .2rem; }
 
-.xo-code { color: $rose-red; padding: 2px 4px; background-color: #fff; font-size: 90%; }
+.xo-code { color: $rose-red; padding: 2px 4px; background-color: #fff; font-size: 90%; line-height: 90%; display: inline-block; }
 
 /*  外边距   */
 .xo-margin-right-sm { margin-right: .05rem; }

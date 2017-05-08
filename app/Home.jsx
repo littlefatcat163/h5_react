@@ -391,12 +391,12 @@ export default class Home extends React.Component {
         name : "导航",
         iconClass : "fa fa-paper-plane-o",
         reamList : [
-          {
-            key : "nav_nav_bar",
-            name : "导航栏",
-            iconClass : "fa fa-send",
-            link : "#/home/nav-bar/导航栏"
-          },
+          // {
+          //   key : "nav_nav_bar",
+          //   name : "导航栏",
+          //   iconClass : "fa fa-send",
+          //   link : "#/home/nav-bar/导航栏"
+          // },
           {
             key : "nav_nav_pager",
             name : "分页",
@@ -417,48 +417,48 @@ export default class Home extends React.Component {
         iconClass : "fa fa-ellipsis-h",
         reamList : [
           {
-            key : "nav_other_transition",
-            name : "过渡",
+            key : "nav_other_mode",
+            name : "模式",
             iconClass : "fa fa-exchange",
-            link : "#/home/transition/过渡"
+            link : "#/home/mode/模式"
           },
-          {
-            key : "nav_other_animation",
-            name : "动画",
-            iconClass : "fa fa-cog fa-spin",
-            link : "#/home/animation/动画"
-          },
-          {
-            key : "nav_other_effect",
-            name : "特效",
-            iconClass : "fa fa-assistive-listening-systems",
-            link : "#/home/effect/特效"
-          },
-          {
-            key : "nav_other_move",
-            name : "移动",
-            iconClass : "fa fa-arrows",
-            link : "#/home/move/移动"
-          },
-          {
-            key : "nav_other_resize",
-            name : "浏览器窗口调整",
-            iconClass : "fa fa-arrows-alt",
-            link : "#/home/resize/浏览器窗口调整"
-          }
+          // {
+          //   key : "nav_other_animation",
+          //   name : "动画",
+          //   iconClass : "fa fa-cog fa-spin",
+          //   link : "#/home/animation/动画"
+          // },
+          // {
+          //   key : "nav_other_effect",
+          //   name : "特效",
+          //   iconClass : "fa fa-assistive-listening-systems",
+          //   link : "#/home/effect/特效"
+          // },
+          // {
+          //   key : "nav_other_move",
+          //   name : "移动",
+          //   iconClass : "fa fa-arrows",
+          //   link : "#/home/move/移动"
+          // },
+          // {
+          //   key : "nav_other_resize",
+          //   name : "浏览器窗口调整",
+          //   iconClass : "fa fa-arrows-alt",
+          //   link : "#/home/resize/浏览器窗口调整"
+          // }
         ]
       },
       {
         key : "nav_api",
-        name : "API",
+        name : "文档",
         iconClass : "fa fa-chain-broken",
         reamList : [
-          {
-            key : "nav_api_tool",
-            name : "工具类",
-            iconClass : "fa fa-briefcase",
-            link : "#/home/tool/工具类"
-          },
+          // {
+          //   key : "nav_api_tool",
+          //   name : "工具类",
+          //   iconClass : "fa fa-briefcase",
+          //   link : "#/home/tool/工具类"
+          // },
           {
             key : "nav_api_format",
             name : "规范",
