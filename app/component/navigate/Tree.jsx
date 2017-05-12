@@ -470,6 +470,7 @@ Tree.TreeNode = class TreeNode extends BaseComponent {
   }
 
   [_onDragEnter](e) {
+    e.preventDefault();
     this[_dragClientY] = e.clientY;
   }
 

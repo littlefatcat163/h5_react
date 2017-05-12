@@ -29,7 +29,7 @@ export default class TreeAPI extends BaseComponent {
                 <h2>模态框、提示框</h2>
                 <Tabs>
                   <Tabs.TabPane text='效果'>
-                    <div style={{width: 300, marginRight: 50, display: 'inline-block'}}>
+                    <div style={{width: 300, marginRight: 50, display: 'inline-block', verticalAlign: 'top'}}>
                       <p>允许勾选</p>
                       <Tree disabledCheckbox={false}>
                         <Tree.TreeNode title='0' key='0'></Tree.TreeNode>
@@ -48,7 +48,7 @@ export default class TreeAPI extends BaseComponent {
                       </Tree>
                     </div>
 
-                    <div style={{display: 'inline-block'}}>
+                    <div style={{display: 'inline-block', verticalAlign: 'top'}}>
                       <p>允许拖拽</p>
                       <Tree disabledDrag={false} addon={<Icon className='file-text-o'/>} addonOpen={<Icon className='caret-right'/>} addonClose={<Icon className='caret-down'/>}>
                         <Tree.TreeNode title='0' key='0'></Tree.TreeNode>
