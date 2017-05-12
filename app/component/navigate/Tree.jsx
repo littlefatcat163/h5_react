@@ -482,7 +482,6 @@ Tree.TreeNode = class TreeNode extends BaseComponent {
       this[_config].defaultExtend = !this[_config].defaultExtend;
     }
     let dif = e.clientY - this[_dragClientY];
-    console.log(dif);
     let off = 6;
     if(!dif) return ;
     if(dif > 0) {
