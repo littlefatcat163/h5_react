@@ -471,7 +471,7 @@ Tree.TreeNode = class TreeNode extends BaseComponent {
 
   [_onDragEnter](e) {
     e.preventDefault();
-    this[_dragClientY] = e.pageY;
+    this[_dragClientY] = e.clientY;
   }
 
   [_onDragOver](e) {
@@ -481,7 +481,8 @@ Tree.TreeNode = class TreeNode extends BaseComponent {
       ReactDOM.render(this[_config].addonClose, this.refSwitcher);
       this[_config].defaultExtend = !this[_config].defaultExtend;
     }
-    let dif = e.pageY - this[_dragClientY];
+    let dif = e.clientY - this[_dragClientY];
+    console.log(dif);
     let off = 6;
     if(!dif) return ;
     if(dif > 0) {
