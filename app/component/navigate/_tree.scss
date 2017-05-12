@@ -1,0 +1,68 @@
+@import "../../style/color";
+.xo-tree-container
+{
+  display: inline-block;
+  user-select: none;
+  vertical-align: top;
+  font-size: 14px;
+
+  .xo-tree
+  {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .xo-tree-child
+  {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+  }
+
+  .xo-tree-switcher
+  {
+    display: inline-block;
+    width: 14px;
+    height: 18px;
+    cursor: pointer;
+    color: #8c8c8c;
+  }
+
+  .xo-tree-checked
+  {
+    color: #8c8c8c;
+    span
+    {
+      display: inline-block;
+      width: 14px;
+      height: 18px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    &:hover, &.xo-active { color: $primary; }
+  }
+
+  .xo-tree-node-content
+  {
+    padding: 1px 8px;
+    cursor: pointer;
+    &:hover, &.xo-active { background-color: #e1f2ff; }
+    &.xo-tree-node-drag-top { border-top: 2px solid $blue; }
+    &.xo-tree-node-drag { background-color: $blue; color: $white; }
+    &.xo-tree-node-drag-bottom { border-bottom: 2px solid $blue; }
+  }
+
+  li {
+    padding: 4px 0;
+    &.xo-disabled {
+      &>.xo-tree-switcher { cursor: not-allowed; }
+      &>.xo-tree-node-content { opacity: .65; cursor: not-allowed; }
+      &>.xo-tree-checked {
+        span { cursor: not-allowed; }
+        &:hover, &.xo-active { color: #8c8c8c; }
+      }
+    }
+  }
+
+}

@@ -145,4 +145,13 @@ export const routes = [
       }, `api/PagerAPI`)
     }
   }
+  ,
+  {
+    path : `Tree${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./TreeAPI.jsx`).default)
+      }, `api/TreeAPI`)
+    }
+  }
 ]

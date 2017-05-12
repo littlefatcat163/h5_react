@@ -407,7 +407,7 @@ export default class Home extends React.Component {
             key : "nav_nav_tree",
             name : "树",
             iconClass : "fa fa-sitemap",
-            link : "#/home/tree/树"
+            link : "#/home/Tree/树"
           }
         ]
       },
