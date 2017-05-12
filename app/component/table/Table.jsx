@@ -148,7 +148,10 @@ export default class Table extends BaseComponent {
     }
     if(this[_config].height == '100%') {
       let height = this.$dom.parent().outerHeight() - this.ref_theadContainer.offsetHeight;
-      if(height < this.ref_tbodyContainer.clientHeight) $(this.ref_tbodyContainer).height(height);
+      if(height < this.ref_tbodyContainer.clientHeight) {
+        $(this.ref_tbodyContainer).height(height);
+        $(this.ref_tbodyContainer).height(this.ref_tbodyContainer.clientHeight - 3);
+      }
     }
   }
 
