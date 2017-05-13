@@ -37,7 +37,7 @@ export default class Home extends React.Component {
         <nav ref={(nav) => this.$nav = $(nav)} className="xo-navbar xo-bg-light-black xo-font-white xo-navbar-fixed-top">
           <div className="xo-container">
             <div className="xo-navbar-header border-gray" ref={(navHead) => this.$navHead = $(navHead)}>
-              <a className="xo-navbar-brand" href="/index.html">
+              <a className="xo-navbar-brand" href="../index.html">
                 <img src='images/logo-3x.png'/>
                 <span>XO</span>
               </a>
@@ -48,7 +48,7 @@ export default class Home extends React.Component {
             <div className="xo-navbar-collapse">
               <ul className="xo-nav xo-navbar-nav">
                 <li><a href="#/home/Environment/环境搭建">环境搭建</a></li>
-                <li><a>相关说明</a></li>
+                <li><a href="#/home/Desc/相关说明">相关说明</a></li>
               </ul>
               <ul className="xo-nav xo-navbar-nav xo-navbar-right">
                 <li>
@@ -418,9 +418,9 @@ export default class Home extends React.Component {
         reamList : [
           {
             key : "nav_other_mode",
-            name : "模式",
-            iconClass : "fa fa-exchange",
-            link : "#/home/mode/模式"
+            name : "工具类",
+            iconClass : "fa fa-briefcase",
+            link : "#/home/Tool/工具类"
           },
           // {
           //   key : "nav_other_animation",

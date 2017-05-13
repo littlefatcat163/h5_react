@@ -121,7 +121,7 @@ export default class xoSystem {
     @return bool
   */
   static isEmpty(value = null) {
-    if (value == 0) return false;
+    if (value === 0) return false;
     else return !value;
   }
 

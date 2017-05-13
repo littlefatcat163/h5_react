@@ -60,7 +60,7 @@ export default class Carousel extends BaseComponent {
       });
       this[_timer] = setTimeout(() => this[_changeLi](), 1500);
     }
-    this.$dom.find('.xo-carcousel-indicators li').first().click();
+    this.$dom.find('.xo-carcousel-indicators li').first().addClass('xo-active');
   }
 
   componentWillUnmount() {

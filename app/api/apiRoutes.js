@@ -12,6 +12,24 @@ export const routes = [
   }
   ,
   {
+    path : `Desc${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./DescAPI.jsx`).default)
+      }, `api/DescAPI`)
+    }
+  }
+  ,
+  {
+    path : `Tool${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./ToolAPI.jsx`).default)
+      }, `api/ToolAPI`)
+    }
+  }
+  ,
+  {
     path : `Format${SUFFIX}`,
     getComponent(nextState, callback) {
       require.ensure([], (require) => {
