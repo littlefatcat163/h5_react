@@ -21,6 +21,15 @@ export const routes = [
   }
   ,
   {
+    path : `Test${SUFFIX}`,
+    getComponent(nextState, callback) {
+      require.ensure([], (require) => {
+        callback(null, require(`./TestAPI.jsx`).default)
+      }, `api/TestAPI`)
+    }
+  }
+  ,
+  {
     path : `Tool${SUFFIX}`,
     getComponent(nextState, callback) {
       require.ensure([], (require) => {

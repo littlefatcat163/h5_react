@@ -417,11 +417,17 @@ export default class Home extends React.Component {
         iconClass : "fa fa-ellipsis-h",
         reamList : [
           {
-            key : "nav_other_mode",
+            key : "nav_other_tool",
             name : "工具类",
             iconClass : "fa fa-briefcase",
             link : "#/home/Tool/工具类"
           },
+          {
+            key : "nav_other_test",
+            name : "Test",
+            iconClass : "fa fa-book",
+            link : "#/home/Test/测试案例"
+          }
           // {
           //   key : "nav_other_animation",
           //   name : "动画",
